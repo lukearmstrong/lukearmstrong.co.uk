@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<header>
+	<h1>{{ page.title }}</h1>
+	<a href="/">Luke Armstrong</a>
+	<time datetime="{{ page.date | date_to_xmlschema }}" pubdate data-updated="true">{{ page.date | date: "%B %d, %Y" }}</time>
+</header>
+
+{{ content }}
+
+<footer>
+	<a href="/" title="Home">&#171; Read more...</a>
+</footer>

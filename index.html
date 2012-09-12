@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<header>
+	<h1>Luke Armstrong</h1>
+</header>
+
+<dl>
+	{% for post in site.posts %}
+		<dt><a href="{{ post.url }}">{{ post.title }}</a> <time datetime="{{ post.date | date_to_xmlschema }}" pubdate data-updated="true">{{ post.date | date: "%B %d, %Y" }}</time></dt>
+		<dd>{{ post.description }}</dd>
+	{% endfor %}
+</dl>
+
+<footer>
+	<a href="https://twitter.com/6c61" title="Twitter">@6c61</a>
+</footer>
