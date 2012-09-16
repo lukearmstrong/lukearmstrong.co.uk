@@ -95,13 +95,16 @@ textarea {
 
 body {
 	text-align: center;
-	font-family: Georgia, serif;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background: #fff;
+	color: #777;
 }
 
 .wrapper {
 	margin: 0 auto;
 	text-align: left;
-	width: 960px;
+	max-width: 900px;
+	width: 95%;
 }
 
 header, footer {
@@ -109,11 +112,7 @@ header, footer {
 }
 
 header time {
-	display:block;
-}
-
-dd {
-	margin-bottom: 2em;
+	display: block;
 }
 
 dt time {
@@ -121,11 +120,16 @@ dt time {
 }
 
 time {
-	color: #999;
+	font-size: 12px;
 }
 
-h1 {
+dd {
+	margin-bottom: 2em;
+}
 
+
+h1, h2, h3, h4, h5, h6 {
+	color: #121212;
 }
 
 footer a {
@@ -134,11 +138,18 @@ footer a {
 }
 
 a {
+	color: #121212;
 	text-decoration: none;
 }
 
 a:hover {
 	text-decoration: underline;
+}
+
+p {
+	font-size: 17px;
+	line-height: 1.8em;
+	margin-bottom: 24px;
 }
 
 
