@@ -1,4 +1,4 @@
-safe:        false
+safe:        true
 auto:        true
 server:      true
 server_port: 4000
@@ -10,7 +10,7 @@ destination: ./_site
 plugins:     ./_plugins
 
 future:      true
-lsi:         true
+lsi:         false
 pygments:    true
 markdown:    rdiscount
 permalink:   /:year/:month/:day/:title/
