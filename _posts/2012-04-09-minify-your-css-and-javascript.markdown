@@ -1,13 +1,9 @@
 ---
 layout: post
-title: Minify your CSS and JavaScript
-date: 2012-04-09 22:39
+date: 2012-04-09 00:00
+title: "Minify your CSS and JavaScript"
+description: ""
 published: false
-comments: true
-categories:
-- ant
-- css
-- javascript
 ---
 
 What I am about to explain is nothing new. So I'm not going to explain why you should be doing this, you should already know, my aim is to show you how I have done it.

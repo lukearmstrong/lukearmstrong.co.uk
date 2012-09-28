@@ -1,11 +1,9 @@
 ---
 layout: post
-title: CAPTCHA - Only make your users do it once!
 date: 2012-04-16 13:00
+title: "CAPTCHA - Only make your users do it once!"
+description: ""
 published: false
-comments: true
-categories:
-- captcha
 ---
 
 The other day I noticed a couple of links on a Wikipedia page were broken. When I went to edit the page, there was a warning recommending I create an account.
