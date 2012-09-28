@@ -1,0 +1,254 @@
+---
+layout: post
+date: 2012-09-27 00:01
+title: "LEMP: Linux, Nginx, MySQL and PHP"
+description: Ubuntu 12.04 LTS
+published: false
+---
+
+LEMP? Surely I mean LAMP? Nope...
+
+L - Linux (Ubuntu 12.04 LTS)
+E - Nginx (pronounced _Engine X_)
+M - MySQL
+P - PHP
+
+Today I am going to explain how to install Nginx, MySQL and PHP on Ubuntu 12.04 LTS (Precise Pangolin).
+
+## Why not Apache?
+
+Well Apache isn't that efficient with resources (CPU/RAM) when you have lots of traffic, we've had so many problems with it killing our servers that we have already migrated most of our high traffic sites to Nginx. Also, it is painfully slow when used with other languages I am interested in, like Ruby - I use Nginx and Unicorn for Ruby on Rails.
+
+
+## Installing Things...
+
+When installing anything, you generally have 4 choices...
+
+1. Install the version in the Ubuntu repositories.
+For the most part, this is what you should do. These are stable, are easy to install, and easy to keep updated. But sometimes you want or need the latest version, so you need to do something else...
+
+2. Install from another repository, or find a PPA on Launchpad
+I generally only do this when it is either maintained by, or recommended by, the developers of the software. I have tried ones made by individuals, which was nice of them to do, but sometimes you can get unlucky and end up installing/updating to a broken package, or end up using a repository that stops being updated.
+
+3. Compile from source
+Depending on the software, this can be quite simple, or it can be a pain in the arse to get it to compile (PHP). In some cases, it is not recommended at all (MySQL). It can teach you a lot about how something works, and what it requires to work, as once it has compiled you should go through the documentation to see what settings are in the various configuration files. To update, you have to manually download and compile the latest version, each time one is released.
+
+4. Find a package (.deb) to install a specific version, if available.
+Even though I recommend finding a PPA on Launchpad, which essentially installs a (.deb) package, it also adds a repository so that you can receive updates for it. With a .deb, you would have to manually download and install updates. Well in most cases. Google provide a .deb for Chrome, it installs a repository so that it is easy to keep updated, but I haven't come across anyone else doing this.
+
+
+## Preparing /var/www
+
+Nearly every server setup I have seen keeps the virtual host's files in /var/www, so lets setup that folder now.
+
+Often your /var/www folder will need to be accessible by you, and other developers, so lets create a group to add these users to. Even if it will only be you, I would still recommend you do this.
+
+### umask
+
+If you are using Ubuntu 11.10 or 12.04, you can skip this step.
+
+The default umask was changed from 0022 to 0002 in Ubuntu 11.10 (Oneiric Ocelot)
+https://wiki.ubuntu.com/OneiricOcelot/TechnicalOverview/Alpha2#Default_file_permissions
+
+{% highlight sh %}
+umask
+{% endhighlight %}
+
+> 0002
+
+
+Otherwise, edit this file and add the line at the end.
+
+{% highlight sh %}
+sudo vi /etc/profile
+{% endhighlight %}
+
+> umask 0002
+
+You will need to log in and out for the changes to make
+
+
+### Permissions
+
+Create a group, and add our user(s) to it.
+
+{% highlight sh %}
+sudo groupadd www-admin
+sudo usermod -a -G www-admin lukea
+{% endhighlight %}
+
+Login and out for it to take effect.
+
+{% highlight sh %}
+sudo mkdir /var/www
+sudo chown -R root:www-admin /var/www
+sudo chmod 2775 /var/www
+{% endhighlight %}
+
+
+
+
+## Nginx
+
+If you want the latest stable version (v1.2.3), you don't have to compile from source, they provide official repositories for RHEL, CentOS, Debian and Ubuntu. Otherwise, if you prefer to use the version packaged by Ubuntu (v1.1.19), you can skip the next step.
+
+### Add the official Nginx repository
+
+{% highlight sh %}
+wget http://nginx.org/keys/nginx_signing.key
+sudo apt-key add nginx_signing.key
+sudo vi /etc/apt/sources.list.d/nginx.list
+{% endhighlight %}
+
+Add this text:
+
+> deb http://nginx.org/packages/ubuntu/ precise nginx
+> deb-src http://nginx.org/packages/ubuntu/ precise nginx
+
+{% highlight sh %}
+sudo apt-get update
+{% endhighlight %}
+
+### Install Nginx
+
+Even if you skipped the step above, the command to install Nginx is the same.
+
+{% highlight sh %}
+sudo apt-get install nginx
+sudo service nginx restart
+{% endhighlight %}
+
+### Test Nginx
+
+Let's see if it works.
+
+http://localhost/
+(or whatever your Hostname/IP Address is)
+
+
+
+## MySQL
+
+The documentation for MySQL specifically states that attempting to compile from source will result in the death of kittens, so for the sake of your sanity, lets not do that.
+
+MySQL do provide .deb packages for Debian (v5.5.27), and I would assume they would work for Ubuntu, but there doesn't seem to be anything gained in having the latest version of MySQL as you would have to manually update it. Also, it's not clear what is included in the .deb, because there are 6 different packages for Oracle/RHEL, yet only 1 for Debian.
+
+So, to keep things simple, we will be installing the package provided by Ubuntu (v5.5.22).
+
+
+### Install MySQL
+
+{% highlight sh %}
+sudo apt-get install mysql-client mysql-server
+{% endhighlight %}
+
+It will prompt you to set a password for the administrative "root" user, so set one, do not leave it blank.
+
+
+
+## PHP
+
+PHP is a strange one.
+
+At a conference I went to earlier this year, [PHP UK Conference 2012](http://2012.phpconference.co.uk/), [Rasmus Lerdorf](http://en.wikipedia.org/wiki/Rasmus_Lerdorf) was pissed off that web developers were using versions of PHP that were 6 years old. Yep, PHP 5.2 is 6 years old. 6 fucking years old, and even web hosts that are supposed to be good, like Rackspace, were using it [until very recently on their Cloud Sites hosting](http://feedback.rackspace.com/forums/71021-product-feedback/suggestions/997049-php-5-3-support-in-cloud-sites).
+
+The reason for this, quite frankly, is that PHP is a bastard to compile from source.
+
+The first time I tried, I remember spending several days trying to install PHP 5.2 on CentOS 5.0 (32-bit). It's not just the first time that is hard, when I tried the same steps on a 64-bit OS I had loads of fun getting the bugger to work.
+
+A simple solution for this, would be for the PHP developers to provide packages *of the latest version* for popular distributions. Unfortunately Zend seem more bothered with trying to sell LAMP stacks to IT managers.
+
+Ubuntu's official repositories come with PHP 5.3.10 - but PHP 5.4 has some nice features you could be using. PHP 5.3 was first released 3 years ago, you should *always* use the latest version of PHP.
+
+So today, we are going to install PHP 5.4.7, by compiling it from source, christ...
+
+
+
+### Dependency Hell
+
+PHP depends on a shit load of libraries to work, you can install PHP on its own, without configuring any extensions, but it wouldn't do very much. Compiling it requires various odds and sods too, so hopefully this lot will do the trick.
+
+{% highlight sh %}
+sudo apt-get install autoconf automake bison build-essential curl flex gettext libbz2-dev  libc-client2007e-dev libc6-dev libcurl4-openssl-dev libicu-dev  libkldap4 libldb-dev libmcrypt-dev libmysqlclient-dev libmysqld-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtool libxml2-dev libxslt-dev libyaml-dev ncurses-dev openssl re2c sendmail sqlite3 wget zlib1g zlib1g-dev imagemagick libmagickwand4 libmagickcore4 libgraphicsmagick1-dev libgraphicsmagick3 libvips-dev
+{% endhighlight %}
+
+
+### Download PHP
+
+Find your nearest mirror on the [PHP Downloads page](http://php.net/downloads.php), also check if a newer version of PHP has been released since I have written this article, and download that instead.
+
+This is the latest version, from my closest mirror:
+
+{% highlight sh %}
+wget http://php.net/get/php-5.4.7.tar.bz2/from/uk.php.net/mirror
+mv mirror php-5.4.7.tar.bz2
+tar -xvjf php-5.4.7.tar.bz2
+{% endhighlight %}
+
+
+### Compile PHP
+
+{% highlight sh %}
+cd php-5.4.7
+./configure --help
+{% endhighlight %}
+
+This should list all of the options available to you. There are fucking shit loads of possibilities... this stems from a time before "it just works". Just for a laugh, here they are...
+
+#### TODO: php.txt
+
+Anyway, enough bitching, this is what I used....
+
+{% highlight sh %}
+./configure --enable-fpm --with-openssl --with-zlib --enable-calendar --with-bz2 --with-curl --enable-exif --enable-ftp --with-gd --enable-gd-native-ttf --enable-gd-jis-conv --enable-intl --enable-mbstring --enable-mbstring  --enable-mysqlnd --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-pspell --enable-soap --enable-sockets --with-tidy --with-xsl --enable-zip --with-pear --enable-bcmath --with-gettext --with-mcrypt
+{% endhighlight %}
+
+
+{% highlight sh %}
+make
+make test
+sudo make install
+{% endhighlight %}
+
+
+
+
+### It worked for me (TM)
+
+If it didn't work for you, you could install [PHP 5.4.6 from an unofficial PPA](https://launchpad.net/~ondrej/+archive/php5).
+
+{% highlight sh %}
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo apt-get update
+sudo apt-get install php5-cli php5-fpm php5-curl php5-gd php5-imagick php5-mcrypt php5-mysqlnd php5-sqlite php-pear
+{% endhighlight %}
+
+
+
+### Configure PHP
+
+{% highlight sh %}
+sudo vi /etc/php5/fpm/pool.d/www.conf
+{% endhighlight %}
+
+> listen = /var/run/php5-fpm.socket
+> pm.start_servers = 20
+
+
+
+### Test PHP
+
+{% highlight php %}
+<?php
+
+phpinfo();
+{% endhighlight %}
+
+
+
+## phpMyAdmin
+
+Even though some things you are better off doing on the command line, such as importing/exporting databases, phpMyAdmin can be very useful for web developers. Also, it gives me an opportunity to demonstrate the entire LEMP stack is working together, and how to set up Nginx.
+
+

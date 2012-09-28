@@ -1,0 +1,119 @@
+---
+layout: post
+date: 2012-09-27 00:00
+title: "Linode"
+description: "Ubuntu 12.04 LTS"
+published: false
+---
+
+# Buy Linode
+
+# Log in as Root
+
+# Update
+
+First thing you must do is update, and reboot if there are kernel updates.
+
+I always seem to have problems with archive.ubuntu.com, when writing this tutorial the first thing I wanted to do was update ubunutu; but then it hung on us.archive.ubuntu.com. To resolve that we can run this.
+
+```
+sed -i -e 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
+```
+
+It changes all your apt sources from us.archive.ubuntu.com to archive.ubuntu.com
+
+Now the update should work...
+
+```
+apt-get update && apt-get upgrade -y
+```
+
+
+
+# Set Static Stuff in Linode Manager
+
+# Set Hostname
+
+```
+sudo vi /etc/hostname
+```
+
+wheatley
+
+```
+sudo vi /etc/hosts
+```
+
+127.0.0.1			localhost.localdomain		localhost
+
+178.79.180.28			wheatley.lukearmstrong.co.uk	wheatley
+2a01:7e00::f03c:91ff:fe93:f17f	wheatley.lukearmstrong.co.uk	wheatley
+
+
+# Set Timezone
+```
+sudo dpkg-reconfigure tzdata
+```
+
+# Create User
+
+You don't want to be in the habit of using the root account. By default Ubuntu disables the root account, but for some reason Linode re-enables it.
+
+Let's create a user account. (This is similar to useradd)[http://www.go2linux.org/useradd-vs-adduser]
+
+```
+adduser luke
+```
+
+
+## Add to sudoers
+
+
+
+```
+usermod -a -G sudo luke
+```
+
+
+# Reboot
+
+
+
+# SSH Settings
+
+vi /etc/ssh/sshd_config
+
+PermitRootLogin no
+
+# Only allow luke
+AllowUsers luke
+
+# Automatically log out after 5 minutes
+ClientAliveCountMax 0
+ClientAliveInterval 300
+
+
+
+# Firewall
+
+vi /etc/iptables
+vi /etc/network/interfaces
+
+```
+# Firewall Rules
+pre-up iptables-restore < /etc/iptables
+```
+
+
+# Hosts Allow/Deny
+
+$> vi /etc/hosts.allow
+sshd: 87.194.213.179
+sshd: 31.24.0.198
+
+
+$> vi /etc/hosts.deny
+ALL: ALL
+
+
+# Reboot?
