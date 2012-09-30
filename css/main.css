@@ -152,7 +152,9 @@ p {
 	margin-bottom: 24px;
 }
 
-
+.highlight pre {
+	padding: 10px;
+}
 
 
 
