@@ -524,14 +524,14 @@ sudo service nginx restart
 
 ...we should see phpMyAdmin in our browser if we go to [http://phpmyadmin.dev/](http://phpmyadmin.dev/)
 
-A login screen should show up, but unfortunately it won't work, the fucker just won't let you log in.
+A login screen should show up, but unfortunately it won't work.
 
 {% highlight sh %}
 #2002 - No such file or directory
 The server is not responding (or the local server's socket is not correctly configured). 
 {% endhighlight %}
 
-To log in we need to edit our php.ini file.
+To log in, we need to edit our php.ini file.
 
 {% highlight sh %}
 sudo vi /usr/local/lib/php.ini
