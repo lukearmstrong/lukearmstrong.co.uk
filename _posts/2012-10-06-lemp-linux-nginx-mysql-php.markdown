@@ -1,9 +1,8 @@
 ---
 layout: post
-date: 2012-09-27 00:01
+date: 2012-10-06 01:37
 title: "LEMP: Linux, Nginx, MySQL and PHP"
-description: Ubuntu 12.04 LTS
-#published: false
+description: "I am going to explain how to install Nginx, MySQL and PHP on Ubuntu 12.04 LTS (Precise Pangolin)."
 ---
 
 LEMP? Surely I mean LAMP? Nope...
@@ -31,7 +30,7 @@ For the most part, this is what you should do. These are stable, are easy to ins
 I generally only do this when it is either maintained by, or recommended by, the developers of the software. I have tried ones made by individuals, which was nice of them to do, but sometimes you can get unlucky and end up installing/updating to a broken package, or end up using a repository that stops being updated.
 
 3. **Compile from source.**  
-Depending on the software, this can be quite simple, or it can be a pain in the arse to get it to compile (PHP). In some cases, it is not recommended at all (MySQL). It can teach you a lot about how something works, and what it requires to work, as once it has compiled you should go through the documentation to see what settings are in the various configuration files. To update, you have to manually download and compile the latest version, each time one is released.
+Depending on the software, this can be quite simple, or it can be a pain in the arse to get it to compile (PHP). In some cases, it is not recommended at all (MySQL). It can teach you a lot about how something works, and what it requires to work, as once it has compiled you should go through the documentation to see what settings are in the various configuration files. Though to update the software, you have to manually download and compile the latest version again.
 
 4. **Find a package (.deb) to install a specific version, if available.**  
 Even though I recommend finding a PPA on Launchpad, which essentially installs a (.deb) package, it also adds a repository so that you can receive updates for it. With a .deb, you would have to manually download and install updates. Well in most cases. Google provide a .deb for Chrome, it installs a repository so that it is easy to keep updated, but I haven't come across anyone else doing this.
@@ -137,8 +136,7 @@ sudo service nginx restart
 
 Let's see if it works.
 
-http://localhost/
-(or whatever your Hostname/IP Address is)
+[http://localhost/](http://localhost/)
 
 
 
@@ -150,7 +148,7 @@ The documentation for MySQL specifically states that attempting to compile from 
 
 MySQL do provide `.deb` packages for Debian (v5.5.27), and I would assume they would work for Ubuntu, but there doesn't seem to be anything gained in having the latest version of MySQL as you would have to manually update it. Also, it's not clear what is included in the `.deb`, because there are 6 different packages for RHEL/Oracle, yet only 1 for Debian.
 
-So, to keep things simple, we will be installing the package provided by Ubuntu (v5.5.22).
+So, to keep things simple, we will be installing the packages provided by Ubuntu (v5.5.22).
 
 
 ### Install MySQL
@@ -228,7 +226,7 @@ Running `make` is the point where it might fail because it doesn't like somethin
 
 I'm hoping that by writing everything down like this, and testing it, it should also work for you.
 
-Once `make` has succeeded without throwing an error, you should do the PHP developers a favor by running their tests. This only takes a few minutes, and it will only ask for your e-mail address to submit them, but please do it as it could improve PHP for everyone who uses it.
+Once `make` has succeeded without throwing an error, you should do the PHP developers a favour by running their tests. This only takes a few minutes, and it will only ask for your e-mail address to submit them, but please do it as it could improve PHP for everyone who uses it.
 
 {% highlight sh %}
 make test
@@ -244,7 +242,7 @@ Once it is installed, you should run this command to make that hellish experienc
 
 {% highlight sh %}
 php -v
-# PHP 5.4.7 (cli) (built: Sep 23 2012 19:44:48) 
+# PHP 5.4.7 (cli) (built: Oct  5 2012 23:40:18) 
 # Copyright (c) 1997-2012 The PHP Group
 # Zend Engine v2.4.0, Copyright (c) 1998-2012 Zend Technologies
 {% endhighlight %}
@@ -271,6 +269,7 @@ When you download PHP, it comes with two example settings files. For some reason
 {% highlight sh %}
 sudo cp ~/php-5.4.7/php.ini-development /usr/local/lib/php.ini
 {% endhighlight %}
+
 
 
 ### Configure PHP FPM
@@ -320,17 +319,17 @@ sudo service start php-fpm
 
 In /etc/nginx, there should be two folders; `sites-available` and `sites-enabled`. `sites-available` is where the configuration files for your _virtual hosts_ live, and `sites-enabled` contains [symbolic links](http://en.wikipedia.org/wiki/Symbolic_link) (aka. symlinks) to those configuration files; so if you want a site to be live, you create a symbolic link, if you want to take a site offline, you delete the symbolic link. That way, you never lose the configuration file. Note that any changes to the nginx configuration, including creating or deleting these symbolic links, requires a reload/restart of nginx.
 
-There is also a configuration file called default, lets keep a copy of it as it contains useful comments and configuration examples. It references files outside of /var/www, so I prefer to just set it aside, and create a new default _virtual host_.
+There is a configuration file called `default` in `/etc/nginx/sites-available`, lets keep a copy of it as it contains useful comments and configuration examples. It references files outside of `/var/www`, so I prefer to just set it aside, and create a new default _virtual host_.
 
 {% highlight sh %}
 sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 {% endhighlight %}
 
-In /etc/nginx, there is also a `conf.d` folder, that also contains a configuration file for a default host. Lets rename these too.
+In `/etc/nginx`, there is also a `conf.d` folder, that also contains a configuration file for a default host. Lets rename these too.
 
 {% highlight sh %}
-sudo mv /etc/nginx/conf.d/default /etc/nginx/conf.d/default.bak
-sudo mv /etc/nginx/conf.d/example-ssl /etc/nginx/conf.d/example-ssl.bak
+sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+sudo mv /etc/nginx/conf.d/example-ssl.conf /etc/nginx/conf.d/example-ssl.conf.bak
 {% endhighlight %}
 
 Lets setup our own default virtual host configuration.
@@ -350,7 +349,7 @@ server {
     error_log  /var/log/nginx/localhost-error.log error;
 
     root /var/www/default/;
-    index index.php index.html index.htm;
+    index index.php index.htm index.html;
 
     location ~ \.php {
         fastcgi_index index.php;
@@ -400,9 +399,9 @@ Now to restart nginx.
 sudo service restart nginx
 {% endhighlight %}
 
-If you go to http://localhost/ in your browser, then you should see "Hello World"
+If you go to [http://localhost/](http://localhost/) in your browser, then you should see "Hello World".
 
-#### Test PHP
+### Test PHP
 
 As we have created our default virtual host, which contained some configuration for PHP FPM, we could create a php file to be run by PHP. It's quite useful to test PHP like this, as even at this point you can still go back and re-compile PHP with different options.
 
@@ -418,7 +417,7 @@ Copy and paste this into this file.
 phpinfo();
 {% endhighlight %}
 
-Now if you visit http://localhost/info.php you should see lots of information about your PHP installation. If you scroll down to the section titled "date", you should see this error message:
+Now if you visit [http://localhost/info.php](http://localhost/info.php) you should see lots of information about your PHP installation. If you scroll down to the section titled "date", you should see this error message:
 
 {% highlight php %}
 Warning: phpinfo(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/default/info.php on line 3
@@ -450,3 +449,120 @@ sudo service php-fpm restart
 Even though some things you are better off doing on the command line, such as importing/exporting databases, phpMyAdmin can be very useful for web developers. Also, it gives me an opportunity to demonstrate the entire LEMP stack is working together, and how to set up another _virtual host_ for Nginx.
 
 
+### Download phpMyAdmin
+
+At the time of writing, v3.5.2.2 was the latest stable version. But please check the [phpMyAdmin website](http://www.phpmyadmin.net/) to download the latest version. Even though I am english, other people may not be, so be nice and download the all-languages version.
+
+{% highlight sh %}
+cd
+wget http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/3.5.2.2/phpMyAdmin-3.5.2.2-all-languages.tar.bz2
+tar -xvjf phpMyAdmin-3.5.2.2-all-languages.tar.bz2
+cp -a phpMyAdmin-3.5.2.2-all-languages /var/www/phpmyadmin/
+{% endhighlight %}
+
+
+### Setup Nginx Virtual Host
+
+Create a config file.
+
+{% highlight sh %}
+sudo vi /etc/nginx/sites-available/phpmyadmin.dev
+{% endhighlight %}
+
+Copy and paste this into this file. You will notice this is very similar to our default config, so compare it to the default config to understand what has changed. Understanding this will help you when you come to add your own _virtual hosts_.
+
+{% highlight sh %}
+server {
+    listen 80;
+    server_name .phpmyadmin.dev;
+
+    access_log /var/log/nginx/phpmyadmin.dev-access.log;
+    error_log  /var/log/nginx/phpmyadmin.dev-error.log error;
+
+    root /var/www/phpmyadmin.dev/;
+    index index.php;
+
+    location ~ \.php {
+        fastcgi_index index.php;
+		fastcgi_pass unix:/usr/local/var/run/php-fpm.socket;
+
+        include fastcgi_params;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+{% endhighlight %}
+
+For this new virtual host to be enabled, we need to create a symlink in the sites-enabled folder.
+
+{% highlight sh %}
+cd /etc/nginx/sites-enabled
+sudo ln -s ../sites-available/phpmyadmin.dev
+{% endhighlight %}
+
+Again, make sure you test your nginx config does not have any syntax errors.
+
+{% highlight sh %}
+sudo service nginx configtest
+# nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+# nginx: configuration file /etc/nginx/nginx.conf test is successful
+{% endhighlight %}
+
+Obviously the phpmyadmin.dev domain doesn't exist, so we have to add it to our hosts file.
+
+{% highlight sh %}
+sudo sh -c "echo '127.0.0.1\tphpmyadmin.dev' >> /etc/hosts"
+{% endhighlight %}
+
+Now if we restart the server...
+
+{% highlight sh %}
+sudo service nginx restart
+{% endhighlight %}
+
+...we should see phpMyAdmin in our browser if we go to [http://phpmyadmin.dev/](http://phpmyadmin.dev/)
+
+A login screen should show up, but unfortunately it won't work, the fucker just won't let you log in.
+
+{% highlight sh %}
+#2002 - No such file or directory
+The server is not responding (or the local server's socket is not correctly configured). 
+{% endhighlight %}
+
+To log in we need to edit our php.ini file.
+
+{% highlight sh %}
+sudo vi /usr/local/lib/php.ini
+{% endhighlight %}
+
+These are the settings you need to change. Find them, as they will already be in there. In each pair below, find the first line, and change it to the second line.
+
+{% highlight sh %}
+pdo_mysql.default_socket=
+pdo_mysql.default_socket = /var/run/mysqld/mysqld.sock
+
+mysql.default_socket =
+mysql.default_socket = /var/run/mysqld/mysqld.sock
+
+mysqli.default_socket =
+mysqli.default_socket = /var/run/mysqld/mysqld.sock
+{% endhighlight %}
+
+Now we need to restart PHP as we have changed the configuration.
+
+{% highlight sh %}
+sudo service php-fpm restart
+{% endhighlight %}
+
+Now phpMyAdmin should let you login!
+
+There are lots of configuration options for phpMyAdmin, I would suggest locking it down as much as possible, you can lock it down to your IP, you can force SSL, you can prevent logging in with root, you can setup a whitelist of users that can login. All of which probably belong in an article by itself.
+
+At the very least, remove the test user and the test database.
+
+
+## Future Reading.
+
+Obviously this article is just intended to get you started, I would definitely recommend that you look into all of the things covered in this article to try and gain a better understanding.
