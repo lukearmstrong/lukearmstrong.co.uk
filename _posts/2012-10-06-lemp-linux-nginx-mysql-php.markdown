@@ -314,6 +314,20 @@ Now you should be able to run php-fpm.
 sudo service start php-fpm
 {% endhighlight %}
 
+Now lets set it up so that it starts on boot, Nginx and MySQL are already setup to start on boot.
+
+{% highlight sh %}
+sudo update-rc.d php-fpm defaults
+# Adding system startup for /etc/init.d/php-fpm ...
+#   /etc/rc0.d/K20php-fpm -> ../init.d/php-fpm
+#   /etc/rc1.d/K20php-fpm -> ../init.d/php-fpm
+#   /etc/rc6.d/K20php-fpm -> ../init.d/php-fpm
+#   /etc/rc2.d/S20php-fpm -> ../init.d/php-fpm
+#   /etc/rc3.d/S20php-fpm -> ../init.d/php-fpm
+#   /etc/rc4.d/S20php-fpm -> ../init.d/php-fpm
+#   /etc/rc5.d/S20php-fpm -> ../init.d/php-fpm
+{% endhighlight %}
+
 
 ### Configure Nginx
 
