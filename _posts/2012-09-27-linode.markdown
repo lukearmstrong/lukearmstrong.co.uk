@@ -2,118 +2,236 @@
 layout: post
 date: 2012-09-27 00:00
 title: "Linode"
-description: "Ubuntu 12.04 LTS"
+description: "Getting started with Ubuntu Server 12.04 LTS"
 published: false
 ---
 
-# Buy Linode
 
-# Log in as Root
+## Buy a VM
 
-# Update
+Recommend Linode.
 
-First thing you must do is update, and reboot if there are kernel updates.
+## Log in as Root
 
-I always seem to have problems with archive.ubuntu.com, when writing this tutorial the first thing I wanted to do was update ubunutu; but then it hung on us.archive.ubuntu.com. To resolve that we can run this.
+If you are using Windows, you'll have to download something like [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/) before you can login to your new linode. I'm not going to explain how to setup Putty, it's fairly straight forward.
 
-```
-sed -i -e 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
-```
+If you have bought a Linode, the 
 
-It changes all your apt sources from us.archive.ubuntu.com to archive.ubuntu.com
+If you are using Linux, or Mac OSX, then login
 
-Now the update should work...
+{% highlight sh %}
+ssh root@<your-linode-ip>
+{% endhighlight %}
 
-```
+
+## Update
+
+First thing you must do is update.
+
+{% highlight sh %}
 apt-get update && apt-get upgrade -y
-```
+{% endhighlight %}
 
 
+### Problem?
 
-# Set Static Stuff in Linode Manager
+When first writing this article, it hung when trying to download from `us.archive.ubuntu.com`. If you experience the same issue, you can run this command to use `archive.ubuntu.com` instead of `us.archive.ubuntu.com`.
 
-# Set Hostname
+{% highlight sh %}
+sed -i -e 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
+{% endhighlight %}
 
-```
-sudo vi /etc/hostname
-```
+It changes all your apt sources from `us.archive.ubuntu.com` to `archive.ubuntu.com`. Now the update should work...
 
-wheatley
+{% highlight sh %}
+apt-get update && apt-get upgrade -y
+{% endhighlight %}
 
-```
+## Set Hostname
+
+{% highlight sh %}
+echo "linode" > /etc/hostname
+hostname -F /etc/hostname
+{% endhighlight %}
+
+{% highlight sh %}
 sudo vi /etc/hosts
-```
+{% endhighlight %}
 
-127.0.0.1			localhost.localdomain		localhost
+{% highlight sh %}
+127.0.0.1							 localhost.localdomain			 localhost
+178.79.180.28						linode.lukearmstrong.co.uk		linode
+2a01:7e00::f03c:91ff:fe93:f17f		linode.lukearmstrong.co.uk		linode
+{% endhighlight %}
 
-178.79.180.28			wheatley.lukearmstrong.co.uk	wheatley
-2a01:7e00::f03c:91ff:fe93:f17f	wheatley.lukearmstrong.co.uk	wheatley
+## Set Static Stuff in Linode Manager
 
 
-# Set Timezone
-```
-sudo dpkg-reconfigure tzdata
-```
 
-# Create User
+## Set Timezone
 
-You don't want to be in the habit of using the root account. By default Ubuntu disables the root account, but for some reason Linode re-enables it.
+{% highlight sh %}
+dpkg-reconfigure tzdata
+
+# Current default time zone: 'Europe/London'
+# Local time is now:      Sun Oct  7 19:37:58 BST 2012.
+# Universal Time is now:  Sun Oct  7 18:37:58 UTC 2012.
+{% endhighlight %}
+
+## Create User
+
+You don't want to be in the habit of using the root account. By default Ubuntu disables the root account, but Linode re-enables it.
 
 Let's create a user account. (This is similar to useradd)[http://www.go2linux.org/useradd-vs-adduser]
 
-```
+{% highlight sh %}
 adduser luke
-```
+{% endhighlight %}
 
 
-## Add to sudoers
+### Add to sudoers
 
-
-
-```
+{% highlight sh %}
 usermod -a -G sudo luke
-```
+{% endhighlight %}
+
+Now log out, and try logging in using your new user account.
+
+## Local SSH Config
+
+As you have logged out of your server, you could use this opportunity to make life easier when connecting to it.
 
 
-# Reboot
+Setup your SSH Key
+
+{% highlight sh %}
+ssh-keygen -t rsa -b 4096
+{% endhighlight %}
+
+Setup your SSH Config
+
+{% highlight sh %}
+vi .ssh/config
+{% endhighlight %}
+
+{% highlight sh %}
+Host linode
+HostName linode.lukearmstrong.co.uk
+User luke
+{% endhighlight %}
+
+Using an SSH key makes
+
+{% highlight sh %}
+ssh-copy-id linode
+{% endhighlight %}
+
+
+ssh 
+
+
+### Prevent Root from logging in.
+
+Lock the account...
+
+{% highlight sh %}
+sudo passwd -l root
+# -l, --lock
+# Lock the password of the named account. This option disables a password by changing it to a value which matches no possible encrypted value (it adds a ´!´ at the beginning of the password).
+#
+# Note that this does not disable the account. The user may still be able to login using another authentication token (e.g. an SSH key). To disable the account, administrators should use usermod --expiredate 1 (this set the account's expire date to Jan 2, 1970).
+#
+# Users with a locked password are not allowed to change their password.
+{% endhighlight %}
+
+Make the password expire, this prevents anyone from logging in as root using an SSH Key.
+
+{% highlight sh %}
+sudo passwd -e root
+# -e, --expire
+# Immediately expire an account's password. This in effect can force a user to change his/her password at the user's next login.
+{% endhighlight %}
 
 
 
-# SSH Settings
+## SSH Settings
 
+{% highlight sh %}
 vi /etc/ssh/sshd_config
+{% endhighlight %}
 
+{% highlight sh %}
+# Prevent root from logging in
 PermitRootLogin no
 
-# Only allow luke
+# Only allow these users to log in
 AllowUsers luke
 
-# Automatically log out after 5 minutes
+# Automatically log out a user if they have been inactive for 5 minutes
 ClientAliveCountMax 0
 ClientAliveInterval 300
-
+{% endhighlight %}
 
 
 # Firewall
+{% highlight sh %}
+sudo vi /etc/iptables
+{% endhighlight %}
 
-vi /etc/iptables
-vi /etc/network/interfaces
+{% highlight sh %}
+*filter
+:INPUT ACCEPT [1:52]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -i lo -j ACCEPT 
+-A INPUT -d 127.0.0.0/8 -i lo -j REJECT --reject-with icmp-port-unreachable 
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT 
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT 
+-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT 
+-A INPUT -p tcp -s 87.194.213.179 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+-A INPUT -p tcp -s 31.24.0.198 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT 
+-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7 
+-A INPUT -j REJECT --reject-with icmp-port-unreachable 
+-A FORWARD -j REJECT --reject-with icmp-port-unreachable 
+-A OUTPUT -j ACCEPT 
+COMMIT
+{% endhighlight %}
 
-```
-# Firewall Rules
+`/etc/iptables` isn't going to be used unless we set it, so we need to set iptables up to enable these rules when the network is connected.
+
+{% highlight sh %}
+sudo vi /etc/network/interfaces
+{% endhighlight %}
+
+{% highlight sh %}
+# Firewall rules
 pre-up iptables-restore < /etc/iptables
-```
+{% endhighlight %}
 
 
 # Hosts Allow/Deny
 
-$> vi /etc/hosts.allow
+{% highlight sh %}
+sudo vi /etc/hosts.allow
+{% endhighlight %}
+
+{% highlight sh %}
 sshd: 87.194.213.179
 sshd: 31.24.0.198
+{% endhighlight %}
 
+{% highlight sh %}
+sudo vi /etc/hosts.deny
+{% endhighlight %}
 
-$> vi /etc/hosts.deny
+{% highlight sh %}
 ALL: ALL
+{% endhighlight %}
 
 
-# Reboot?
+## Reboot
+
+{% highlight sh %}
+sudo reboot
+{% endhighlight %}
