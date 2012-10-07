@@ -249,7 +249,7 @@ Yes.
 
 PHP is a strange one.
 
-At a conference I went to earlier this year, [PHP UK Conference 2012](http://2012.phpconference.co.uk/), [Rasmus Lerdorf](http://en.wikipedia.org/wiki/Rasmus_Lerdorf) was pissed off that web developers were using versions of PHP that were 6 years old. Yep, PHP 5.2 is 6 years old. 6 fucking years old, and even web hosts that are supposed to be good, like Rackspace, were using it [until very recently on their Cloud Sites hosting](http://feedback.rackspace.com/forums/71021-product-feedback/suggestions/997049-php-5-3-support-in-cloud-sites).
+At a [conference](http://2012.phpconference.co.uk/) I went to earlier this year, [Rasmus Lerdorf](http://en.wikipedia.org/wiki/Rasmus_Lerdorf) was pissed off that web developers were using versions of PHP that were 6 years old. Yep, PHP 5.2 is 6 years old. 6 fucking years old, and even web hosts that are supposed to be good, like Rackspace, were using it [until very recently on their Cloud Sites hosting](http://feedback.rackspace.com/forums/71021-product-feedback/suggestions/997049-php-5-3-support-in-cloud-sites).
 
 The reason for this, quite frankly, is that PHP is a bastard to compile from source.
 
