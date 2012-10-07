@@ -157,9 +157,91 @@ So, to keep things simple, we will be installing the packages provided by Ubuntu
 sudo apt-get install mysql-client mysql-server
 {% endhighlight %}
 
-It will prompt you to set a password for the administrative "root" user, so set one, do not leave it blank.
+It will prompt you to set a password for the administrative `root` user, so set one, do not leave it blank.
+
+_Do not use the same password as your server's root user, we are all guilty of it, but never use the same password for more than one thing._
 
 
+### Secure MySQL
+
+Your MySQL installation is not secure, so we need to run a script to sort a few things out...
+
+{% highlight sh %}
+mysql_secure_installation
+{% endhighlight %}
+
+{% highlight sh %}
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+
+In order to log into MySQL to secure it, we'll need the current
+password for the root user.  If you've just installed MySQL, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none):
+{% endhighlight %}
+
+Enter the password you just set when installing MySQL.
+
+{% highlight sh %}
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MySQL
+root user without the proper authorisation.
+
+You already have a root password set, so you can safely answer 'n'.
+
+Change the root password? [Y/n] n
+{% endhighlight %}
+
+**n**  
+No, there's no need to change it.
+
+{% highlight sh %}
+By default, a MySQL installation has an anonymous user, allowing anyone
+to log into MySQL without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+{% endhighlight %}
+
+**y**  
+Yes, remove anonymous users.
+
+{% highlight sh %}
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+{% endhighlight %}
+
+**y**  
+Yes, root should not be able to login remotely, if you want to connect remotely then create a new user to do so.
+
+{% highlight sh %}
+By default, MySQL comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+{% endhighlight %}
+
+**y**  
+Yes, remove the test database.
+
+{% highlight sh %}
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+{% endhighlight %}
+
+**y**  
+Yes.
 
 
 
@@ -573,8 +655,6 @@ sudo service php-fpm restart
 Now phpMyAdmin should let you login!
 
 There are lots of configuration options for phpMyAdmin, I would suggest locking it down as much as possible, you can lock it down to your IP, you can force SSL, you can prevent logging in with root, you can setup a whitelist of users that can login. All of which probably belong in an article by itself.
-
-At the very least, remove the test user and the test database.
 
 
 ## Future Reading.
