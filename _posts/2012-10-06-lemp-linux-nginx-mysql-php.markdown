@@ -71,7 +71,7 @@ sudo groupadd www-root
 Then add your user(s) to it.
 
 {% highlight sh %}
-sudo usermod -a -G www-root lukea
+sudo usermod -a -G www-root luke
 {% endhighlight %}
 
 Log out and back in and out for it to take effect.
@@ -265,10 +265,10 @@ So today, we are going to install PHP 5.4.7, by compiling it from source, christ
 
 ### Dependency Hell
 
-PHP depends on a lot of other things (libraries) to work, you can install PHP on its own, without configuring any extensions, but it wouldn't do very much. It wouldn't even be able to connect to a database. Compiling it requires various odds and sods too, so hopefully this lot will do the trick.
+PHP depends on a lot of other things (libraries) to work, you can install PHP on its own, without configuring any extensions, but it wouldn't do very much. It wouldn't even be able to connect to a database. Compiling it requires various odds and sods too, so hopefully this little lot should do the trick...
 
 {% highlight sh %}
-sudo apt-get install autoconf automake bison build-essential curl flex gettext imagemagick libbz2-dev libc-client2007e-dev libc6-dev libcurl4-openssl-dev libicu-dev libgraphicsmagick1-dev libgraphicsmagick3 libkldap4 libldb-dev libmagickcore4 libmagickwand4 libmcrypt-dev libmysqlclient-dev libmysqld-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtool libvips-dev libxml2-dev libxslt-dev libyaml-dev ncurses-dev openssl re2c sendmail sqlite3 wget zlib1g zlib1g-dev
+sudo apt-get install autoconf automake bison build-essential curl flex gettext imagemagick libaspell15 libbz2-dev libc-client2007e-dev libc6-dev libcurl4-openssl-dev libicu-dev libgraphicsmagick1-dev libgraphicsmagick3 libkldap4 libldb-dev libmagickcore4 libmagickwand4 libmcrypt-dev libmysqlclient-dev libmysqld-dev libpspell-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtidy-0.99-0 libtidy-dev libtool libvips-dev libxml2-dev libxslt-dev libyaml-dev ncurses-dev openssl re2c sendmail sqlite3 wget zlib1g zlib1g-dev
 {% endhighlight %}
 
 
@@ -295,20 +295,20 @@ cd php-5.4.7
 This should list all of the options available to you. There are so many they haven't even included them all in this list. I imagine this stems from a time before "it just works". Anyway, enough bitching, this is what I used....
 
 {% highlight sh %}
-./configure --enable-bcmath --with-bz2 --enable-calendar --with-curl --enable-exif --enable-fpm --enable-ftp --with-gd --enable-gd-jis-conv --enable-gd-native-ttf --with-gettext --enable-intl --enable-mbstring --with-mcrypt --enable-mysqlnd --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-openssl --with-pdo-mysql=mysqlnd --with-pear --with-pspell --enable-soap --enable-sockets --with-tidy --with-xsl --enable-zip --with-zlib
+./configure --enable-bcmath --with-bz2 --enable-calendar --with-curl --enable-exif --enable-fpm --enable-ftp --with-gd --enable-gd-jis-conv --enable-gd-native-ttf --with-gettext --enable-intl --enable-mbstring --with-mcrypt --enable-mysqlnd --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-openssl --with-pdo-mysql=mysqlnd --with-pear --enable-phar --with-pspell --enable-soap --enable-sockets --with-tidy --with-xsl --enable-zip --with-zlib
 {% endhighlight %}
 
-Now to actually compile it.
+Running `configure` is the point where it might fail, if you get an error it usually means you don't have a library installed, when writing this article I spent a lot of time googling the error messages, and as soon as I got past one error, another would take it's place and the merry dance would continue.
+
+I'm hoping that by writing everything down like this, and testing it, it should also work for you.
+
+Now to actually compile it, this took 11 minutes and 26 seconds on my Linode (512MB RAM), so go and make a cup of tea.
 
 {% highlight sh %}
 make
 {% endhighlight %}
 
-Running `make` is the point where it might fail because it doesn't like something you set in your `configure` command. If you get an error running `make`, it usually means you don't have a library installed, when writing this article I spent a lot of time googling the error messages, and as soon as I got past one error, another would take it's place and the merry dance would continue.
-
-I'm hoping that by writing everything down like this, and testing it, it should also work for you.
-
-Once `make` has succeeded without throwing an error, you should do the PHP developers a favour by running their tests. This only takes a few minutes, and it will only ask for your e-mail address to submit them, but please do it as it could improve PHP for everyone who uses it.
+Once `make` has finished, you should do the PHP developers a favour by running their tests. This step isn't required, and it will only ask for your e-mail address to submit them, but please do it as it could improve PHP for everyone who uses it.
 
 {% highlight sh %}
 make test
@@ -330,14 +330,13 @@ php -v
 {% endhighlight %}
 
 
-
 ### It worked for me&trade;
 
 If it didn't work for you, you could install [PHP 5.4.6 from an unofficial PPA](https://launchpad.net/~ondrej/+archive/php5).
 
 {% highlight sh %}
 sudo apt-get install python-software-properties
-sudo add-apt-repository ppa:nginx/stable
+sudo add-apt-repository ppa:ondrej/php5
 sudo apt-get update
 sudo apt-get install php5-cli php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-mysqlnd php-pear php5-sqlite
 {% endhighlight %}
@@ -346,7 +345,14 @@ Though if you do this, the rest of this article won't be referencing the same lo
 
 ### Configure PHP
 
-When you download PHP, it comes with two example settings files. For some reason it doesn't appear to use either of them, nor is it clear where they should be put. Fortunately I have my crystal ball with me today, so I can tell you that this should do the trick...
+When you download PHP, it comes with two example settings files:
+
+- **php.ini-development**  
+Contains settings suitable for development, such as displaying errors in the browser.  
+- **php.ini-production**  
+Contains settings suitable for live servers, such as logging errors instead of displaying them.
+
+Pick the one that applies to you, and copy it to `/usr/local/lib/php.ini`
 
 {% highlight sh %}
 sudo cp ~/php-5.4.7/php.ini-development /usr/local/lib/php.ini
@@ -370,17 +376,14 @@ These are the settings you need to change. Find them, as they will already be in
 ;pid = run/php-fpm.pid
 pid = run/php-fpm.pid
 
-;listen = run/php-fpm.socket
-listen = run/php-fpm.socket
-
-;pm.start_servers = 20
-pm.start_servers = 20
-
 ;user = nobody
 user = www-data
 
 ;group = nobody
 group = www-data
+
+;listen = 127.0.0.1:9000
+listen = var/run/php-fpm.socket
 {% endhighlight %}
 
 Now we need to setup a "service" to run PHP FPM on boot, and make it easy to restart when we break things.
@@ -393,7 +396,7 @@ sudo chmod +x /etc/init.d/php-fpm
 Now you should be able to run php-fpm.
 
 {% highlight sh %}
-sudo service start php-fpm
+sudo service php-fpm start
 {% endhighlight %}
 
 Now lets set it up so that it starts on boot, Nginx and MySQL are already setup to start on boot.
@@ -413,25 +416,18 @@ sudo update-rc.d php-fpm defaults
 
 ### Configure Nginx
 
-In /etc/nginx, there should be two folders; `sites-available` and `sites-enabled`. `sites-available` is where the configuration files for your _virtual hosts_ live, and `sites-enabled` contains [symbolic links](http://en.wikipedia.org/wiki/Symbolic_link) (aka. symlinks) to those configuration files; so if you want a site to be live, you create a symbolic link, if you want to take a site offline, you delete the symbolic link. That way, you never lose the configuration file. Note that any changes to the nginx configuration, including creating or deleting these symbolic links, requires a reload/restart of nginx.
-
-There is a configuration file called `default` in `/etc/nginx/sites-available`, lets keep a copy of it as it contains useful comments and configuration examples. It references files outside of `/var/www`, so I prefer to just set it aside, and create a new default _virtual host_.
+There is a configuration file called `default.conf` in `/etc/nginx/conf.d/`, lets keep a copy of it as it contains useful comments and configuration examples. It references files outside of `/var/www`, so I prefer to just set it aside, and create a new default _virtual host_.
 
 {% highlight sh %}
-sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+cd /etc/nginx/conf.d/
+sudo mv default.conf default.conf.bak
+sudo mv example-ssl.conf example-ssl.conf.bak
 {% endhighlight %}
 
-In `/etc/nginx`, there is also a `conf.d` folder, that also contains a configuration file for a default host. Lets rename these too.
+Now lets setup our own default virtual host configuration.
 
 {% highlight sh %}
-sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
-sudo mv /etc/nginx/conf.d/example-ssl.conf /etc/nginx/conf.d/example-ssl.conf.bak
-{% endhighlight %}
-
-Lets setup our own default virtual host configuration.
-
-{% highlight sh %}
-sudo vi /etc/nginx/sites-available/default
+sudo vi /etc/nginx/conf.d/default.conf
 {% endhighlight %}
 
 Copy and paste the following into this file.
@@ -460,11 +456,32 @@ server {
 }
 {% endhighlight %}
 
-The symlink for this virtual host already exists, but if it didn't, we would need to run these commands.
+In /etc/nginx, you should create two folders; `sites-available` and `sites-enabled`.
 
 {% highlight sh %}
-cd /var/nginx/sites-enabled/
-sudo ln -s ../sites-available/default
+cd /etc/nginx/
+sudo mkdir sites-available
+sudo mkdir sites-enabled
+{% endhighlight %}
+
+ `sites-available` is where the configuration files for your _virtual hosts_ live, and `sites-enabled` contains [symbolic links](http://en.wikipedia.org/wiki/Symbolic_link) (aka. symlinks) to those configuration files; so if you want a site to be live, you create a symbolic link, if you want to take a site offline, you delete the symbolic link. That way, you never lose the configuration file. Note that any changes to the nginx configuration, including creating or deleting these symbolic links, requires a reload/restart of nginx.
+
+To get nginx to read the files in `sites-available`, we need to edit this file:
+
+{% highlight sh %}
+sudo vi nginx.conf
+{% endhighlight %}
+
+Find this line:
+
+{% highlight sh %}
+include /etc/nginx/conf.d/*.conf;
+{% endhighlight %}
+
+And add this line directly below it, so it sits in the `http {}` group.
+
+{% highlight sh %}
+include /etc/nginx/sites-enabled/*;
 {% endhighlight %}
 
 As we have made a configuration change to nginx, it would be wise to test our changes. If you make a mistake, and then restart nginx, it will go down and stay down until you figure out what the problem is and fix it.
@@ -492,7 +509,7 @@ echo "Hello World" > index.htm
 Now to restart nginx.
 
 {% highlight sh %}
-sudo service restart nginx
+sudo service nginx restart
 {% endhighlight %}
 
 If you go to [http://localhost/](http://localhost/) in your browser, then you should see "Hello World".
@@ -502,7 +519,7 @@ If you go to [http://localhost/](http://localhost/) in your browser, then you sh
 As we have created our default virtual host, which contained some configuration for PHP FPM, we could create a php file to be run by PHP. It's quite useful to test PHP like this, as even at this point you can still go back and re-compile PHP with different options.
 
 {% highlight php %}
-vi /var/www/localhost/info.php
+vi /var/www/default/info.php
 {% endhighlight %}
 
 Copy and paste this into this file.
@@ -513,13 +530,13 @@ Copy and paste this into this file.
 phpinfo();
 {% endhighlight %}
 
-Now if you visit [http://localhost/info.php](http://localhost/info.php) you should see lots of information about your PHP installation. If you scroll down to the section titled "date", you should see this error message:
+Now if you visit [http://localhost/info.php](http://localhost/info.php) you should see lots of information about your PHP installation. If you used the `php.ini-development` file earlier, when you scroll down to the section titled "date", you should see this error message:
 
 {% highlight php %}
 Warning: phpinfo(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/default/info.php on line 3
 {% endhighlight %}
 
-So we need to edit our `php.ini` file to define this setting, otherwise this error message could be shown every time you try to use the `date()` function.
+Even if you used the `php.ini-production` file earlier, you still need to edit your `php.ini` file to define this setting, otherwise this error will be triggered every time you use the `date()` function.
 
 {% highlight php %}
 sudo vi /usr/local/lib/php.ini
@@ -553,7 +570,7 @@ At the time of writing, v3.5.2.2 was the latest stable version. But please check
 cd
 wget http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/3.5.2.2/phpMyAdmin-3.5.2.2-all-languages.tar.bz2
 tar -xvjf phpMyAdmin-3.5.2.2-all-languages.tar.bz2
-cp -a phpMyAdmin-3.5.2.2-all-languages /var/www/phpmyadmin/
+cp -r phpMyAdmin-3.5.2.2-all-languages /var/www/phpmyadmin/
 {% endhighlight %}
 
 
@@ -623,8 +640,7 @@ sudo service nginx restart
 A login screen should show up, but unfortunately it won't work.
 
 {% highlight sh %}
-#2002 - No such file or directory
-The server is not responding (or the local server's socket is not correctly configured). 
+#2002 Cannot log in to the MySQL server.
 {% endhighlight %}
 
 To log in, we need to edit our php.ini file.
