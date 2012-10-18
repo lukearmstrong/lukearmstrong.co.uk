@@ -1,71 +1,59 @@
 ---
 layout: post
 date: 2012-09-27 00:00
-title: "Linode"
+title: "Linode: Ubuntu 12.04 LTS"
 description: "Getting started with Ubuntu Server 12.04 LTS"
 published: false
 ---
 
 
-## Buy a VM
+This was written using a [Linode](http://www.linode.com/?r=0b86dec2dc8ba417b9d86cb3b44f1131b92c1b26) running Ubuntu 12.04 LTS.
 
-Recommend Linode.
+##
 
-## Log in as Root
+## Logging in
 
-If you are using Windows, you'll have to download something like [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/) before you can login to your new linode. I'm not going to explain how to setup Putty, it's fairly straight forward.
-
-If you have bought a Linode, the 
-
-If you are using Linux, or Mac OSX, then login
+If you are using Linux, or Mac OSX, then login by simply typing this into a terminal.
 
 {% highlight sh %}
-ssh root@<your-linode-ip>
+ssh root@192.0.2.0
 {% endhighlight %}
 
+_Note: Where you see 192.0.2.0, use the IP address of your server._
+
+If you are using Windows, you'll have to download something like [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/) to login to your server. I'm not going to explain how to setup Putty, it's fairly straight forward, and there are plenty of tutorials out there if you are stuck.
 
 ## Update
 
-First thing you must do is update.
+First thing you should do is update your server.
 
 {% highlight sh %}
 apt-get update && apt-get upgrade -y
 {% endhighlight %}
 
+_Note: If there are updates to the Linux kernel you will need to reboot, but there is no need to do that yet as we will be rebooting at the end of this tutorial._
 
-### Problem?
-
-When first writing this article, it hung when trying to download from `us.archive.ubuntu.com`. If you experience the same issue, you can run this command to use `archive.ubuntu.com` instead of `us.archive.ubuntu.com`.
-
-{% highlight sh %}
-sed -i -e 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
-{% endhighlight %}
-
-It changes all your apt sources from `us.archive.ubuntu.com` to `archive.ubuntu.com`. Now the update should work...
-
-{% highlight sh %}
-apt-get update && apt-get upgrade -y
-{% endhighlight %}
 
 ## Set Hostname
+
+Decide on a name for your server, I'm going to call mine linode.
 
 {% highlight sh %}
 echo "linode" > /etc/hostname
 hostname -F /etc/hostname
 {% endhighlight %}
 
+
+
 {% highlight sh %}
 sudo vi /etc/hosts
 {% endhighlight %}
 
 {% highlight sh %}
-127.0.0.1							 localhost.localdomain			 localhost
-178.79.180.28						linode.lukearmstrong.co.uk		linode
-2a01:7e00::f03c:91ff:fe93:f17f		linode.lukearmstrong.co.uk		linode
+192.0.2.0    linode.example.com    linode
 {% endhighlight %}
 
-## Set Static Stuff in Linode Manager
-
+_Note: Where you see example.com, use your own domain name._
 
 
 ## Set Timezone
