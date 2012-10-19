@@ -199,8 +199,8 @@ When you run `ant` in a folder, it will look for a file called `build.xml`, whic
 
     <target name="js.concatenate" depends="load.properties">
         <echo># Concatenate JS files:</echo>
-        <echo>cat ${js.path}/lib/*.css >  ${build.path}/scripts.js</echo>
-        <echo>cat ${js.path}/src/*.css >> ${build.path}/scripts.js</echo>
+        <echo>cat ${js.path}/lib/*.js >  ${build.path}/scripts.js</echo>
+        <echo>cat ${js.path}/src/*.js >> ${build.path}/scripts.js</echo>
 
         <concat destfile="${build.path}/scripts.js" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
             <fileset dir="${js.path}/lib/">
@@ -416,9 +416,14 @@ vim .git/hooks/post-receive
 {% endhighlight %}
 
 {% highlight sh %}
-#!/bin/sh
-GIT_WORK_TREE=/var/www/minify-css-js git checkout -f
-cd /var/www/minify-css-js
+#!/bin/bash
+
+# Hooks runs from within .git directory
+if [ $(basename $(pwd)) == ".git" ]; then
+	cd ..
+	export GIT_DIR=.git
+fi
+
 ant
 {% endhighlight %}
 
