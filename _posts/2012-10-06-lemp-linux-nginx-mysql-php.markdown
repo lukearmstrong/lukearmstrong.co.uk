@@ -570,7 +570,7 @@ At the time of writing, v3.5.2.2 was the latest stable version. But please check
 cd
 wget http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/3.5.2.2/phpMyAdmin-3.5.2.2-all-languages.tar.bz2
 tar -xvjf phpMyAdmin-3.5.2.2-all-languages.tar.bz2
-cp -r phpMyAdmin-3.5.2.2-all-languages /var/www/phpmyadmin/
+cp -r phpMyAdmin-3.5.2.2-all-languages /var/www/phpmyadmin.dev/
 {% endhighlight %}
 
 
