@@ -97,7 +97,7 @@ body {
 	text-align: center;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	background: #fff;
-	color: #777;
+	color: #333;
 }
 
 .wrapper {
@@ -138,7 +138,7 @@ footer a {
 }
 
 a {
-	color: #121212;
+	color: #12C;
 	text-decoration: none;
 }
 
@@ -154,6 +154,13 @@ p {
 
 .highlight pre {
 	padding: 10px;
+}
+
+pre code {
+	padding: 10px;
+	display: block;
+	background: #272822;
+	color: #f8f8f2;
 }
 
 

@@ -5,6 +5,7 @@ title: The gist of an idea...
 description: Can GitHub Gists be used to source control a document between many collaborators?
 ---
 
+
 I have ideas for projects all the time, but so far I haven't made any of them a reality yet. I could use my usual excuse that I don't have time, but I do have time; I just can't face doing any more work after spending 60 hours either at work, or getting to and from work, that week.
 
 Perhaps if I write about it, and people like it, it might give me the motivation to actually do it. So here goes nothing...

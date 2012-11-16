@@ -6,6 +6,7 @@ description: ""
 published: false
 ---
 
+
 The other day I noticed a couple of links on a Wikipedia page were broken. When I went to edit the page, there was a warning recommending I create an account.
 
 > You are not currently logged in. If you save any edits, your IP address will be recorded publicly in this page's edit history. If you create an account, you can conceal your IP address and be provided with many other benefits. Messages sent to your IP can be viewed on your talk page.

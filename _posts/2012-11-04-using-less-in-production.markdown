@@ -6,6 +6,7 @@ description: "Automate the conversion of your LESS files into a single CSS file,
 published: false
 ---
 
+
 This follows on from my previous article; [Minify your CSS and JavaScript](/2012/10/18/minify-your-css-and-javascript/).
 
 Generally when developing, it makes sense split up your code into logical chunks, so instead of having a single CSS or JavaScript file 3000 lines long, you should split them up into smaller files for the tasks they do, or for the pages/sections of your site that they are for. This makes it much easier when working with other people, as they will know just by looking at the filenames where to find the code they need to change, and it reduces the chances of having to deal with a merge conflict because you probably won't be working in the same files at the same time.
@@ -74,4 +75,3 @@ When referencing files, such as an image for a background, always reference them
     background-image: url(/assets/img/background.png);
 
 
-##
