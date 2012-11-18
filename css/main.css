@@ -152,6 +152,14 @@ p {
 	margin-bottom: 24px;
 }
 
+blockquote {
+	font-style: italic;
+	border-left: 4px solid #DDD;
+	color: #777;
+	padding-left: 40px;
+	margin-left: 0px;
+}
+
 
 
 

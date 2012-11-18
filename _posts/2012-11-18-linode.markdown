@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2012-09-27 00:00
+date: 2012-11-18 12:00
 title: "Linode: Ubuntu 12.04 LTS"
 description: "Getting started with Ubuntu Server 12.04 LTS"
 published: false

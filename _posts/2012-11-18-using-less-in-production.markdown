@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2012-11-04 12:30
+date: 2012-11-18 13:00
 title: "Using LESS in Production"
 description: "Automate the conversion of your LESS files into a single CSS file, and minify using YUI Compressor."
 published: false
