@@ -7,12 +7,14 @@ description: "Only make your users do it once!"
 ---
 
 
-The other day I noticed a couple of links on a Wikipedia page were broken. When I went to edit the page, there was a warning recommending I create an account.
+The other day I noticed a couple of links on a Wikipedia page were broken. So I thought I would edit the page to fix the links, should only take a minute - or so I thought.
+
+When I went to edit the page there was a warning recommending I create an account.
 
 > You are not currently logged in. If you save any edits, your IP address will be recorded publicly in this page's edit history. If you create an account, you can conceal your IP address and be provided with many other benefits. Messages sent to your IP can be viewed on your talk page.
 
 
-So I went to create an account. It recommended I choose a username that identifies me personally, so I chose _lukearmstrong_ as my username. I completed the CAPTCHA, filled out the form, and hit submit...
+So I decided to create an account. It recommended I choose a username that identifies me personally, so I chose _lukearmstrong_ as my username. I completed the CAPTCHA, filled out the form, and hit submit...
 
 > Login error  
 > Username entered already in use. Please choose a different name.
@@ -28,9 +30,12 @@ The form was cleared except the username. So I completed the CAPTCHA again, chan
 
 ## Bloody Hell!
 
-So I completed the CAPTCHA again, changed my username to *6c61*, re-entered my password again, and again, and hit submit...
+So I completed the CAPTCHA again, changed my username to *6c61*, re-entered my password again, and again, and hit submit.
 
-Finally! Then I got an e-mail asking to confirm my address, so clicked the link and logged into my new account.
+
+## Finally!
+
+Then I got an e-mail asking to confirm my address, so clicked the link and logged into my new account.
 
 
 ## But... Wikipedia still wasn't conviced I was human
@@ -53,6 +58,6 @@ The answer is very simple... **Ask me once**.
 
 Ask me once really does mean just once. Some of you reading this article may not consider this next scenario.
 
-Even if I fail a validation rule on the form, but successfully complete the CAPTCHA, don't reload the sodding form with another CAPTCHA. Check if the user has successfully completed the CAPTCHA, and simply flag their session as being human so they are never prompted to fill out a CAPTCHA on the current form, or on any form, from then on. 
+Even if I fail a validation rule on the form, but successfully complete the CAPTCHA, don't reload the sodding form with another CAPTCHA. Check if the user has successfully completed the CAPTCHA, and simply flag their session as being human so they are never prompted to fill out a CAPTCHA on the current form, or on any form, from then on.
 
-It really isn't that much extra effort, but makes a big difference on forms where you have to pick a username that no one else has picked.
+It really isn't that much extra effort, but makes a big difference on forms where you may have to fill them out several times because you have to pick a username that no one else has picked.
