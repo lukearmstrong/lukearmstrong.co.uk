@@ -1,9 +1,8 @@
 ---
 layout: post
-date: 2012-11-18 12:00
-title: "Linode: Ubuntu 12.04 LTS"
-description: "Getting started with Ubuntu Server 12.04 LTS"
-published: false
+date: 2012-11-18 13:00
+title: "Getting started with Ubuntu Server"
+description: "Here are the steps I take when setting up a server. Basic configuration, security considerations and firewall rules."
 ---
 
 
@@ -14,9 +13,9 @@ This was written using a [Linode](http://www.linode.com/?r=0b86dec2dc8ba417b9d86
 
 If you are using Linux, or Mac OSX, then login by simply typing this into a terminal.
 
-    ssh root@192.0.2.0
+    ssh root@XXX.XXX.XXX.XXX
 
-_Note: Where you see 192.0.2.0, use the IP address of your server._
+_Note: Where you see XXX.XXX.XXX.XXX, use the IP address of your server._
 
 If you are using Windows, you'll have to download something like [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/) to login to your server. I'm not going to explain how to setup Putty, it's fairly straight forward, and there are plenty of tutorials out there if you are stuck.
 
@@ -42,9 +41,9 @@ You also need to add your hostname, and your FQDN, to your hosts file.
 
 `/etc/hosts`
 
-    192.0.2.0	linode	linode.example.com
+    XXX.XXX.XXX.XXX	linode	linode.example.com
 
-_Note: Where you see example.com, use your own domain name._
+_Note: Where you see `XXX.XXX.XXX.XXX`, use the IP address of your server, and change `example.com`, to your own domain name._
 
 ## Set Timezone
 
@@ -57,9 +56,9 @@ _Note: Where you see example.com, use your own domain name._
 
 ## Create User
 
-You don't want to be in the habit of using the root account. By default Ubuntu disables the root account, but Linode re-enables it.
+You don't want to be in the habit of using the root account. By default Ubuntu disables the root account, but [Linode](http://www.linode.com/?r=0b86dec2dc8ba417b9d86cb3b44f1131b92c1b26) re-enables it.
 
-Let's create a user account. (This is similar to useradd)[http://www.go2linux.org/useradd-vs-adduser]
+Let's create a user account. [This is similar to useradd](http://www.go2linux.org/useradd-vs-adduser).
 
     adduser luke
 
@@ -101,7 +100,7 @@ So now you should be able to connect to your server by running this command, and
 _Note: You won't have to enter your server password, but the first time you use your SSH Key in a session you will have to enter your passphrase to unlock it._
 
 
-### Prevent Root from logging in.
+## Prevent Root from logging in.
 
 Lock the account.
 
@@ -125,6 +124,8 @@ Make the password expire, this prevents anyone from logging in as root using an 
 
 ## SSH Settings
 
+These settings prevent root from logging in, and only allow the users you specify to login. It also automatically logs you out if you have been inactive for 5 minutes; If that is annoying, don't use the last 2 configuration lines, or change the last one to be a longer amount of time (in seconds).
+
 `/etc/ssh/sshd_config`
 
     # Prevent root from logging in
@@ -138,7 +139,7 @@ Make the password expire, this prevents anyone from logging in as root using an 
     ClientAliveInterval 300
 
 
-# Firewall
+## Firewall
 
 Now we need to create a file for our Firewall rules, I'm not aware of a recommended place for this, so to make it obvious lets create this file:
 
@@ -153,8 +154,7 @@ Now we need to create a file for our Firewall rules, I'm not aware of a recommen
     -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT 
     -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT 
     -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT 
-    -A INPUT -p tcp -s 87.194.213.179 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
-    -A INPUT -p tcp -s 31.24.0.198 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+    -A INPUT -p tcp -s XXX.XXX.XXX.XXX --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
     -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT 
     -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7 
     -A INPUT -j REJECT --reject-with icmp-port-unreachable 
@@ -162,6 +162,12 @@ Now we need to create a file for our Firewall rules, I'm not aware of a recommen
     -A OUTPUT -j ACCEPT 
     COMMIT
 
+
+As far as I am aware this config essentially prevents access to all ports apart from 80 (http) and 443 (https). Port 22 (ssh) is restricted to my IP address.
+
+_Note: Change `XXX.XXX.XXX.XXX` to your IP address. You can use this entire line more than once if you want to allow access from more than one IP address._
+
+I have a static IP address so I am able to do this, if you have a dynamic IP address you won't be able to use this rule. You are going to have to figure out another way of securing your SSH port. The simplest way of doing this is to chuck a few quid at your ISP and get a static IP address, if they won't give you one, move to someone who will.
 
 `/etc/iptables` isn't going to be used unless we set it, so we need to set iptables up to enable these rules when the network is connected.
 
@@ -171,13 +177,16 @@ Now we need to create a file for our Firewall rules, I'm not aware of a recommen
     pre-up iptables-restore < /etc/iptables
 
 
-# Hosts Allow/Deny
+## Hosts Allow/Deny
+
+God only knows what these files do, seemingly nothing if my Deny file is actually being used, but I do this anyway.
 
 `/etc/hosts.allow`
 
-    sshd: 87.194.213.179
-    sshd: 31.24.0.198
+    sshd: XXX.XXX.XXX.XXX
 
+
+_Note: Change `XXX.XXX.XXX.XXX` to your IP address. You can use this entire line more than once if you want to allow access from more than one IP address._
 
 `/etc/hosts.deny`
 
@@ -186,5 +195,9 @@ Now we need to create a file for our Firewall rules, I'm not aware of a recommen
 
 ## Reboot
 
+It's easiest just to reboot after doing all of this. It means any kernel updates are used, and all the configuration you have setup is used without having to restart a lot of difference services.
+
     sudo reboot
 
+
+If you are now unable to login using SSH, it'll probably be to do with your Firewall rules. Luckily, most hosts, including [Linode](http://www.linode.com/?r=0b86dec2dc8ba417b9d86cb3b44f1131b92c1b26), provide another method of accessing the terminal directly.
