@@ -95,9 +95,13 @@ textarea {
 
 body {
 	text-align: center;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-family: "Droid Sans", Verdana, Arial, sans-serif;
 	background: #fff;
 	color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #121212;
 }
 
 .wrapper {
@@ -128,10 +132,6 @@ dd {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
-	color: #121212;
-}
-
 footer a {
 	padding: 2em 0;
 	display: block;
@@ -147,8 +147,8 @@ a:hover {
 }
 
 p {
-	font-size: 17px;
-	line-height: 1.8em;
+	font-size: 16px;
+	line-height: 1.5;
 	margin-bottom: 24px;
 }
 
