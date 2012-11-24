@@ -366,12 +366,12 @@ With javascript there are 3 directories setup:
     
                 <!-- 1. JavaScript files in /js/lib will be included first -->
                 <?php foreach (getFiles('/js/lib', 'js') as $_file): ?>
-                    <script src="/js/lib/<?= $_file ?>" />
+                    <script src="/js/lib/<?= $_file ?>"></script>
                 <?php endforeach; ?>
     
                 <!-- 2. JavaScript files in /js/src will be included last -->
                 <?php foreach (getFiles('/js/src', 'js') as $_file): ?>
-                    <script src="/js/src/<?= $_file ?>" />
+                    <script src="/js/src/<?= $_file ?>"></script>
                 <?php endforeach; ?>
             <?php else: ?>
                 <!-- Use jQuery from a CDN in production, fallback to a local copy if there is a problem -->
