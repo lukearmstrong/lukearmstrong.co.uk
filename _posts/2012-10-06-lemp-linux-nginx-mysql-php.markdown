@@ -253,8 +253,7 @@ Find your nearest mirror on the [PHP Downloads page](http://php.net/downloads.ph
 
 At the moment, PHP 5.4.7 is the latest version, so these are the commands I ran to download from my closest mirror.
 
-    wget http://php.net/get/php-5.4.7.tar.bz2/from/uk.php.net/mirror
-    mv mirror php-5.4.7.tar.bz2
+    wget http://php.net/get/php-5.4.7.tar.bz2/from/uk.php.net/mirror -O php-5.4.7.tar.bz2
     tar -xvjf php-5.4.7.tar.bz2
 
 
