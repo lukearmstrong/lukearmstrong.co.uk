@@ -88,7 +88,43 @@ at a different depth from when you are in production.
 
 ## Converting LESS to CSS
 
-Command Line
+
+### Install Node.js
+
+    sudo apt-get install python-software-properties python g++ make
+	sudo add-apt-repository ppa:chris-lea/node.js
+	sudo apt-get update
+	sudo apt-get install nodejs
+
+
+### Install lessc
+
+    sudo npm install -g less
+    # npm http GET https://registry.npmjs.org/less
+	# npm http 408 https://registry.npmjs.org/less
+	# npm ERR! registry error parsing json
+	# npm http GET https://registry.npmjs.org/less
+	# npm http 304 https://registry.npmjs.org/less
+	# npm http GET https://registry.npmjs.org/less/-/less-1.3.3.tgz
+	# npm http 200 https://registry.npmjs.org/less/-/less-1.3.3.tgz
+	# npm http GET https://registry.npmjs.org/ycssmin
+	# npm http 200 https://registry.npmjs.org/ycssmin
+	# npm http GET https://registry.npmjs.org/ycssmin/-/ycssmin-1.0.1.tgz
+	# npm http 200 https://registry.npmjs.org/ycssmin/-/ycssmin-1.0.1.tgz
+	# /usr/bin/lessc -> /usr/lib/node_modules/less/bin/lessc
+	# less@1.3.3 /usr/lib/node_modules/less
+	# └── ycssmin@1.0.1
+
+
+### Convert LESS to CSS
+
+    lessc public/assets/less/style.less public/assets/css/style.css
+
+
+### Use YUI Compressor to output minfied CSS
+
+    lessc --yui-compress public/assets/less/style.less public/assets/css/style.css
+
 
 ### Ant Build Script
 
