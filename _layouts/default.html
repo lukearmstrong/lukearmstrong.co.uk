@@ -9,11 +9,9 @@
 		<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Web Developer{% endif %}" />
 
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-		<link rel="stylesheet" href="/css/normalize.css" />
-		<link rel="stylesheet" href="/css/main.css" />
-		<link rel="stylesheet" href="/css/rainbow/github.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 
-		<link href="http://feeds.feedburner.com/luke-armstrong" rel="alternate" title="Luke Armstrong" type="application/atom+xml" />
+		<link href="/atom.xml" rel="alternate" title="Luke Armstrong" type="application/atom+xml" />
 
 		<!--
 			Twitter Cards
@@ -27,29 +25,14 @@
 		<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Web Developer{% endif %}">
 	</head>
 	<body>
-		
+
 		<a href="https://github.com/lukearmstrong">
-			<img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/fork-me-on-github.png" alt="Fork me on GitHub">
+			<img src="/images/fork-me-on-github.png" alt="Fork me on GitHub" class="github" />
 		</a>
 
 		<div class="wrapper">
-
 			{{ content }}
-
 		</div>
-
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
-
-		<script src="/js/rainbow-generic.min.js"></script>
-
-		<script>
-			$(function() {
-				$("pre > code").attr('data-language', 'generic');
-				Rainbow.color();
-			});
-		</script>
 
 		<script>
 			var _gaq = _gaq || [];
