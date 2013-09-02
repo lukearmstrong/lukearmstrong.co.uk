@@ -2,7 +2,7 @@
 layout: post
 date: 2013-09-01 21:11
 title: "Hunter's Stew Recipe (Polish: Bigos)"
-description: A recipe for the Polish national dish, Bigos.
+description: A recipe for the Polish National dish, Bigos.
 ___
 
 
@@ -33,6 +33,7 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 - Carrots (x2)
 - Majoram (2 tsp)
 - Caraway Seeds (1 tsp) - _Crushed in a pestle and mortar_
+- Bay Leaves (x2)
 - Chopped Tomatoes (400g Tin)
 - Tomato Puree (x1 squirt)
 - Beef Oxo Cube
@@ -77,10 +78,10 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 
 7. Boil the Kettle and pour into the pot, just enough water to cover.
 
-8. Put the pot into the oven, with the lid on, and cook it low and slow for at least 2 hours at 160 C (Fan Assisted Oven), or 180 C, or Gas Mark 4, or 350 F. The best thing to do is to follow the cooking instructions on the Diced Casserole Pork as this is the only raw ingredient that you __must__ cook properly.
+8. Put the pot into the oven, with the lid on, and cook it low and slow for at least 2 hours at 160 C (Fan Assisted Oven), or 180 C, or 350 F, or Gas Mark 4. The best thing to do is to follow the cooking instructions on the Diced Casserole Pork as this is the only raw ingredient that you __must__ cook properly.
 
-9. You may want to take it out of the oven after an hour to give it a stir, then return to the oven for another hour.
+9. You may want to take it out of the oven after an hour to give it a stir, then return to the oven for another hour. You shouldn't need to top it up with water during the cooking process.
 
-10. Serve into bowls and eat.
+10. Serve into bowls and eat. _Remove the Bay Leaves if you discover them when serving._
 
 ![Eat](/images/2013-09-01-hunters-stew-polish-bigos/eat.jpg)
