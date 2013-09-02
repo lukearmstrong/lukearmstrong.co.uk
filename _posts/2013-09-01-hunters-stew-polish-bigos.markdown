@@ -13,7 +13,7 @@ Like many stews, the recipes will differ as it can made in so many different way
 The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the ingredients I used, the weights aren't an exact science, so just have a go...
 
 
-### Ingredients
+## Ingredients
 
 - White Cabbage (x1)
 - Sauerkraut Staropolska (Kapusta Kiszona Starolpolska) 820g jar (in water, not vinegar)
@@ -37,7 +37,7 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 - Lech Beer (500ml Bottle) - _Entirely optional, just make sure it is lager if you go for it._
 
 
-### Preparation
+## Preparation
 
 1. Roughly chop the White Cabbage. The leaves on a white cabbage are tightly wrapped, so don't bother trying to peel the leaves first, just chop it up. I put mine on its side and cut ~1-2cm thick disks and separated it with my fingers.
 
@@ -56,7 +56,7 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 8. Slice the Pepperami Hot into ~0.5-1cm thick discs.
 
 
-### Cook
+## Cook
 
 1. Put a large frying pan on the hob on a high heat. Once hot, pour in a little olive oil and chuck in the Smoked Bacon Lardons and Diced Casserole Pork. You just want to seal the Pork, so it just needs a few minutes. Season with salt and pepper as you are cooking, and be sure to turn the pork so it is sealed on all sides - it should turn from pink to white.
 
