@@ -2,13 +2,9 @@
 layout: post
 date: 2013-09-01 21:11
 title: "Hunter's Stew Recipe (Polish: Bigos)"
-description: A recipe for the Polish National dish, Bigos.
-___
+description: "A recipe for the Polish National dish, Bigos."
+---
 
-
-# Hunter's Stew Recipe
-
-## Polish: Bigos
 
 I was inspired to try to recreate this after eating it at the International Food Festival in Birmingham. According to some recipes I found, it is considered to be the Polish National Dish.
 
@@ -59,8 +55,6 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 
 8. Slice the Pepperami Hot into ~0.5-1cm thick discs.
 
-![Preparation](/images/2013-09-01-hunters-stew-polish-bigos/preparation.jpg)
-
 
 ### Cook
 
@@ -84,4 +78,5 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 
 10. Serve into bowls and eat. _Remove the Bay Leaves if you discover them when serving._
 
-![Eat](/images/2013-09-01-hunters-stew-polish-bigos/eat.jpg)
+
+![Hunter's Stew (Polish: Bigos)](/images/2013-09-01-hunters-stew-polish-bigos/hunters-stew-bigos.jpg)
