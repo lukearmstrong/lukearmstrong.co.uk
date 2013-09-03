@@ -2,17 +2,21 @@
 layout: default
 ---
 
-<header>
-	<h1>{{ page.title }}</h1>
-	<a href="/">Luke Armstrong</a>
-	<time datetime="{{ page.date | date_to_xmlschema }}" pubdate data-updated="true">{{ page.date | date: "%B %d, %Y" }}</time>
-</header>
+<div class="page-header">
+	<h1>
+		{{ page.title }}
+		<small><time datetime="{{ page.date | date_to_xmlschema }}" pubdate data-updated="true">{{ page.date | date: "%B %d, %Y" }}</time></small>
+	</h1>
+</div>
 
 {{ content }}
 
-
-<footer>
+<div class="text-center">
 	<a href="https://twitter.com/6c61" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @6c61</a>
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://lukearmstrong.co.uk{{ page.url }}" data-text="{{ page.title }}" data-via="6c61" data-lang="en">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</footer>
+</div>
+
+<ul class="pager">
+	<li class="previous"><a href="/">&larr; Back to Blog</a></li>
+</ul>

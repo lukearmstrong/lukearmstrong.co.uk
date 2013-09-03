@@ -5,6 +5,8 @@ title: About
 description: About me...
 ---
 
-# About
+<div class="page-header">
+	<h1>About</h1>
+</div>
 
 Coming soon...
