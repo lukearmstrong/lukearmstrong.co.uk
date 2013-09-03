@@ -2,25 +2,12 @@
 layout: default
 ---
 
-<div class="page-header">
-	<h1>Blog</h1>
-</div>
-
-<!--
-<ul>
-	{% for post in site.posts %}
-		<li>
-			<h4><a href="{{ post.url }}">{{ post.title }}</a> <small><time datetime="{{ post.date | date_to_xmlschema }}" pubdate data-updated="true">{{ post.date | date: "%B %d, %Y" }}</time></small></h4>
-			{{ post.description }}
-		</li>
-	{% endfor %}
-</ul>
--->
+<h1 class="sr-only">Blog</h1>
 
 <div class="list-group">
 	{% for post in site.posts %}
 		<a href="{{ post.url }}" class="list-group-item">
-			<h4 class="list-group-item-heading">{{ post.title }} <small><time datetime="{{ post.date | date_to_xmlschema }}" pubdate data-updated="true">{{ post.date | date: "%B %d, %Y" }}</time></small></h4>
+			<h4 class="list-group-item-heading">{{ post.title }} <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></small></h4>
 			<p class="list-group-item-text">{{ post.description }}</p>
 		</a>
 	{% endfor %}
