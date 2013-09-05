@@ -64,7 +64,7 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 
 3. Put a very large saucepan (preferably a Casserole Dish, but I didn't have one that was big enough) on the hob on a high heat. Once hot, pour in a little olive oil and chuck in the sliced Large Onion, the celery and the carrots just to soften them up. Season with salt and pepper as you are cooking them.
 
-4. Once the sliced onions have started to soften, chuck in the White Cabbage, pour in the bottle of Lager and cover with a lid so that it steams to cabbage. The Lager won't cover the cabbage, but it should help to soften it. If you don't want to use Lager, then add 500ml of water.
+4. Once the sliced onions have started to soften, chuck in the White Cabbage, pour in the bottle of Lager and cover with a lid so that it steams the cabbage. The Lager won't cover the cabbage, but it should help to soften it. If you don't want to use Lager, then add 500ml of water.
 
 5. Occassionally remove the lid and stir, after about 5 or 10 minutes the cabbage should have started to soften.
 
