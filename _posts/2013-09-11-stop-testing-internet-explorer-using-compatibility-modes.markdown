@@ -17,6 +17,9 @@ Today we received an e-mail from a client; One of their customers had reported a
 
 It turns out we had left a `console.log()` in our JavaScript code, this caused IE7 to throw an error.
 
+
+---
+
 ### Resources
 
 Microsoft recently launched [modern.IE](http://www.modern.ie/) where you can [download virtual machine images](http://www.modern.ie/en-us/virtualization-tools#downloads) for various versions of Windows and Internet Explorer.
