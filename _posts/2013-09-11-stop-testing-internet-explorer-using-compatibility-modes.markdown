@@ -1,13 +1,13 @@
 ---
 layout: post
 date: 2013-09-11 10:27
-title: "Stop testing Internet Explorer using compatibility modes"
+title: "Stop testing in Internet Explorer using compatibility modes"
 description: "TL;DR? Use a VM instead!"
 ---
 
 Since Internet Explorer 8, it has been possible to change the _Browser Mode_ and _Document Mode_ to emulate previous versions of Internet Explorer. These were originally intended for making new versions of Internet Explorer work with websites developed by people that ignored web standards.
 
-These compatibility modes are not a substitute for testing in the actual version of that Browser, on the operating system that it is likely to be used on. Standalone installers, such as IE Tester, are emulators and cannot be trusted to provide an accurate testing environment either.
+These compatibility modes are not a substitute for testing in the actual version of that browser, on the operating system that it is likely to be used on. Standalone installers, such as IE Tester, are emulators and cannot be trusted to provide an accurate testing environment either.
 
 We have a Windows 8 machine in the office for testing, it has Internet Explorer 10 installed on it.
 
