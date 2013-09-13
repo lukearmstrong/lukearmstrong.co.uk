@@ -3,7 +3,7 @@ layout: post
 date: 2013-08-06 20:00
 title: "Laravel Auth"
 description: "Laravel Auth"
-Published: false
+published: false
 ---
 
 - Config
