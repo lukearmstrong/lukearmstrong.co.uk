@@ -1,3 +1,4 @@
+markdown:  redcarpet
 permalink: /:year/:month/:title/
 safe:      true
 timezone:  Europe/London
