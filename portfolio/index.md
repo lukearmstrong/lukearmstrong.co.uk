@@ -38,7 +38,7 @@ Bespoke Web Application designed to replicate the functionality of an iOS App cu
 		- A video, we send a request to the Amazon Elastic Transcoder to generate other formats from the video.
 - [Apache Ant](http://ant.apache.org/) build script to reduce number of requests, and filesize, by:
 	- Converting all [LESS](http://lesscss.org/) files into a single CSS file, and minifying.
-	- Concatenating all JavaScript files into a single file, and minifying using Google's [Closure Compiler](https://developers.google.com/closure/compiler/)
+	- Concatenating all JavaScript files into a single file, and minifying using Require JS.
 
 
 ---
@@ -70,7 +70,7 @@ usage allowance. For each unit they save, they earn X number of points, which ca
 - Graphing using [Chart.js](http://www.chartjs.org/)
 - [Apache Ant](http://ant.apache.org/) build script to reduce number of requests, and filesize, by:
 	- Converting all [LESS](http://lesscss.org/) files into a single CSS file, and minifying.
-	- Concatenating all JavaScript files into a single file, and minifying using Google's [Closure Compiler](https://developers.google.com/closure/compiler/)
+	- Concatenating all JavaScript files into a single file, and minifying using Require JS.
 
 
 ---
@@ -110,7 +110,7 @@ placement or graduate students.
 - Each Student has a profile which can be used to record comments and to list Interactions; Events the student attended.
 - [Apache Ant](http://ant.apache.org/) build script to reduce number of requests, and filesize, by:
 	- Converting all [LESS](http://lesscss.org/) files into a single CSS file, and minifying.
-	- Concatenating all JavaScript files into a single file, and minifying using Google's [Closure Compiler](https://developers.google.com/closure/compiler/)
+	- Concatenating all JavaScript files into a single file, and minifying using Require JS.
 
 
 ---

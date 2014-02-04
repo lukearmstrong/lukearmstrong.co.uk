@@ -20,7 +20,7 @@ Initially a full time freelancer who completed sites outsourced by a local agenc
 Hand coded and validated to W3C standards. Tested on several browsers across many platforms. Using polyfills, or degrading gracefully, on browsers that do not support certain features. I am currently learning about responsive web design techniques.
 
 ### JavaScript
-Using unobtrusive degradable techniques. I have experience writing with, and without, jQuery.
+Using unobtrusive degradable techniques. I have experience writing with, and without, jQuery. Recently I have been using RequireJS to manage JavaScript files in projects.
 
 ### PHP
 Experience writing bespoke web applications, content management systems and e-commerce systems. I have kept up with the latest releases of PHP, and switch to them as soon as they are released. I have experience with using Laravel, FuelPHP and CodeIgniter frameworks.
@@ -31,10 +31,13 @@ The PHP Community seems to have matured and become less fragmented over the past
 As I write bespoke CMS and e-commerce systems, these require me to design a database structure for each project. I am interested in monitoring applications and optimising queries to improve performance.
 
 ### Linux
-I am currently using Ubuntu 12.04 LTS on my work and home machines, I have used Linux as my workstation OS for at least 5 years now. I also have experience setting up and maintaining RHEL and Debian based servers. I have a Linode server, just to play with, it is running Ubuntu Server with Nginx, PHP 5.4, MySQL and Ruby (using Unicorn).
+Up until recently I was using Ubuntu 12.04 LTS on my work and home machines, I have used Linux as my workstation OS for at least 5 years now. I also have experience setting up and maintaining RHEL and Debian based servers. I have a Linode server, just to play with, it is running Ubuntu Server with Nginx, PHP 5.4, MySQL and Ruby (using Unicorn).
+
+### Mac OSX
+Recently I have been using a MacBook Air and have switched to it from Linux as my workstation.
 
 ### Version Control Systems
-Initially we started out with SVN, it was dreadfully slow, and a nightmare when it came to dealing with merge conflicts. We only put up with SVN for a single project, and switched to Mercurial for the next project. We used Mercurial for about a year, but once we started using frameworks that were hosted on GitHub, we made the switch to Git to be able to harness the power of Git submodules, and to easily contribute code back to the projects.
+Initially we started out with SVN, it was dreadfully slow, and a nightmare when it came to dealing with merge conflicts. We only put up with SVN for a single project, and switched to Mercurial for the next project. We used Mercurial for about a year, but once we started using frameworks that were hosted on GitHub, we made the switch to Git to be able to harness the power of Git submodules, and to easily contribute code back to the projects. I use Git in the command line.
 
 ### Ruby on Rails
 I have a personal interest in the Ruby language and this framework for several years now, I just wish I had more of an opportunity to use it.
