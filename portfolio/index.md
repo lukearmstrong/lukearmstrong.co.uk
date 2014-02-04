@@ -1,18 +1,150 @@
 ---
 layout: default
-date: 2013-02-12 22:00
+date: 2014-02-04 23:00
 title: Portfolio
-description: Work completed whilst employed at Propeller Communications
+description: Work completed whilst employed at The Higgs Design Company and Propeller Communications
 ---
 
 # Portfolio
 
-Work completed whilst employed at Propeller Communications.
+
+## Work completed whilst employed at The Higgs Design Company.
+
+---
+
+### Patina
+[http://ipatina.com](http://ipatina.com) (under development)
+
+Bespoke Web Application designed to replicate the functionality of an iOS App currently under development by another company.
+
+- Lead Developer
+- PHP 5.5
+- [Laravel Framework](http://laravel.com/) (v4.1)
+- Using the [Parse.com REST API](https://parse.com/docs/rest), for:
+	- User Authentication
+		- In conjunction with [Facebook Login](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow/) and [Twitter Authentication](https://dev.twitter.com/docs/auth/implementing-sign-twitter) oAuth Services.
+	- Querying and Searching Data
+	- Creating, Modifying and Deleting Data
+- Using [Amazon Simple Storage Service (S3)](http://aws.amazon.com/s3/), for:
+	- Storing Images
+	- Storing Videos
+- Using [Amazon Elastic Transcoder](http://aws.amazon.com/elastictranscoder/) to transcode videos to other formats to reduce filesize and increase browser compatibility.
+- Created an API, usage:
+	- The App will upload an image or a video to Amazon S3
+	- The App will then send a request to our API with the Parse Session Token and Parse Object ID for the record associated with the Image/Video.
+	- We then authenticate requests from the App using [Parse.com Authentication](https://parse.com/docs/rest#users-validating)
+	- If the object is:
+		- An image, we download the original image from S3 and resize it into two more sizes and upload them back to S3.
+		- A video, we send a request to the Amazon Elastic Transcoder to generate other formats from the video.
+- [Apache Ant](http://ant.apache.org/) build script to reduce number of requests, and filesize, by:
+	- Converting all [LESS](http://lesscss.org/) files into a single CSS file, and minifying.
+	- Concatenating all JavaScript files into a single file, and minifying using Google's [Closure Compiler](https://developers.google.com/closure/compiler/)
+
 
 ---
 
 
-## Orlebar Brown
+### The Student Energy Project
+[http://studentenergyproject.com](http://studentenergyproject.com) (development completed, but not launched)
+
+This is a private system setup to process meter readings from smart electricity meters and display usage on graphs. The
+project is designed to incentivise students living in halls of residence to reduce their energy usage below a recommended
+usage allowance. For each unit they save, they earn X number of points, which can be spent on rewards provided by partners.
+
+- Lead Developer
+- PHP 5.5
+- [Laravel Framework](http://laravel.com/) (v4.0)
+- [Artisan commands](http://laravel.com/docs/commands) created to run as cron jobs, these:
+	- Download meter readings from a custom built SOAP API.
+	- Process the downloaded data into a usable format.
+- Bespoke content management system to allow the entire system to be administered.
+	- Able to create, update, delete:
+		- Meters
+		- Usage Profiles
+		- Sites
+		- Buildings
+		- Rooms
+		- Students
+		- Rewards
+	- Able to import a CSV to import Meters, Usage Profiles, Sites, Buildings and Rooms in bulk.
+- Graphing using [Chart.js](http://www.chartjs.org/)
+- [Apache Ant](http://ant.apache.org/) build script to reduce number of requests, and filesize, by:
+	- Converting all [LESS](http://lesscss.org/) files into a single CSS file, and minifying.
+	- Concatenating all JavaScript files into a single file, and minifying using Google's [Closure Compiler](https://developers.google.com/closure/compiler/)
+
+
+---
+
+
+### RMP Connect
+[http://rmpenterprise.co.uk/products/rmp-connect](http://rmpenterprise.co.uk/products/rmp-connect)
+
+This is a private SaaS system designed to allow companies to easily import, and search, the data they have collected when
+interacting with students. This allows them to target specific groups of students when they are looking to recruit
+placement or graduate students.
+
+- Lead Developer
+- PHP 5.4
+- [Laravel Framework](http://laravel.com/) (v4.0)
+- Authentication with roles. (The system can be completely managed by RMP Enterprise using the admin interface.)
+- Import Data
+	- From CSV
+	- From [Akkroo](https://akkroo.com/) via the [Akkroo REST API](http://docs.akkroo.com/developers/api/)
+- Export Data
+	- To CSV
+	- To [Pure360](http://www.pure360.com/) E-Mail Marketing System.
+- Search/Filter for Students by:
+	- University
+	- Course
+	- Start Year
+	- Placement Year
+	- Graduation Year
+	- UCAS Points
+	- Predicted/Final Grade
+	- Interests
+	- Programmes
+	- Interactions
+	- Gender
+	- International
+	- Favourites
+- Each Student has a profile which can be used to record comments and to list Interactions; Events the student attended.
+- [Apache Ant](http://ant.apache.org/) build script to reduce number of requests, and filesize, by:
+	- Converting all [LESS](http://lesscss.org/) files into a single CSS file, and minifying.
+	- Concatenating all JavaScript files into a single file, and minifying using Google's [Closure Compiler](https://developers.google.com/closure/compiler/)
+
+
+---
+
+
+### Natural Ketosis
+[http://www.naturalketosis.co.uk/store/custom](http://www.naturalketosis.co.uk/store/custom)
+
+This was an existing website developed in CodeIgniter before I joined The Higgs Design Company. I setup an integration with the Shopify API to pull back products, collections, tags and used them to build a custom interface to allow a customer to select the quantities of each product in their diet box.
+
+The user gets sent through the Shopify checkout proceedure with a single product in their order, but the note indicates which items they have selected.
+
+This allows our client to easily manage the products that could go into a box.
+
+
+
+
+---
+
+
+### Le Scarpe
+[http://www.lescarpe.co.uk/](http://www.lescarpe.co.uk/)
+
+Converted a static HTML/CSS build to a Shopify template.
+
+
+---
+
+## Work completed whilst employed at Propeller Communications.
+
+---
+
+
+### Orlebar Brown
 [http://www.orlebarbrown.co.uk/](http://www.orlebarbrown.co.uk/)
 
 - Lead Developer
@@ -42,7 +174,7 @@ Work completed whilst employed at Propeller Communications.
 ---
 
 
-## Young's Hotels
+### Young's Hotels
 [http://www.youngshotels.co.uk/](http://www.youngshotels.co.uk/)
 
 - Lead Developer
@@ -77,7 +209,7 @@ Work completed whilst employed at Propeller Communications.
 ---
 
 
-## XL Video
+### XL Video
 [http://www.xlvideo.tv/](http://www.xlvideo.tv/)
 
 - Lead Developer
@@ -97,7 +229,7 @@ Work completed whilst employed at Propeller Communications.
 ---
 
 
-## Gill Marine
+### Gill Marine
 [http://www.gillmarine.com/gb/](http://www.gillmarine.com/gb/)
 
 - Developer
@@ -149,7 +281,7 @@ Work completed whilst employed at Propeller Communications.
 ---
 
 
-## Maintenance/Changes:
+### Maintenance/Changes:
 
 Hundreds more sites, the agency has developed over 1000 websites.
 
@@ -159,9 +291,12 @@ Hundreds more sites, the agency has developed over 1000 websites.
 
 ## Links
 
-**CV:**        [http://lukearmstrong.co.uk/cv/](http://lukearmstrong.co.uk/cv/)  
-**GitHub:**    [https://github.com/lukearmstrong](https://github.com/lukearmstrong)  
-**Linked In:** [http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/](http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/)  
+**CV:**        [http://lukearmstrong.co.uk/cv/](http://lukearmstrong.co.uk/cv/)
+
+**GitHub:**    [https://github.com/lukearmstrong](https://github.com/lukearmstrong)
+
+**Linked In:** [http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/](http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/)
+
 **Twitter:**   [@6c61](https://twitter.com/6c61)
 
 
