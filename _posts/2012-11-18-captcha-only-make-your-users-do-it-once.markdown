@@ -3,7 +3,6 @@ layout: post
 date: 2012-11-18 11:15
 title: "CAPTCHA"
 description: "Only make your users do it once!"
-#published: false
 ---
 
 
@@ -16,15 +15,15 @@ When I went to edit the page there was a warning recommending I create an accoun
 
 So I decided to create an account. It recommended I choose a username that identifies me personally, so I chose _lukearmstrong_ as my username. I completed the CAPTCHA, filled out the form, and hit submit...
 
-> Login error  
+> Login error
 > Username entered already in use. Please choose a different name.
 
 
 The form was cleared except the username. So I completed the CAPTCHA again, changed my username to _luke_armstrong_, re-entered my password again, and again, and hit submit...
 
-> Login error  
-> The name "Luke armstrong" is too similar to the existing account:  
-> Lukearmstrong (contribs)  
+> Login error
+> The name "Luke armstrong" is too similar to the existing account:
+> Lukearmstrong (contribs)
 > Please choose another name.
 
 

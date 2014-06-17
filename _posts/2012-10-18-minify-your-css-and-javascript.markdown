@@ -47,7 +47,7 @@ This will be our build tool. We will set up an XML file telling it where our CSS
 
 **Linux:** It is simple enough to install this from your package manager, on Ubuntu (and I presume Debian):
 
-    sudo apt-get install default-jdk ant ant-contrib
+	sudo apt-get install default-jdk ant ant-contrib
 
 
 **Windows:** It can be a pain in the arse to install Ant on Windows, luckily [WinAnt](http://code.google.com/p/winant/) makes this process much easier.
@@ -73,11 +73,11 @@ This will be used to minify our JavaScript.
 
 ## A warning about testing in Internet Explorer
 
-> Removal of Style Sheet Limits  
-> In Internet Explorer 9 and earlier, there is a limit of 31 style sheets per webpage. There is also a nesting limit of four levels deep for style sheets that are linked using @import rules.  
+> Removal of Style Sheet Limits
+> In Internet Explorer 9 and earlier, there is a limit of 31 style sheets per webpage. There is also a nesting limit of four levels deep for style sheets that are linked using @import rules.
 > In Internet Explorer 10 (as well as Metro style apps using JavaScript), this limit has been removed. There is no limit to the number of style sheets you can reference per webpage in Internet Explorer 10 or Metro style apps using JavaScript for Windows 8. You are also not limited in the number of times you can nest @import rules inside style sheets.
 
-**Source:** <http://msdn.microsoft.com/library/ie/hh673536.aspx#removal_of_style_sheet_limits>  
+**Source:** <http://msdn.microsoft.com/library/ie/hh673536.aspx#removal_of_style_sheet_limits>
 
 
 ## Research
@@ -125,157 +125,157 @@ When you run `ant` in a folder, it will look for a file called `build.xml`, whic
 
 #### build.xml [[source]](https://github.com/lukearmstrong/minify-css-js/blob/master/build.xml)
 
-    <?xml version="1.0" ?>
-    <project default="default" basedir=".">
-    
-        <target name="default" depends="load.properties, css.concatenate, css.minify, js.concatenate, js.minify" />
-    
-    
-        <target name="load.properties">
-            <echo>Initialize Variables</echo>
-    
-            <property name="css.path" value="public/css" />
-            <echo message="css.path:                   ${css.path}" />
-    
-            <property name="js.path" value="public/js" />
-            <echo message="js.path:                    ${js.path}" />
-    
-            <property name="build.path" value="public/build" />
-            <echo message="build.path:                 ${build.path}" />
-    
-            <property name="yuiCompressor.path" value="ant/yuicompressor-2.4.7.jar" />
-            <echo message="yuiCompressor.path:         ${yuiCompressor.path}" />
-    
-            <property name="googleClosureCompiler.path" value="ant/compiler.jar" />
-            <echo message="googleClosureCompiler.path: ${googleClosureCompiler.path}" />
-        </target>
-    
-    
-        <target name="css.concatenate" depends="load.properties">
-            <echo># Concatenate CSS files:</echo>
-            <echo>cat ${css.path}/1-normalize.css  >  ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/2-base.css       >> ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/screen/*.css     >> ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/3-helpers.css    >> ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/4-responsive.css >> ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/responsive/*.css >> ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/5-print.css      >> ${build.path}/style.css</echo>
-            <echo>cat ${css.path}/print/*.css      >> ${build.path}/style.css</echo>
-    
-            <concat destfile="${build.path}/style.css" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
-                <filelist dir="${css.path}" files="1-normalize.css" />
-                <filelist dir="${css.path}" files="2-base.css" />
-                <fileset dir="${css.path}/screen/">
-                    <include name="*.css" />
-                </fileset>
-                <filelist dir="${css.path}/" files="3-helpers.css" />
-                <filelist dir="${css.path}/" files="4-responsive.css" />
-                <fileset dir="${css.path}/responsive/">
-                    <include name="*.css" />
-                </fileset>
-                <filelist dir="${css.path}/" files="5-print.css" />
-                <fileset dir="${css.path}/print/">
-                    <include name="*.css" />
-                </fileset>
-            </concat>
-        </target>
-    
-    
-        <target name="css.minify" depends="load.properties">
-            <echo># Minify CSS using YUI Compressor:</echo>
-            <echo>java -jar ${yuiCompressor.path} ${build.path}/style.css -o ${build.path}/style.min.css</echo>
-    
-            <apply executable="java" parallel="false">
-                <fileset dir="${build.path}" includes="style.css" />
-                <mapper type="glob" from="style.css" to="${build.path}/style.min.css" />
-                <arg line="-jar" />
-                <arg path="${yuiCompressor.path}" />
-                <srcfile />
-                <arg line="-o" />
-                <targetfile />
-            </apply>
-        </target>
-    
-    
-        <target name="js.concatenate" depends="load.properties">
-            <echo># Concatenate JS files:</echo>
-            <echo>cat ${js.path}/lib/*.js >  ${build.path}/scripts.js</echo>
-            <echo>cat ${js.path}/src/*.js >> ${build.path}/scripts.js</echo>
-    
-            <concat destfile="${build.path}/scripts.js" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
-                <fileset dir="${js.path}/lib/">
-                    <include name="*.js" />
-                </fileset>
-                <fileset dir="${js.path}/src/">
-                    <include name="*.js" />
-                </fileset>
-            </concat>
-        </target>
-    
-    
-        <target name="js.minify" depends="load.properties">
-            <echo># Minify JavaScript using Google Closure Compiler:</echo>
-            <echo>java -jar ${googleClosureCompiler.path} --js ${build.path}/scripts.js --js_output_file ${build.path}/scripts.min.js</echo>
-    
-            <apply executable="java" parallel="false">
-                <fileset dir="${build.path}" includes="scripts.js" />
-                <mapper type="glob" from="scripts.js" to="${build.path}/scripts.min.js" />
-                <arg line="-jar" />
-                <arg path="${googleClosureCompiler.path}" />
-                <arg line="--js" />
-                <srcfile />
-                <arg line="--js_output_file" />
-                <targetfile />
-            </apply>
-        </target>	
-    
-    </project>
+	<?xml version="1.0" ?>
+	<project default="default" basedir=".">
+
+		<target name="default" depends="load.properties, css.concatenate, css.minify, js.concatenate, js.minify" />
+
+
+		<target name="load.properties">
+			<echo>Initialize Variables</echo>
+
+			<property name="css.path" value="public/css" />
+			<echo message="css.path:                   ${css.path}" />
+
+			<property name="js.path" value="public/js" />
+			<echo message="js.path:                    ${js.path}" />
+
+			<property name="build.path" value="public/build" />
+			<echo message="build.path:                 ${build.path}" />
+
+			<property name="yuiCompressor.path" value="ant/yuicompressor-2.4.7.jar" />
+			<echo message="yuiCompressor.path:         ${yuiCompressor.path}" />
+
+			<property name="googleClosureCompiler.path" value="ant/compiler.jar" />
+			<echo message="googleClosureCompiler.path: ${googleClosureCompiler.path}" />
+		</target>
+
+
+		<target name="css.concatenate" depends="load.properties">
+			<echo># Concatenate CSS files:</echo>
+			<echo>cat ${css.path}/1-normalize.css  >  ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/2-base.css       >> ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/screen/*.css     >> ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/3-helpers.css    >> ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/4-responsive.css >> ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/responsive/*.css >> ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/5-print.css      >> ${build.path}/style.css</echo>
+			<echo>cat ${css.path}/print/*.css      >> ${build.path}/style.css</echo>
+
+			<concat destfile="${build.path}/style.css" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
+				<filelist dir="${css.path}" files="1-normalize.css" />
+				<filelist dir="${css.path}" files="2-base.css" />
+				<fileset dir="${css.path}/screen/">
+					<include name="*.css" />
+				</fileset>
+				<filelist dir="${css.path}/" files="3-helpers.css" />
+				<filelist dir="${css.path}/" files="4-responsive.css" />
+				<fileset dir="${css.path}/responsive/">
+					<include name="*.css" />
+				</fileset>
+				<filelist dir="${css.path}/" files="5-print.css" />
+				<fileset dir="${css.path}/print/">
+					<include name="*.css" />
+				</fileset>
+			</concat>
+		</target>
+
+
+		<target name="css.minify" depends="load.properties">
+			<echo># Minify CSS using YUI Compressor:</echo>
+			<echo>java -jar ${yuiCompressor.path} ${build.path}/style.css -o ${build.path}/style.min.css</echo>
+
+			<apply executable="java" parallel="false">
+				<fileset dir="${build.path}" includes="style.css" />
+				<mapper type="glob" from="style.css" to="${build.path}/style.min.css" />
+				<arg line="-jar" />
+				<arg path="${yuiCompressor.path}" />
+				<srcfile />
+				<arg line="-o" />
+				<targetfile />
+			</apply>
+		</target>
+
+
+		<target name="js.concatenate" depends="load.properties">
+			<echo># Concatenate JS files:</echo>
+			<echo>cat ${js.path}/lib/*.js >  ${build.path}/scripts.js</echo>
+			<echo>cat ${js.path}/src/*.js >> ${build.path}/scripts.js</echo>
+
+			<concat destfile="${build.path}/scripts.js" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
+				<fileset dir="${js.path}/lib/">
+					<include name="*.js" />
+				</fileset>
+				<fileset dir="${js.path}/src/">
+					<include name="*.js" />
+				</fileset>
+			</concat>
+		</target>
+
+
+		<target name="js.minify" depends="load.properties">
+			<echo># Minify JavaScript using Google Closure Compiler:</echo>
+			<echo>java -jar ${googleClosureCompiler.path} --js ${build.path}/scripts.js --js_output_file ${build.path}/scripts.min.js</echo>
+
+			<apply executable="java" parallel="false">
+				<fileset dir="${build.path}" includes="scripts.js" />
+				<mapper type="glob" from="scripts.js" to="${build.path}/scripts.min.js" />
+				<arg line="-jar" />
+				<arg path="${googleClosureCompiler.path}" />
+				<arg line="--js" />
+				<srcfile />
+				<arg line="--js_output_file" />
+				<targetfile />
+			</apply>
+		</target>
+
+	</project>
 
 
 Now when you run `ant`, it will concatenate all of your CSS files into `public/build/style.css`, and then use YUI Compressor to minify them to `public/build/style.min.css`.
 
 Then it will concatenate all of your JavaScript files into `public/build/scripts.js`, and use Google Closure Compiler to minify them to `public/build/scripts.min.js`.
 
-    ant
-    
-    # Buildfile: /var/www/minify-css-js/build.xml
-    # 
-    # load.properties:
-    #      [echo] Initialize Variables
-    #      [echo] css.path:                   public/css
-    #      [echo] js.path:                    public/js
-    #      [echo] build.path:                 public/build
-    #      [echo] yuiCompressor.path:         ant/yuicompressor-2.4.7.jar
-    #      [echo] googleClosureCompiler.path: ant/compiler.jar
-    # 
-    # css.concatenate:
-    #      [echo] # Concatenate CSS files:
-    #      [echo] cat public/css/1-normalize.css  >  public/build/style.css
-    #      [echo] cat public/css/2-base.css       >> public/build/style.css
-    #      [echo] cat public/css/screen/*.css     >> public/build/style.css
-    #      [echo] cat public/css/3-helpers.css    >> public/build/style.css
-    #      [echo] cat public/css/4-responsive.css >> public/build/style.css
-    #      [echo] cat public/css/responsive/*.css >> public/build/style.css
-    #      [echo] cat public/css/5-print.css      >> public/build/style.css
-    #      [echo] cat public/css/print/*.css      >> public/build/style.css
-    # 
-    # css.minify:
-    #      [echo] # Minify CSS using YUI Compressor:
-    #      [echo] java -jar ant/yuicompressor-2.4.7.jar public/build/style.css -o public/build/style.min.css
-    # 
-    # js.concatenate:
-    #      [echo] # Concatenate JS files:
-    #      [echo] cat public/js/lib/*.css >  public/build/scripts.js
-    #      [echo] cat public/js/src/*.css >> public/build/scripts.js
-    # 
-    # js.minify:
-    #      [echo] # Minify JavaScript using Google Closure Compiler:
-    #      [echo] java -jar ant/compiler.jar --js public/build/scripts.js --js_output_file public/build/scripts.min.js
-    # 
-    # default:
-    # 
-    # BUILD SUCCESSFUL
-    # Total time: 4 seconds
+	ant
+
+	# Buildfile: /var/www/minify-css-js/build.xml
+	#
+	# load.properties:
+	#      [echo] Initialize Variables
+	#      [echo] css.path:                   public/css
+	#      [echo] js.path:                    public/js
+	#      [echo] build.path:                 public/build
+	#      [echo] yuiCompressor.path:         ant/yuicompressor-2.4.7.jar
+	#      [echo] googleClosureCompiler.path: ant/compiler.jar
+	#
+	# css.concatenate:
+	#      [echo] # Concatenate CSS files:
+	#      [echo] cat public/css/1-normalize.css  >  public/build/style.css
+	#      [echo] cat public/css/2-base.css       >> public/build/style.css
+	#      [echo] cat public/css/screen/*.css     >> public/build/style.css
+	#      [echo] cat public/css/3-helpers.css    >> public/build/style.css
+	#      [echo] cat public/css/4-responsive.css >> public/build/style.css
+	#      [echo] cat public/css/responsive/*.css >> public/build/style.css
+	#      [echo] cat public/css/5-print.css      >> public/build/style.css
+	#      [echo] cat public/css/print/*.css      >> public/build/style.css
+	#
+	# css.minify:
+	#      [echo] # Minify CSS using YUI Compressor:
+	#      [echo] java -jar ant/yuicompressor-2.4.7.jar public/build/style.css -o public/build/style.min.css
+	#
+	# js.concatenate:
+	#      [echo] # Concatenate JS files:
+	#      [echo] cat public/js/lib/*.css >  public/build/scripts.js
+	#      [echo] cat public/js/src/*.css >> public/build/scripts.js
+	#
+	# js.minify:
+	#      [echo] # Minify JavaScript using Google Closure Compiler:
+	#      [echo] java -jar ant/compiler.jar --js public/build/scripts.js --js_output_file public/build/scripts.min.js
+	#
+	# default:
+	#
+	# BUILD SUCCESSFUL
+	# Total time: 4 seconds
 
 
 #### index.php [[source]](https://github.com/lukearmstrong/minify-css-js/blob/master/public/index.php)
@@ -296,102 +296,103 @@ The idea is that you add files to the directories; `public/css/screen`, `public/
 
 With javascript there are 3 directories setup:
 
-* `public/js/vendor` this contains files you need to use separately, for example I have jquery, modernizr, and dd_belatedPNG.  
-* `public/js/lib` this contains files that will be concatenated and minified first, so you should put things in this folder such as jQuery plugins, etc, that the rest of your JavaScript relies on.  
+* `public/js/vendor` this contains files you need to use separately, for example I have jquery, modernizr, and dd_belatedPNG.
+* `public/js/lib` this contains files that will be concatenated and minified first, so you should put things in this folder such as jQuery plugins, etc, that the rest of your JavaScript relies on.
 * `public/js/src` this contains files that will be concatenated and minified last, so these are generally the site specific files that are making use of functions previously defined in `vendor` or `lib`.
 
 
 ###### HTML
 
-    <?php require_once '../all-the-things.php'; ?>
-    <!DOCTYPE html>
-    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8">        <![endif]-->
-    <!--[if IE 8]>         <html class="no-js lt-ie9">               <![endif]-->
-    <!--[if gt IE 8]><!--> <html class="no-js">                      <!--<![endif]-->
-        <head>
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    
-            <title>Minify your CSS and JavaScript</title>
-            <meta name="description" content="...">
-    
-            <meta name="viewport" content="width=device-width" />
-    
-            <?php if ( ! LIVE): ?>
-                <link rel="stylesheet" href="/css/1-normalize.css" />
-                <link rel="stylesheet" href="/css/2-base.css" />
-                <?php foreach (getFiles('css/screen', 'css') as $_file): ?>
-                    <link rel="stylesheet" href="/css/screen/<?= $_file ?>" />
-                <?php endforeach; ?>
-                <link rel="stylesheet" href="/css/3-helpers.css" />
-                <link rel="stylesheet" href="/css/4-responsive.css" />
-                <?php foreach (getFiles('css/responsive', 'css') as $_file): ?>
-                    <link rel="stylesheet" href="/css/responsive/<?= $_file ?>" />
-                <?php endforeach; ?>
-                <link rel="stylesheet" href="/css/5-print.css" />
-                <?php foreach (getFiles('css/print', 'css') as $_file): ?>
-                    <link rel="stylesheet" href="/css/print/<?= $_file ?>" />
-                <?php endforeach; ?>
-    		<?php else: ?>
-                <link rel="stylesheet" href="/build/style.min.css" />
-            <?php endif; ?>
-    
-            <!-- Only put JavaScript in the <head> that won't work in the <body> -->
-            <script src="/js/vendor/modernizr-2.6.1.min.js"></script>
-    
-            <!--[if lt IE 7]>
-                <script src="/js/vendor/DD_belatedPNG_0.0.8a-min.js"></script>
-                <script>
-                    /* EXAMPLE */
-                    DD_belatedPNG.fix('img, .png_bg');
-      
-                    /* string argument can be any CSS selector */
-                    /* .png_bg example is unnecessary */
-                    /* change it to what suits you! */
-                </script>
-            <![endif]-->
-        </head>
-        <body>
-            <!--[if lt IE 7]>
-                <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-            <![endif]-->
-    
-            <!-- Add your site or application content here -->
-            <p>Hello world! This is HTML5 Boilerplate.</p>
-    
-            <?php if ( ! LIVE): ?>
-                <!-- Use a local copy of jQuery in development for speed -->
-                <script src="/js/vendor/jquery-1.8.2.min.js"></script>
-    
-                <!-- 1. JavaScript files in /js/lib will be included first -->
-                <?php foreach (getFiles('/js/lib', 'js') as $_file): ?>
-                    <script src="/js/lib/<?= $_file ?>"></script>
-                <?php endforeach; ?>
-    
-                <!-- 2. JavaScript files in /js/src will be included last -->
-                <?php foreach (getFiles('/js/src', 'js') as $_file): ?>
-                    <script src="/js/src/<?= $_file ?>"></script>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <!-- Use jQuery from a CDN in production, fallback to a local copy if there is a problem -->
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-                <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-    
-                <!-- Minified JS files (/js/lib, /js/src) -->
-                <script src="/build/scripts.min.js"></script>
-    
-                <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-                <script>
-                    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-                    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-                    s.parentNode.insertBefore(g,s)}(document,'script'));
-                </script>
-            <?php endif; ?>
-        </body>
-    </html>
+{% highlight html %}
+<?php require_once '../all-the-things.php'; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8">        <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9">               <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js">                      <!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+		<title>Minify your CSS and JavaScript</title>
+		<meta name="description" content="...">
+
+		<meta name="viewport" content="width=device-width" />
+
+		<?php if ( ! LIVE): ?>
+			<link rel="stylesheet" href="/css/1-normalize.css" />
+			<link rel="stylesheet" href="/css/2-base.css" />
+			<?php foreach (getFiles('css/screen', 'css') as $_file): ?>
+				<link rel="stylesheet" href="/css/screen/<?= $_file ?>" />
+			<?php endforeach; ?>
+			<link rel="stylesheet" href="/css/3-helpers.css" />
+			<link rel="stylesheet" href="/css/4-responsive.css" />
+			<?php foreach (getFiles('css/responsive', 'css') as $_file): ?>
+				<link rel="stylesheet" href="/css/responsive/<?= $_file ?>" />
+			<?php endforeach; ?>
+			<link rel="stylesheet" href="/css/5-print.css" />
+			<?php foreach (getFiles('css/print', 'css') as $_file): ?>
+				<link rel="stylesheet" href="/css/print/<?= $_file ?>" />
+			<?php endforeach; ?>
+		<?php else: ?>
+			<link rel="stylesheet" href="/build/style.min.css" />
+		<?php endif; ?>
+
+		<!-- Only put JavaScript in the <head> that won't work in the <body> -->
+		<script src="/js/vendor/modernizr-2.6.1.min.js"></script>
+
+		<!--[if lt IE 7]>
+			<script src="/js/vendor/DD_belatedPNG_0.0.8a-min.js"></script>
+			<script>
+				/* EXAMPLE */
+				DD_belatedPNG.fix('img, .png_bg');
+
+				/* string argument can be any CSS selector */
+				/* .png_bg example is unnecessary */
+				/* change it to what suits you! */
+			</script>
+		<![endif]-->
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+		<![endif]-->
+
+		<!-- Add your site or application content here -->
+		<p>Hello world! This is HTML5 Boilerplate.</p>
+
+		<?php if ( ! LIVE): ?>
+			<!-- Use a local copy of jQuery in development for speed -->
+			<script src="/js/vendor/jquery-1.8.2.min.js"></script>
+
+			<!-- 1. JavaScript files in /js/lib will be included first -->
+			<?php foreach (getFiles('/js/lib', 'js') as $_file): ?>
+				<script src="/js/lib/<?= $_file ?>"></script>
+			<?php endforeach; ?>
+
+			<!-- 2. JavaScript files in /js/src will be included last -->
+			<?php foreach (getFiles('/js/src', 'js') as $_file): ?>
+				<script src="/js/src/<?= $_file ?>"></script>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<!-- Use jQuery from a CDN in production, fallback to a local copy if there is a problem -->
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+			<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+
+			<!-- Minified JS files (/js/lib, /js/src) -->
+			<script src="/build/scripts.min.js"></script>
+
+			<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+			<script>
+				var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+				(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+				g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+				s.parentNode.insertBefore(g,s)}(document,'script'));
+			</script>
+		<?php endif; ?>
+	</body>
+</html>
+{% endhighlight %}
 
 ## Automating Builds
 
@@ -410,30 +411,33 @@ If you have never used hooks before, they are not transferred using git, hooks o
 
 So for each server you will be deploying this repository on, you need to create a hook.
 
-    touch .git/hooks/post-receive
-    chmod +x .git/hooks/post-receive
-    vim .git/hooks/post-receive
-
+```sh
+touch .git/hooks/post-receive
+chmod +x .git/hooks/post-receive
+vim .git/hooks/post-receive
+```
 
 This hook simply runs your `ant` build script when you push something to this repository.
 
-    #!/bin/bash
-    
-    # Hooks runs from within .git directory
-    if [ $(basename $(pwd)) == ".git" ]; then
-    	cd ..
-    	export GIT_DIR=.git
-    fi
-    
-    ant
+```sh
+#!/bin/bash
+
+# Hooks runs from within .git directory
+if [ $(basename $(pwd)) == ".git" ]; then
+	cd ..
+	export GIT_DIR=.git
+fi
+
+ant
+```
 
 
 You will also need to add this to your repository configuration:
 
 `.git/config`
 
-    [receive]
-        denyCurrentBranch = warn
+	[receive]
+		denyCurrentBranch = warn
 
 
 ### Mercurial
@@ -442,6 +446,6 @@ You will also need to add this to your repository configuration:
 
 `.hg/hgrc`
 
-    [hooks]
-    changegroup = ant
+	[hooks]
+	changegroup = ant
 

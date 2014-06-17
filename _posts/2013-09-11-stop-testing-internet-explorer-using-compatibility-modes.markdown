@@ -13,7 +13,9 @@ We have a Windows 8 machine in the office for testing, it has Internet Explorer 
 
 Today we received an e-mail from a client; One of their customers had reported a problem with the website, and was unable to make an order. We didn't know which version of Internet Explorer their customer was using, so we used each compatibility mode to try to reproduce the bug. All of the compatibility modes we tried seemed to work fine, so I decided to test using a VM instead.
 
-![VirtualBox](/images/2013-09-11-stop-testing-internet-explorer-using-compatibility-modes/virtualbox.png)
+<figure>
+	<img src="/images/2013-09-11-stop-testing-internet-explorer-using-compatibility-modes/virtualbox.png" alt="VirtualBox" />
+</figure>
 
 It turns out we had left a `console.log()` in our JavaScript code, this caused IE7 to throw an error.
 

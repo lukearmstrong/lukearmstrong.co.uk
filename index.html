@@ -2,19 +2,18 @@
 layout: default
 ---
 
-<h1 class="sr-only">Blog</h1>
+<div class="homepage">
+	<h1>Luke Armstrong</h1>
+	<p class="strapline">Web Developer</p>
 
-<div class="list-group">
+	<hr />
+
 	{% for post in site.posts %}
-		<a href="{{ post.url }}" class="list-group-item">
-			<h4 class="list-group-item-heading">{{ post.title }} <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></small></h4>
-			<p class="list-group-item-text">{{ post.description }}</p>
-		</a>
+		<article>
+			<h2><a href="{{ post.url }}">{{ post.title }}</a><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></h2>
+			<p>{{ post.description }}</p>
+		</article>
+
+		<hr />
 	{% endfor %}
-</div>
-
-
-<div class="text-center">
-	<a href="https://twitter.com/6c61" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @6c61</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>

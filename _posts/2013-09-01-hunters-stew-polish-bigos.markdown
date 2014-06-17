@@ -76,7 +76,8 @@ The main ingredients are White Cabbage, Sauerkraut, and Pork - but here are the 
 
 9. You may want to take it out of the oven after an hour to give it a stir, then return to the oven for another hour. You shouldn't need to top it up with water during the cooking process.
 
-10. Serve into bowls and eat. _Remove the Bay Leaves if you discover them when serving._
+10. Serve into bowls and eat. _Remove the Bay Leaves if you discover them when serving.
 
-
-![Hunter's Stew (Polish: Bigos)](/images/2013-09-01-hunters-stew-polish-bigos/hunters-stew-bigos.jpg)
+<figure>
+	<img src="/images/2013-09-01-hunters-stew-polish-bigos/hunters-stew-bigos.jpg" alt="Hunter's Stew (Polish: Bigos)" />
+</figure>
