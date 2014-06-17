@@ -1,0 +1,53 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	height: 100%;
+}
+body {
+	background: #000;
+	color: #090;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+}
+.container {
+	width: 480px;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+h1 {
+	font-weight: normal;
+	font-size: 14px;
+	color: #0f0;
+	margin: 0 0 1.5em 0;
+}
+a {
+	color: #0f0;
+	text-decoration: underline;
+}
+p {
+	float: left;
+	line-height: 1.5;
+}
+.blink {
+	float: left;
+	background: #090;
+	color: #000;
+	border-color: #000;
+	margin-left: 1px;
+	-moz-animation: blink 1s steps(5, start) infinite;
+	-webkit-animation: blink 1s steps(5, start) infinite;
+	animation: blink 1s steps(5, start) infinite;
+}
+@keyframes blink {
+	to { visibility: hidden; }
+}
+@-webkit-keyframes blink {
+	to { visibility: hidden; }
+}
