@@ -180,7 +180,9 @@ Your MySQL installation is not secure, so we need to run a script to sort a few 
 
 {% highlight sh %}
 mysql_secure_installation
+{% endhighlight %}
 
+{% highlight sh %}
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
 
