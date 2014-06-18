@@ -1,13 +1,12 @@
 ---
-layout: default
+layout: page
 date: 2014-02-04 23:00
 title: CV
 description: Curriculum Vitae for Luke Armstrong
 ---
 
-# Luke Armstrong
 
-I am a passionate developer who enjoys working within the fast evolving world of web development. My seven years of commercial experience within the industry has emerged from an initial interest at an early age, and is something which has lead to a continued pursuit of professional development on my part.
+I am a passionate developer who enjoys working within the fast evolving world of web development. My eight years of commercial experience within the industry has emerged from an initial interest at an early age, and is something which has lead to a continued pursuit of professional development on my part.
 
 Initially a full time freelancer who completed sites outsourced by a local agency, I built up a portfolio before taking on outsourced projects from other agencies based in Liverpool, Brighton and Gloucestershire. Seeking employment was the next logical step, as the experience and knowledge that can be gained from working alongside other designers and developers is invaluable.
 
@@ -53,12 +52,20 @@ I have previous experience of working with ASP.NET, when I was freelancing I bui
 ## Experience
 
 
+### Web Developer at [RMP Enterprise](http://rmpenterprise.co.uk/)
+**03/2014 – Present**
+
+The Higgs Design Company has merged with RMP Enterprise, we have become the in-house development team for this very successful London based company.
+
+I have joined RMP Enterprise to continue developing and maintaining web applications.
+
+
 ### Web Developer at [The Higgs Design Co.](http://higgsdesign.com/)
-**04/2013 – Present**
+**04/2013 – 03/2014**
 
-I am currently working as a developer at this agency in Birmingham. Working as part of a much smaller team, 2 developers and 2 designers, has given me valuable experience communicating with clients directly, and managing my time and resources to meet deadlines independently.
+Working as part of a much smaller team, 2 developers and 2 designers, has given me valuable experience communicating with clients directly, and managing my time and resources to meet deadlines independently.
 
-I am developing bespoke applications using v4 of the Laravel Framework. These applications have needed me to develop integrations using APIs from Akkroo, Amazon Web Services, Facebook, Twitter, Parse.com, Pure360, Shopify and bespoke APIs.
+I have developed bespoke applications using v4 of the Laravel Framework. These applications have needed me to develop integrations using APIs from Akkroo, Amazon Web Services, Facebook, Twitter, Parse.com, Pure360, Shopify and bespoke APIs.
 
 
 ### Web Developer at [Propeller Communications](http://www.propcom.co.uk/)
@@ -89,20 +96,12 @@ Shortly after launching the new site the spending on PPC campaigns was reduced s
 Bespoke frontend, CMS and e-commerce development. Using ASP.NET 2.0 and MySQL or PHP and MySQL. Working entirely with agencies, they outsourced the development to me.
 
 
-_References available upon request._
-
 
 ---
 
 
 ## Links
 
+**Blog:**      [http://lukearmstrong.co.uk/](http://lukearmstrong.co.uk/)
+
 **Portfolio:** [http://lukearmstrong.co.uk/portfolio/](http://lukearmstrong.co.uk/portfolio/)
-
-**GitHub:**    [https://github.com/lukearmstrong](https://github.com/lukearmstrong)
-
-**Linked In:** [http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/](http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/)
-
-**Twitter:**   [@6c61](https://twitter.com/6c61)
-
-

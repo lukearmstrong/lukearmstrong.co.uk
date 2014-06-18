@@ -96,15 +96,15 @@ h1 {
 	text-align: center;
 }
 .homepage,
-.post-header,
-.post-footer,
-.post-content h2,
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6,
-.post-content p,
-.post-content ul {
+.header,
+.footer,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+.content p,
+.content ul {
 	margin-left: auto;
 	margin-right: auto;
 	width: 640px;
@@ -120,33 +120,33 @@ h6 {
 	margin-bottom: 1em;
 }
 .homepage,
-.post-header,
-.post-footer {
+.header,
+.footer {
 	margin-top: 2em;
 	margin-bottom: 2em;
 }
-.post-header,
-.post-footer {
+.header,
+.footer {
 	text-align: center;
 }
-.post-header time {
+.header time {
 	color: #aaa;
 }
-.post-content p,
-.post-footer p {
+.content p,
+.footer p {
 	font-size: 18px;
 	line-height: 1.4em;
 	margin-bottom: 1em;
 }
-.post-content ul {
+.content ul {
 	margin-bottom: 1em;
 }
-.post-content li {
+.content li {
 	list-style: square;
 	font-size: 16px;
 	line-height: 1.4em;
 }
-.post-content figure {
+.content figure {
 	text-align: center;
 }
 hr {
@@ -198,7 +198,7 @@ blockquote {
 	margin: 2em auto;
 	border-left: 4px solid #272727;
 }
-.post-content blockquote p {
+.content blockquote p {
 	width: 100%;
 	font-size: 16px;
 	font-style: italic;

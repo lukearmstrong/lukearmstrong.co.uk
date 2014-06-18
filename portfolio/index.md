@@ -1,12 +1,9 @@
 ---
-layout: default
+layout: page
 date: 2014-02-04 23:00
 title: Portfolio
 description: Work completed whilst employed at The Higgs Design Company and Propeller Communications
 ---
-
-# Portfolio
-
 
 ## Work completed whilst employed at The Higgs Design Company.
 
@@ -291,12 +288,6 @@ Hundreds more sites, the agency has developed over 1000 websites.
 
 ## Links
 
-**CV:**        [http://lukearmstrong.co.uk/cv/](http://lukearmstrong.co.uk/cv/)
+**Blog:** [http://lukearmstrong.co.uk/](http://lukearmstrong.co.uk/)
 
-**GitHub:**    [https://github.com/lukearmstrong](https://github.com/lukearmstrong)
-
-**Linked In:** [http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/](http://uk.linkedin.com/pub/luke-armstrong/59/a01/557/)
-
-**Twitter:**   [@6c61](https://twitter.com/6c61)
-
-
+**CV:**   [http://lukearmstrong.co.uk/cv/](http://lukearmstrong.co.uk/cv/)
