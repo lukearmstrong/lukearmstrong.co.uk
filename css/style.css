@@ -138,6 +138,9 @@ h6 {
 	line-height: 1.4em;
 	margin-bottom: 1em;
 }
+.post-content ul {
+	margin-bottom: 1em;
+}
 .post-content li {
 	list-style: square;
 	font-size: 16px;
@@ -183,31 +186,56 @@ a:hover {
 .cf {
     *zoom: 1;
 }
+b, strong {
+	font-weight: bold;
+}
+i, em {
+	font-style: italic;
+}
+blockquote {
+	width: 640px;
+	max-width: 100%;
+	margin: 2em auto;
+	border-left: 4px solid #272727;
+}
+.post-content blockquote p {
+	width: 100%;
+	font-size: 16px;
+	font-style: italic;
+}
 
 
 /*
 	Syntax Highlighting using Pygments
 */
-.highlight {
-	width: 960px;
-	max-width: 100%;
-	margin: 2em auto;
-}
-pre code {
-	font-family: "Andale Mono", AndaleMono, monospace;
-	font-size: 13px;
-	padding: 1em;
-	border-radius: 1em;
-	background: #272727;
-	display: block;
-	color: #bfbfbf;
-	overflow: scroll;
+pre {
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 code {
-	padding: 1px 4px 3px 4px;
 	background: #eee;
-	border-radius: 5px;
-	color: #666;
+	color: #000;
+	font-family: "Andale Mono", AndaleMono, monospace;
+	font-size: 13px;
+	margin: 0 2px;
+	padding: 3px 5px;
+}
+.highlight {
+	margin: 2em auto;
+	max-width: 100%;
+	width: 960px;
+}
+pre code {
+	background: #272727;
+	border-radius: 1em;
+	color: #bfbfbf;
+	display: block;
+	line-height: 1.3em;
+	margin: 0;
+	padding: 1em;
 }
 .hll { background-color: #49483e }
 .c { color: #75715e } /* Comment */
@@ -268,6 +296,18 @@ code {
 .vg { color: #f8f8f2 } /* Name.Variable.Global */
 .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+/* Console Overrides */
+code.sh,
+code.sh .err,
+code.sh .k,
+code.sh .nb,
+code.sh .o,
+code.sh .s1,
+code.sh .s2 {
+	color: #0c0;
+	background: #272727;
+}
 
 
 

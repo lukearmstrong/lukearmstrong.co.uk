@@ -78,6 +78,4 @@ The documentation for the GitHub API (v3) mentions there is a limit of 5000 API 
 
 ## Stay tuned...
 
-Getting tired now, may write more tomorrow. I've thought of a name... **Octodocs**
-
-[lukearmstrong/octodocs](https://github.com/lukearmstrong/octodocs)
+Getting tired now, may write more tomorrow. I've thought of a name... [Octodocs](https://github.com/lukearmstrong/octodocs)

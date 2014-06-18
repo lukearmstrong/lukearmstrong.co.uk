@@ -47,8 +47,9 @@ This will be our build tool. We will set up an XML file telling it where our CSS
 
 **Linux:** It is simple enough to install this from your package manager, on Ubuntu (and I presume Debian):
 
+{% highlight sh %}
 	sudo apt-get install default-jdk ant ant-contrib
-
+{% endhighlight %}
 
 **Windows:** It can be a pain in the arse to install Ant on Windows, luckily [WinAnt](http://code.google.com/p/winant/) makes this process much easier.
 
@@ -125,157 +126,161 @@ When you run `ant` in a folder, it will look for a file called `build.xml`, whic
 
 #### build.xml [[source]](https://github.com/lukearmstrong/minify-css-js/blob/master/build.xml)
 
-	<?xml version="1.0" ?>
-	<project default="default" basedir=".">
+{% highlight xml %}
+<?xml version="1.0" ?>
+<project default="default" basedir=".">
 
-		<target name="default" depends="load.properties, css.concatenate, css.minify, js.concatenate, js.minify" />
-
-
-		<target name="load.properties">
-			<echo>Initialize Variables</echo>
-
-			<property name="css.path" value="public/css" />
-			<echo message="css.path:                   ${css.path}" />
-
-			<property name="js.path" value="public/js" />
-			<echo message="js.path:                    ${js.path}" />
-
-			<property name="build.path" value="public/build" />
-			<echo message="build.path:                 ${build.path}" />
-
-			<property name="yuiCompressor.path" value="ant/yuicompressor-2.4.7.jar" />
-			<echo message="yuiCompressor.path:         ${yuiCompressor.path}" />
-
-			<property name="googleClosureCompiler.path" value="ant/compiler.jar" />
-			<echo message="googleClosureCompiler.path: ${googleClosureCompiler.path}" />
-		</target>
+	<target name="default" depends="load.properties, css.concatenate, css.minify, js.concatenate, js.minify" />
 
 
-		<target name="css.concatenate" depends="load.properties">
-			<echo># Concatenate CSS files:</echo>
-			<echo>cat ${css.path}/1-normalize.css  >  ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/2-base.css       >> ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/screen/*.css     >> ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/3-helpers.css    >> ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/4-responsive.css >> ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/responsive/*.css >> ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/5-print.css      >> ${build.path}/style.css</echo>
-			<echo>cat ${css.path}/print/*.css      >> ${build.path}/style.css</echo>
+	<target name="load.properties">
+		<echo>Initialize Variables</echo>
 
-			<concat destfile="${build.path}/style.css" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
-				<filelist dir="${css.path}" files="1-normalize.css" />
-				<filelist dir="${css.path}" files="2-base.css" />
-				<fileset dir="${css.path}/screen/">
-					<include name="*.css" />
-				</fileset>
-				<filelist dir="${css.path}/" files="3-helpers.css" />
-				<filelist dir="${css.path}/" files="4-responsive.css" />
-				<fileset dir="${css.path}/responsive/">
-					<include name="*.css" />
-				</fileset>
-				<filelist dir="${css.path}/" files="5-print.css" />
-				<fileset dir="${css.path}/print/">
-					<include name="*.css" />
-				</fileset>
-			</concat>
-		</target>
+		<property name="css.path" value="public/css" />
+		<echo message="css.path:                   ${css.path}" />
+
+		<property name="js.path" value="public/js" />
+		<echo message="js.path:                    ${js.path}" />
+
+		<property name="build.path" value="public/build" />
+		<echo message="build.path:                 ${build.path}" />
+
+		<property name="yuiCompressor.path" value="ant/yuicompressor-2.4.7.jar" />
+		<echo message="yuiCompressor.path:         ${yuiCompressor.path}" />
+
+		<property name="googleClosureCompiler.path" value="ant/compiler.jar" />
+		<echo message="googleClosureCompiler.path: ${googleClosureCompiler.path}" />
+	</target>
 
 
-		<target name="css.minify" depends="load.properties">
-			<echo># Minify CSS using YUI Compressor:</echo>
-			<echo>java -jar ${yuiCompressor.path} ${build.path}/style.css -o ${build.path}/style.min.css</echo>
+	<target name="css.concatenate" depends="load.properties">
+		<echo># Concatenate CSS files:</echo>
+		<echo>cat ${css.path}/1-normalize.css  >  ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/2-base.css       >> ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/screen/*.css     >> ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/3-helpers.css    >> ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/4-responsive.css >> ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/responsive/*.css >> ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/5-print.css      >> ${build.path}/style.css</echo>
+		<echo>cat ${css.path}/print/*.css      >> ${build.path}/style.css</echo>
 
-			<apply executable="java" parallel="false">
-				<fileset dir="${build.path}" includes="style.css" />
-				<mapper type="glob" from="style.css" to="${build.path}/style.min.css" />
-				<arg line="-jar" />
-				<arg path="${yuiCompressor.path}" />
-				<srcfile />
-				<arg line="-o" />
-				<targetfile />
-			</apply>
-		</target>
-
-
-		<target name="js.concatenate" depends="load.properties">
-			<echo># Concatenate JS files:</echo>
-			<echo>cat ${js.path}/lib/*.js >  ${build.path}/scripts.js</echo>
-			<echo>cat ${js.path}/src/*.js >> ${build.path}/scripts.js</echo>
-
-			<concat destfile="${build.path}/scripts.js" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
-				<fileset dir="${js.path}/lib/">
-					<include name="*.js" />
-				</fileset>
-				<fileset dir="${js.path}/src/">
-					<include name="*.js" />
-				</fileset>
-			</concat>
-		</target>
+		<concat destfile="${build.path}/style.css" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
+			<filelist dir="${css.path}" files="1-normalize.css" />
+			<filelist dir="${css.path}" files="2-base.css" />
+			<fileset dir="${css.path}/screen/">
+				<include name="*.css" />
+			</fileset>
+			<filelist dir="${css.path}/" files="3-helpers.css" />
+			<filelist dir="${css.path}/" files="4-responsive.css" />
+			<fileset dir="${css.path}/responsive/">
+				<include name="*.css" />
+			</fileset>
+			<filelist dir="${css.path}/" files="5-print.css" />
+			<fileset dir="${css.path}/print/">
+				<include name="*.css" />
+			</fileset>
+		</concat>
+	</target>
 
 
-		<target name="js.minify" depends="load.properties">
-			<echo># Minify JavaScript using Google Closure Compiler:</echo>
-			<echo>java -jar ${googleClosureCompiler.path} --js ${build.path}/scripts.js --js_output_file ${build.path}/scripts.min.js</echo>
+	<target name="css.minify" depends="load.properties">
+		<echo># Minify CSS using YUI Compressor:</echo>
+		<echo>java -jar ${yuiCompressor.path} ${build.path}/style.css -o ${build.path}/style.min.css</echo>
 
-			<apply executable="java" parallel="false">
-				<fileset dir="${build.path}" includes="scripts.js" />
-				<mapper type="glob" from="scripts.js" to="${build.path}/scripts.min.js" />
-				<arg line="-jar" />
-				<arg path="${googleClosureCompiler.path}" />
-				<arg line="--js" />
-				<srcfile />
-				<arg line="--js_output_file" />
-				<targetfile />
-			</apply>
-		</target>
+		<apply executable="java" parallel="false">
+			<fileset dir="${build.path}" includes="style.css" />
+			<mapper type="glob" from="style.css" to="${build.path}/style.min.css" />
+			<arg line="-jar" />
+			<arg path="${yuiCompressor.path}" />
+			<srcfile />
+			<arg line="-o" />
+			<targetfile />
+		</apply>
+	</target>
 
-	</project>
+
+	<target name="js.concatenate" depends="load.properties">
+		<echo># Concatenate JS files:</echo>
+		<echo>cat ${js.path}/lib/*.js >  ${build.path}/scripts.js</echo>
+		<echo>cat ${js.path}/src/*.js >> ${build.path}/scripts.js</echo>
+
+		<concat destfile="${build.path}/scripts.js" encoding="UTF-8" eol="lf" fixlastline="yes" outputencoding="UTF-8">
+			<fileset dir="${js.path}/lib/">
+				<include name="*.js" />
+			</fileset>
+			<fileset dir="${js.path}/src/">
+				<include name="*.js" />
+			</fileset>
+		</concat>
+	</target>
+
+
+	<target name="js.minify" depends="load.properties">
+		<echo># Minify JavaScript using Google Closure Compiler:</echo>
+		<echo>java -jar ${googleClosureCompiler.path} --js ${build.path}/scripts.js --js_output_file ${build.path}/scripts.min.js</echo>
+
+		<apply executable="java" parallel="false">
+			<fileset dir="${build.path}" includes="scripts.js" />
+			<mapper type="glob" from="scripts.js" to="${build.path}/scripts.min.js" />
+			<arg line="-jar" />
+			<arg path="${googleClosureCompiler.path}" />
+			<arg line="--js" />
+			<srcfile />
+			<arg line="--js_output_file" />
+			<targetfile />
+		</apply>
+	</target>
+
+</project>
+{% endhighlight %}
 
 
 Now when you run `ant`, it will concatenate all of your CSS files into `public/build/style.css`, and then use YUI Compressor to minify them to `public/build/style.min.css`.
 
 Then it will concatenate all of your JavaScript files into `public/build/scripts.js`, and use Google Closure Compiler to minify them to `public/build/scripts.min.js`.
 
-	ant
+{% highlight sh %}
+ant
 
-	# Buildfile: /var/www/minify-css-js/build.xml
-	#
-	# load.properties:
-	#      [echo] Initialize Variables
-	#      [echo] css.path:                   public/css
-	#      [echo] js.path:                    public/js
-	#      [echo] build.path:                 public/build
-	#      [echo] yuiCompressor.path:         ant/yuicompressor-2.4.7.jar
-	#      [echo] googleClosureCompiler.path: ant/compiler.jar
-	#
-	# css.concatenate:
-	#      [echo] # Concatenate CSS files:
-	#      [echo] cat public/css/1-normalize.css  >  public/build/style.css
-	#      [echo] cat public/css/2-base.css       >> public/build/style.css
-	#      [echo] cat public/css/screen/*.css     >> public/build/style.css
-	#      [echo] cat public/css/3-helpers.css    >> public/build/style.css
-	#      [echo] cat public/css/4-responsive.css >> public/build/style.css
-	#      [echo] cat public/css/responsive/*.css >> public/build/style.css
-	#      [echo] cat public/css/5-print.css      >> public/build/style.css
-	#      [echo] cat public/css/print/*.css      >> public/build/style.css
-	#
-	# css.minify:
-	#      [echo] # Minify CSS using YUI Compressor:
-	#      [echo] java -jar ant/yuicompressor-2.4.7.jar public/build/style.css -o public/build/style.min.css
-	#
-	# js.concatenate:
-	#      [echo] # Concatenate JS files:
-	#      [echo] cat public/js/lib/*.css >  public/build/scripts.js
-	#      [echo] cat public/js/src/*.css >> public/build/scripts.js
-	#
-	# js.minify:
-	#      [echo] # Minify JavaScript using Google Closure Compiler:
-	#      [echo] java -jar ant/compiler.jar --js public/build/scripts.js --js_output_file public/build/scripts.min.js
-	#
-	# default:
-	#
-	# BUILD SUCCESSFUL
-	# Total time: 4 seconds
+# Buildfile: /var/www/minify-css-js/build.xml
+#
+# load.properties:
+#      [echo] Initialize Variables
+#      [echo] css.path:                   public/css
+#      [echo] js.path:                    public/js
+#      [echo] build.path:                 public/build
+#      [echo] yuiCompressor.path:         ant/yuicompressor-2.4.7.jar
+#      [echo] googleClosureCompiler.path: ant/compiler.jar
+#
+# css.concatenate:
+#      [echo] # Concatenate CSS files:
+#      [echo] cat public/css/1-normalize.css  >  public/build/style.css
+#      [echo] cat public/css/2-base.css       >> public/build/style.css
+#      [echo] cat public/css/screen/*.css     >> public/build/style.css
+#      [echo] cat public/css/3-helpers.css    >> public/build/style.css
+#      [echo] cat public/css/4-responsive.css >> public/build/style.css
+#      [echo] cat public/css/responsive/*.css >> public/build/style.css
+#      [echo] cat public/css/5-print.css      >> public/build/style.css
+#      [echo] cat public/css/print/*.css      >> public/build/style.css
+#
+# css.minify:
+#      [echo] # Minify CSS using YUI Compressor:
+#      [echo] java -jar ant/yuicompressor-2.4.7.jar public/build/style.css -o public/build/style.min.css
+#
+# js.concatenate:
+#      [echo] # Concatenate JS files:
+#      [echo] cat public/js/lib/*.css >  public/build/scripts.js
+#      [echo] cat public/js/src/*.css >> public/build/scripts.js
+#
+# js.minify:
+#      [echo] # Minify JavaScript using Google Closure Compiler:
+#      [echo] java -jar ant/compiler.jar --js public/build/scripts.js --js_output_file public/build/scripts.min.js
+#
+# default:
+#
+# BUILD SUCCESSFUL
+# Total time: 4 seconds
+{% endhighlight %}
 
 
 #### index.php [[source]](https://github.com/lukearmstrong/minify-css-js/blob/master/public/index.php)
@@ -411,15 +416,16 @@ If you have never used hooks before, they are not transferred using git, hooks o
 
 So for each server you will be deploying this repository on, you need to create a hook.
 
-```sh
+{% highlight sh %}
 touch .git/hooks/post-receive
 chmod +x .git/hooks/post-receive
 vim .git/hooks/post-receive
-```
+{% endhighlight %}
+
 
 This hook simply runs your `ant` build script when you push something to this repository.
 
-```sh
+{% highlight sh %}
 #!/bin/bash
 
 # Hooks runs from within .git directory
@@ -429,15 +435,17 @@ if [ $(basename $(pwd)) == ".git" ]; then
 fi
 
 ant
-```
+{% endhighlight %}
 
 
 You will also need to add this to your repository configuration:
 
 `.git/config`
 
-	[receive]
-		denyCurrentBranch = warn
+{% highlight text %}
+[receive]
+	denyCurrentBranch = warn
+{% endhighlight %}
 
 
 ### Mercurial
@@ -446,6 +454,8 @@ You will also need to add this to your repository configuration:
 
 `.hg/hgrc`
 
-	[hooks]
-	changegroup = ant
+{% highlight text %}
+[hooks]
+changegroup = ant
+{% endhighlight %}
 
