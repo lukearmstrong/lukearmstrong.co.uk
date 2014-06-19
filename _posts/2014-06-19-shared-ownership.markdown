@@ -35,7 +35,7 @@ We didn't receive a single viewing from Bromford after that.
 
 ## Six months later...
 
-Bromford weren't advertising the property online anywhere, so we went to an estate agent who advertised it in the local papers, on Rightmove, etc.
+Bromford weren't advertising the property anywhere, so we went to an estate agent who advertised it in the local papers, on Rightmove, etc.
 
 
 ## One year later...
