@@ -13,7 +13,7 @@ Whilst we were looking I did some research to see if we could get a mortgage, an
 
 The prices of two bedroom properties started at around £150,000... but whilst looking we noticed there were new build shared-ownership flats available.
 
-We could buy a 50% share, and pay rent on the other half. The monthly mortgage payments worked out to be around £400 a month, and the rent worked out to be around £250 a month; including ground rent and service charge.
+We could buy a 50% share, and pay rent on the other half. The mortgage payments worked out to be around £400 a month, and the rent worked out to be around £250 a month; including ground rent and service charge.
 
 Our choices were renting for £700 a month, or buying a shared ownership property and paying £650 a month. Fourtunately my parents were able to give us the 10% deposit required for the mortgage, so we went for it.
 
