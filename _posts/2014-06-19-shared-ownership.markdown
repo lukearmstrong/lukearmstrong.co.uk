@@ -38,6 +38,15 @@ We didn't receive a single viewing from Bromford after that.
 Bromford weren't advertising the property anywhere, so we went to an estate agent who advertised it in the local papers, on Rightmove, etc.
 
 
+## Meanwhile...
+
+Another shared-ownership flat in our block was for sale.
+
+The owner had found a buyer, accepted their offer, and started the process to sell it. But then, at the eleventh hour, Bromford got involved and stopped the sale, the buyer didn't meet the criteria for the shared-ownership scheme.
+
+He gave up trying to sell his flat in the end.
+
+
 ## One year later...
 
 Still no offers.
@@ -51,15 +60,6 @@ We gave up all hope of ever selling. Trapped.
 It dawned on us that the only way we were going to be able to sell the flat, was to buy the remaining half from Bromford, and sell the entire property without any restrictions.
 
 Problem is, we didn't have any money for a deposit to increase the mortgage. I couldn't go back to my parents, I had cleared them out for a deposit on the first half.
-
-
-## Meanwhile...
-
-Another shared-ownership flat in our block was for sale.
-
-The owner had found a buyer, accepted their offer, and started the process to sell it. But then, at the eleventh hour, Bromford got involved and stopped the sale, the buyer didn't meet the criteria for the shared-ownership scheme.
-
-He gave up trying to sell his flat in the end.
 
 
 ## But then, from the darkness...
