@@ -2,7 +2,7 @@
 layout: post
 date: 2014-06-19 20:00
 title: "Shared Ownership"
-description: "Avoid shared ownership, here is my experience..."
+description: "I'm never buying another property ever again, but if you are, avoid shared-ownership."
 ---
 
 Just before Christmas, in 2006, we were notified that we would be evicted from a two bedroom maisonette we were renting. Turns out we were illegally sub-letting the property, as it was a shared ownership property and the owner shouldn't have been renting it out.
@@ -82,6 +82,4 @@ The sale has just recently completed, we sold it to a landlord, you can rent our
 
 ## Conclusion...
 
-I'm never buying another property ever again.
-
-If you are, avoid shared-ownership.
+I'm never buying another property ever again, but if you are, avoid shared-ownership.
