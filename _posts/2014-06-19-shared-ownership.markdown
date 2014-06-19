@@ -66,7 +66,7 @@ He gave up trying to sell his flat in the end.
 
 My parents received a substantial sum of money, my brother had just recently died, and unknown to any of us, [his employer](http://www.sitel.com/) had life insurance policies on all of their staff, which paid out to the employee's next of kin.
 
-They decided to lend us the deposit we needed, in order to get a mortgage to buy the other half of the flat from Bromford. The process was stressful, it took 3 months of chasing various solicitors, but we now owned the entire property.
+They decided to lend us the deposit we needed, in order to get another mortgage to buy the other half of the flat from Bromford. The process was stressful, it took 3 months of chasing various solicitors, but we now owned the entire property.
 
 
 ## No restrictions...
