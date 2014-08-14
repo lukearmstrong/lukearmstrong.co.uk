@@ -53,7 +53,7 @@ I have previous experience of working with ASP.NET, when I was freelancing I bui
 
 
 ### Web Developer at [RMP Enterprise](http://rmpenterprise.co.uk/)
-**03/2014 – Present**
+**03/2014 – 08/2014**
 
 The Higgs Design Company has merged with RMP Enterprise, we have become the in-house development team for this very successful London based company.
 
