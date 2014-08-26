@@ -52,6 +52,10 @@ I have previous experience of working with ASP.NET, when I was freelancing I bui
 ## Experience
 
 
+### Web Developer at [Intelligent Golf](http://www.intelligentgolf.co.uk/)
+**08/2014 – Present**
+
+
 ### Web Developer at [RMP Enterprise](http://rmpenterprise.co.uk/)
 **03/2014 – 08/2014**
 
