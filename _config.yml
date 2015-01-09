@@ -1,6 +1,6 @@
-include:   [.well-known]
-markdown:  redcarpet
-permalink: /:year/:month/:title/
-pygments:  true
-safe:      true
-timezone:  Europe/London
+include:     [.well-known]
+markdown:    redcarpet
+permalink:   /:year/:month/:title/
+Highlighter: pygments
+safe:        true
+timezone:    Europe/London
