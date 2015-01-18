@@ -281,13 +281,3 @@ Converted a static HTML/CSS build to a Shopify template.
 ### Maintenance/Changes:
 
 Hundreds more sites, the agency has developed over 1000 websites.
-
-
----
-
-
-## Links
-
-**Blog:** [http://lukearmstrong.co.uk/](http://lukearmstrong.co.uk/)
-
-**CV:**   [http://lukearmstrong.co.uk/cv/](http://lukearmstrong.co.uk/cv/)
