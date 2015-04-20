@@ -1,25 +1,19 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div class="homepage">
-	<h1>Luke Armstrong</h1>
-	<p class="strapline">Web Developer</p>
+		<title>Luke Armstrong</title>
+		<meta name="description" content="New website coming soon..." />
 
-	<hr />
+		<link href="/css/404.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Luke Armstrong</h1>
 
-	{% for post in site.posts %}
-		<article>
-			<h2><a href="{{ post.url }}">{{ post.title }}</a><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></h2>
-			<p>{{ post.description }}</p>
-		</article>
-
-		<hr />
-	{% endfor %}
-</div>
-
-<ul class="site-footer">
-	<li><a href="https://github.com/lukearmstrong">GitHub</a></li>
-	<li><a href="https://www.linkedin.com/pub/luke-armstrong/59/a01/557">LinkedIn</a></li>
-	<li><a href="https://twitter.com/6c61" title="@6c61">Twitter</a></li>
-</ul>
+			<p>New website coming soon...</p><pre class="blink"> </pre>
+		</div>
+	</body>
+</html>
