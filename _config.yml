@@ -1,6 +1,4 @@
 include:     [.well-known]
-markdown:    redcarpet
 permalink:   /:year/:month/:title/
-Highlighter: pygments
 safe:        true
 timezone:    Europe/London
