@@ -50,329 +50,119 @@ table {
 /*
 	Styles
 */
+html, body {
+	height: 100%;
+}
 body {
-	font-family: Georgia, Times, "Times New Roman", serif;
-	background-color: #fff;
-	color: #333;
-}
-.site-footer {
-	clear: both;
-	margin: 2em auto;
-	text-align: center;
-}
-.site-footer li {
-	display: inline;
-	margin: 0 1em;
-}
-.homepage h2 time {
-	float: right;
-	color: #aaa;
+	background: #000;
+	color: #090;
+	font-family: "Courier New", Courier, monospace;
 	font-size: 14px;
 }
-.strapline {
-	text-align: center;
-	color: #aaa;
-}
-.homepage article {
-	margin: 3em auto;
-}
-.homepage article p {
-	font-size: 18px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: normal;
-	color: #000;
+.container {
+	width: 480px;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 h1 {
-	font-size: 24px;
-	line-height: 1.4em;
+	font-weight: normal;
+	font-size: 14px;
+	color: #0f0;
+	margin: 0 0 20px 0;
 }
-.homepage h1 {
-	text-align: center;
+a {
+	color: #0f0;
+	text-decoration: underline;
 }
-.homepage,
-.header,
-.footer,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6,
-.content p,
-.content ul {
-	margin-left: auto;
-	margin-right: auto;
-	width: 640px;
-	max-width: 90%;
-}
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-size: 18px;
-	margin-top: 2em;
-	margin-bottom: 1em;
-}
-.homepage,
-.header,
-.footer {
-	margin-top: 2em;
-	margin-bottom: 2em;
-}
-.header,
-.footer {
-	text-align: center;
-}
-.header time {
-	color: #aaa;
-}
-.content p,
-.footer p {
-	font-size: 18px;
-	line-height: 1.4em;
-	margin-bottom: 1em;
-}
-.content ul {
-	margin-bottom: 1em;
-}
-.content li {
-	list-style: square;
-	font-size: 16px;
-	line-height: 1.4em;
-}
-.content figure {
-	text-align: center;
-}
-hr {
-	width: 960px;
-	max-width: 100%;
-	margin: 2em auto;
-	border: 0;
-	height: 1px;
-	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-	background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-	background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-	background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-}
-a,
-a:visited {
-	color: #3300FF;
-}
-a:active,
-a:focus,
-a:hover {
-	color: #FF0033;
-}
-.left {
+p {
+	line-height: 1.5;
+	/*display: inline-block;*/
 	float: left;
+	margin: 0 0 20px 0;
 }
-.right {
-	float: right;
-}
-.cf:before,
-.cf:after {
-    content: " ";
-    display: table;
-}
-.cf:after {
-    clear: both;
-}
-.cf {
-    *zoom: 1;
-}
-b, strong {
-	font-weight: bold;
-}
-i, em {
-	font-style: italic;
-}
-blockquote {
-	width: 640px;
-	max-width: 100%;
-	margin: 2em auto;
-	border-left: 4px solid #272727;
-}
-.content blockquote p {
-	width: 100%;
-	font-size: 16px;
-	font-style: italic;
-}
-
-
-/*
-	Syntax Highlighting using Pygments
-*/
-pre {
-	white-space: pre-wrap;       /* css-3 */
-	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-	white-space: -pre-wrap;      /* Opera 4-6 */
-	white-space: -o-pre-wrap;    /* Opera 7 */
-	word-wrap: break-word;       /* Internet Explorer 5.5+ */
-}
-code {
-	background: #eee;
+.blink {
+	float: left;
+	/*display: inline;*/
+	background: #090;
 	color: #000;
-	font-family: "Andale Mono", AndaleMono, monospace;
-	font-size: 13px;
-	margin: 0 2px;
-	padding: 3px 5px;
+	border-color: #000;
+	margin-left: 1px;
+	-moz-animation: blink 1s steps(5, start) infinite;
+	-webkit-animation: blink 1s steps(5, start) infinite;
+	animation: blink 1s steps(5, start) infinite;
 }
-.highlight {
-	margin: 2em auto;
-	max-width: 100%;
-	width: 960px;
+@keyframes blink {
+	to { visibility: hidden; }
 }
-pre code {
-	background: #272727;
-	border-radius: 1em;
-	color: #bfbfbf;
+@-webkit-keyframes blink {
+	to { visibility: hidden; }
+}
+.links {
+	margin: 0 0 20px 0;
 	display: block;
-	line-height: 1.3em;
-	margin: 0;
-	padding: 1em;
+	clear: both;
 }
-.hll { background-color: #49483e }
-.c { color: #75715e } /* Comment */
-.err { color: #960050; background-color: #1e0010 } /* Error */
-.k { color: #66d9ef } /* Keyword */
-.l { color: #ae81ff } /* Literal */
-.n { color: #f8f8f2 } /* Name */
-.o { color: #f92672 } /* Operator */
-.p { color: #f8f8f2 } /* Punctuation */
-.cm { color: #75715e } /* Comment.Multiline */
-.cp { color: #75715e } /* Comment.Preproc */
-.c1 { color: #75715e } /* Comment.Single */
-.cs { color: #75715e } /* Comment.Special */
-.ge { font-style: italic } /* Generic.Emph */
-.gs { font-weight: bold } /* Generic.Strong */
-.kc { color: #66d9ef } /* Keyword.Constant */
-.kd { color: #66d9ef } /* Keyword.Declaration */
-.kn { color: #f92672 } /* Keyword.Namespace */
-.kp { color: #66d9ef } /* Keyword.Pseudo */
-.kr { color: #66d9ef } /* Keyword.Reserved */
-.kt { color: #66d9ef } /* Keyword.Type */
-.ld { color: #e6db74 } /* Literal.Date */
-.m { color: #ae81ff } /* Literal.Number */
-.s { color: #e6db74 } /* Literal.String */
-.na { color: #a6e22e } /* Name.Attribute */
-.nb { color: #f8f8f2 } /* Name.Builtin */
-.nc { color: #a6e22e } /* Name.Class */
-.no { color: #66d9ef } /* Name.Constant */
-.nd { color: #a6e22e } /* Name.Decorator */
-.ni { color: #f8f8f2 } /* Name.Entity */
-.ne { color: #a6e22e } /* Name.Exception */
-.nf { color: #a6e22e } /* Name.Function */
-.nl { color: #f8f8f2 } /* Name.Label */
-.nn { color: #f8f8f2 } /* Name.Namespace */
-.nx { color: #a6e22e } /* Name.Other */
-.py { color: #f8f8f2 } /* Name.Property */
-.nt { color: #f92672 } /* Name.Tag */
-.nv { color: #f8f8f2 } /* Name.Variable */
-.ow { color: #f92672 } /* Operator.Word */
-.w { color: #f8f8f2 } /* Text.Whitespace */
-.mf { color: #ae81ff } /* Literal.Number.Float */
-.mh { color: #ae81ff } /* Literal.Number.Hex */
-.mi { color: #ae81ff } /* Literal.Number.Integer */
-.mo { color: #ae81ff } /* Literal.Number.Oct */
-.sb { color: #e6db74 } /* Literal.String.Backtick */
-.sc { color: #e6db74 } /* Literal.String.Char */
-.sd { color: #e6db74 } /* Literal.String.Doc */
-.s2 { color: #e6db74 } /* Literal.String.Double */
-.se { color: #ae81ff } /* Literal.String.Escape */
-.sh { color: #e6db74 } /* Literal.String.Heredoc */
-.si { color: #e6db74 } /* Literal.String.Interpol */
-.sx { color: #e6db74 } /* Literal.String.Other */
-.sr { color: #e6db74 } /* Literal.String.Regex */
-.s1 { color: #e6db74 } /* Literal.String.Single */
-.ss { color: #e6db74 } /* Literal.String.Symbol */
-.bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
-.vc { color: #f8f8f2 } /* Name.Variable.Class */
-.vg { color: #f8f8f2 } /* Name.Variable.Global */
-.vi { color: #f8f8f2 } /* Name.Variable.Instance */
-.il { color: #ae81ff } /* Literal.Number.Integer.Long */
-
-/* Console Overrides */
-code.sh,
-code.sh .err,
-code.sh .k,
-code.sh .nb,
-code.sh .o,
-code.sh .s1,
-code.sh .s2 {
-	color: #0c0;
-	background: #272727;
+.links li {
+	display: inline;
 }
-
+.links a {
+	color: #090;
+	text-decoration: none;
+	font-size: 20px;
+	margin: 0 2px 0 0;
+}
+.links a:hover {
+	color: #0f0;
+}
 
 
 /*
-	Printer Friendly Styles
+	Icomoon
 */
-@media print {
-	* {
-		background: transparent !important;
-		color: #000 !important; /* Black prints faster: h5bp.com/s */
-		box-shadow: none !important;
-		text-shadow: none !important;
-	}
-
-	a,
-	a:visited {
-		text-decoration: underline;
-	}
-
-	a[href]:after {
-		content: " (" attr(href) ")";
-	}
-
-	abbr[title]:after {
-		content: " (" attr(title) ")";
-	}
-
-	/*
-	 * Don't show links that are fragment identifiers,
-	 * or use the `javascript:` pseudo protocol
-	 */
-
-	a[href^="#"]:after,
-	a[href^="javascript:"]:after {
-		content: "";
-	}
-
-	pre,
-	blockquote {
-		border: 1px solid #999;
-		page-break-inside: avoid;
-	}
-
-	thead {
-		display: table-header-group; /* h5bp.com/t */
-	}
-
-	tr,
-	img {
-		page-break-inside: avoid;
-	}
-
-	img {
-		max-width: 100% !important;
-	}
-
-	p,
-	h2,
-	h3 {
-		orphans: 3;
-		widows: 3;
-	}
-
-	h2,
-	h3 {
-		page-break-after: avoid;
-	}
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?yjr3ic');
+  src: url('../fonts/icomoon.eot?yjr3ic#iefix') format('embedded-opentype'),
+       url('../fonts/icomoon.ttf?yjr3ic') format('truetype'),
+       url('../fonts/icomoon.woff?yjr3ic') format('woff'),
+       url('../fonts/icomoon.svg?yjr3ic#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-instagram:before {
+  content: "\e900";
+}
+.icon-linkedin:before {
+  content: "\e901";
+}
+.icon-github:before {
+  content: "\e902";
+}
+.icon-twitter:before {
+  content: "\e903";
+}
+.icon-steam:before {
+  content: "\e904";
+}
+
