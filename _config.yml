@@ -1,5 +1,6 @@
 # Jekyll
 safe:      true
+exclude:   ["README.md"]
 permalink: /:year/:month/:title/
 timezone:  Europe/London
 
