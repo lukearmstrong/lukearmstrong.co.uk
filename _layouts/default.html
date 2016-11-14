@@ -3,44 +3,33 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!--[if IE]>
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-			<script src="/js/html5shiv-printshiv.min.js"></script>
-		<![endif]-->
 
-		<title>{% if page.title %}{{ page.title }} · Luke Armstrong{% else %}Luke Armstrong{% endif %}</title>
-		<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Web Developer{% endif %}" />
+		<title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+		<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 
-		<link href="/css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/assets/css/style.css" />
+		<link rel="alternate" href="/atom.xml" title="{{ site.title }}" type="application/atom+xml" />
 
-		<link href="/atom.xml" rel="alternate" title="Luke Armstrong" type="application/atom+xml" />
+		{% if page.twitter_card %}
+			<!--
+				Twitter Cards
+				https://dev.twitter.com/docs/cards
+			-->
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@{{ site.twitter_username }}" />
+			<meta name="twitter:creator" content="@{{ site.twitter_username }}" />
+			<meta name="twitter:title" content="" />
+			<meta name="twitter:description" content="" />
+			<meta name="twitter:image" content="" />
+		{% endif %}
 
-		<!--
-			Twitter Cards
-			https://dev.twitter.com/docs/cards
-		-->
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:site" content="@6c61" />
-		<meta name="twitter:creator" content="@6c61" />
-		<meta name="twitter:url" content="http://lukearmstrong.co.uk{{ page.url }}" />
-		<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Luke Armstrong{% endif %}" />
-		<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Web Developer{% endif %}" />
+		{% if page.error == 404 %}
+			<meta http-equiv="refresh" content="5; url={{ site.url }}" />
+		{% endif %}
 	</head>
 	<body>
-		<main>
-			{{ content }}
-		</main>
 
-		<script>
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-26558463-1']);
-			_gaq.push(['_trackPageview']);
+{{ content }}
 
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
 	</body>
 </html>

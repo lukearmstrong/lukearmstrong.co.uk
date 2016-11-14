@@ -1,4 +1,3 @@
-Sitemap: http://lukearmstrong.co.uk/sitemap.xml
-
-User-agent: *
-Disallow:
+---
+---
+Sitemap: {{ site.url }}/sitemap.xml
