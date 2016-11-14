@@ -1,4 +1,3 @@
-include:     [.well-known]
 permalink:   /:year/:month/:title/
 safe:        true
 timezone:    Europe/London
