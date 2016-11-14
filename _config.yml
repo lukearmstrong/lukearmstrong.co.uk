@@ -13,8 +13,8 @@ sass:
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title:            Luke Armstrong
-email:            me@lukearmstrong.co.uk
+title:            "Luke Armstrong"
+email:            "me@lukearmstrong.co.uk"
 description:      "Web Developer"
 url:              "https://lukearmstrong.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: "6c61"
