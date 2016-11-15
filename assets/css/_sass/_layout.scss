@@ -20,45 +20,73 @@ body {
 	transform: translateY(-50%);
 }
 
+.row {
+	width: 760px;
+	margin: 30px auto;
+}
+
+.centered {
+	text-align: center;
+}
+
 h1 {
 	font-weight: normal;
 	font-size: 14px;
 	color: #0f0;
-	margin: 0 0 20px 0;
+	margin: 0 0 30px 0;
+}
+
+dt, em {
+	color: #0f0;
 }
 
 a {
-	color: #0f0;
+	color: #090;
 	text-decoration: underline;
+
+	&:hover {
+		color: #0f0;
+	}
 }
 
-p {
+p, li, dt, dd {
 	line-height: 1.5;
-	float: left;
-	margin: 0 0 20px 0;
 }
 
-.blink {
-	float: left;
-	background: #090;
-	color: #000;
-	border-color: #000;
-	margin-left: 1px;
-	-moz-animation: blink 1s steps(5, start) infinite;
-	-webkit-animation: blink 1s steps(5, start) infinite;
-	animation: blink 1s steps(5, start) infinite;
+p, ul, dl {
+	margin: 0 0 30px 0;
 }
 
-@keyframes blink {
-	to { visibility: hidden; }
+li ul {
+	list-style: square;
+	margin-left: 40px;
 }
 
-@-webkit-keyframes blink {
-	to { visibility: hidden; }
+pre {
+	// font-family: monospace;
+	display: inline;
 }
+
+// .blink {
+// 	float: left;
+// 	background: #090;
+// 	color: #000;
+// 	border-color: #000;
+// 	margin-left: 1px;
+// 	-moz-animation: blink 1s steps(5, start) infinite;
+// 	-webkit-animation: blink 1s steps(5, start) infinite;
+// 	animation: blink 1s steps(5, start) infinite;
+// }
+
+// @keyframes blink {
+// 	to { visibility: hidden; }
+// }
+
+// @-webkit-keyframes blink {
+// 	to { visibility: hidden; }
+// }
 
 .links {
-	margin: 0 0 20px 0;
 	display: block;
 	clear: both;
 }
