@@ -18,6 +18,7 @@ var leftPressed = false;
 var rightPressed = false;
 
 var score = 0;
+var lives = 3;
 
 var brickRowCount = 3;
 var brickColumnCount = 5;
@@ -101,15 +102,20 @@ function drawScore() {
 	ctx.fillText("Score: " + score, 8, 20);
 }
 
+function drawLives() {
+	ctx.font = "16px Arial";
+	ctx.fillStyle = "#0095DD";
+	ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+}
+
 function drawMessage(text) {
 	ctx.font = "24px Arial";
 	ctx.fillStyle = "#0095DD";
-	ctx.textAlign = 'center';
+	ctx.textAlign = "center";
 	ctx.fillText(text, (canvas.width / 2), (canvas.height / 2));
 }
 
-
-function draw() {
+function redraw() {
 	// Clear on each frame
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -118,6 +124,12 @@ function draw() {
 	collisionDetection();
 	drawBricks();
 	drawScore();
+	drawLives();
+}
+
+
+function draw() {
+	redraw();
 
 	// Check if all bricks are destroyed
 	if (score == brickRowCount * brickColumnCount) {
@@ -144,8 +156,19 @@ function draw() {
 		dy = -dy;
 	} else if (y + dy + ballRadius > canvas.height) {
 		// Bottom of canvas.
-		drawMessage("GAME OVER");
-		clearInterval(gameLoopIntervalId);
+		lives--;
+
+		if (lives <= 0) {
+			redraw();
+			drawMessage("GAME OVER");
+			clearInterval(gameLoopIntervalId);
+		} else {
+			x = canvas.width / 2;
+			y = canvas.height - 30;
+			dx = 2;
+			dy = -2;
+			paddleX = (canvas.width - paddleWidth) / 2;
+		}
 	}
 
 	// Paddle: Movement
