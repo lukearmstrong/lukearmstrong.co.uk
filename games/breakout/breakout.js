@@ -4,7 +4,7 @@ var ctx = canvas.getContext("2d");
 var x = canvas.width / 2;
 var y = canvas.height - 30;
 var ballRadius = 10;
-var ballSpeed = 2;
+var ballSpeed = 3;
 var dx = ballSpeed;
 var dy = -ballSpeed;
 
@@ -19,6 +19,8 @@ var rightPressed = false;
 
 var score = 0;
 var lives = 3;
+
+var isRunning = true;
 
 var brickRowCount = 3;
 var brickColumnCount = 5;
@@ -128,13 +130,13 @@ function redraw() {
 }
 
 
-function draw() {
+function run() {
 	redraw();
 
 	// Check if all bricks are destroyed
 	if (score == brickRowCount * brickColumnCount) {
 		drawMessage("YOU WIN, CONGRATULATIONS!");
-		clearInterval(gameLoopIntervalId);
+		isRunning = false;
 	}
 
 	// Ball: Collision detection for left and right edges of canvas.
@@ -161,12 +163,12 @@ function draw() {
 		if (lives <= 0) {
 			redraw();
 			drawMessage("GAME OVER");
-			clearInterval(gameLoopIntervalId);
+			isRunning = false;
 		} else {
 			x = canvas.width / 2;
 			y = canvas.height - 30;
-			dx = 2;
-			dy = -2;
+			dx = ballSpeed;
+			dy = -ballSpeed;
 			paddleX = (canvas.width - paddleWidth) / 2;
 		}
 	}
@@ -183,6 +185,11 @@ function draw() {
 	// Update Ball Position
 	x += dx;
 	y += dy;
+
+	// Recursively Call Self
+	if (isRunning) {
+		requestAnimationFrame(run);
+	}
 }
 
 // Bind Keyboard Controls
@@ -232,5 +239,5 @@ function mouseMoveHandler(e) {
 	}
 }
 
-// 100fps
-var gameLoopIntervalId = setInterval(draw, 10);
+// Start
+run();
