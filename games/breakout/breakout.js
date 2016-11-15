@@ -240,4 +240,4 @@ function mouseMoveHandler(e) {
 }
 
 // Start
-run();
+requestAnimationFrame(run);
