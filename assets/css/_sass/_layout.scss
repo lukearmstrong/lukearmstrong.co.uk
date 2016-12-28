@@ -33,15 +33,19 @@ body {
 	text-align: center;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	font-size: 14px;
 	color: #0f0;
 	margin: 0 0 30px 0;
 }
 
-dt, em {
+dt, strong {
 	color: #0f0;
+}
+
+em {
+	font-style: italic;
 }
 
 a {
@@ -59,6 +63,18 @@ p, li, dt, dd {
 
 p, ul, dl {
 	margin: 0 0 30px 0;
+}
+
+div.highlighter-rouge {
+	background: #272822;
+	margin: 0 -10px 30px;
+	padding: 10px;
+	overflow-x: scroll;
+	line-height: 1.5;
+}
+
+code.highlighter-rouge {
+	background: #272822;
 }
 
 li ul {
