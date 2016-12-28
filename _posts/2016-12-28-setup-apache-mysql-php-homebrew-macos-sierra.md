@@ -198,7 +198,7 @@ Now create an `index.php` file with the following code in that folder.
 
     phpinfo();
 
-Because we have changed apache's settings, we need to restart it.
+Because we have changed Apache's settings, we need to restart it.
 
     $ sudo apachectl restart
 
@@ -319,3 +319,8 @@ Now you should have everything you need to get started, each time you need to wo
 
 If you got stuck at any point, and want to reference my configuration files, you can browse them here:
 [https://github.com/lukearmstrong/localhost](https://github.com/lukearmstrong/localhost)
+
+
+## Further Reading
+
+- [Setup Wildcard Virtual Hosts for Apache](/2016/12/setup-wildcard-virtual-hosts-apache/)
