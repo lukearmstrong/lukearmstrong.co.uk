@@ -315,6 +315,7 @@ It's an interactive prompt, here were my responses.
 
 ## Summary
 
-Now you should have everything you need to work on PHP projects, each time you need to work on a new project, reference the previous steps to setup a new virtual host for it and restart apache.
+Now you should have everything you need to get started, each time you need to work on a new project, reference the previous steps to setup a new virtual host for it and restart Apache. In the future, if you need to install a different version of PHP, you can reference the steps here, and it should work.
 
-In the future, if you need to install a different version of PHP, you can reference the steps here and it should work.
+If you got stuck at any point, and want to reference my configuration files, you can browse them here:
+[https://github.com/lukearmstrong/localhost](https://github.com/lukearmstrong/localhost)
