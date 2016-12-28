@@ -40,6 +40,17 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 30px 0;
 }
 
+.post-link {
+	border-bottom: 1px solid #090;
+	margin-bottom: 30px;
+}
+.post-link h2 {
+	margin-bottom: 5px;
+}
+.post-link p {
+	margin-top: 20px;
+}
+
 dt, strong {
 	color: #0f0;
 }
