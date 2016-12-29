@@ -1,13 +1,10 @@
-/*
-	Icomoon
-*/
 @font-face {
   font-family: 'icomoon';
-  src: url('../fonts/icomoon.eot?yjr3ic');
-  src: url('../fonts/icomoon.eot?yjr3ic#iefix') format('embedded-opentype'),
-       url('../fonts/icomoon.ttf?yjr3ic') format('truetype'),
-       url('../fonts/icomoon.woff?yjr3ic') format('woff'),
-       url('../fonts/icomoon.svg?yjr3ic#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?xftscx');
+  src:  url('../fonts/icomoon.eot?xftscx#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?xftscx') format('truetype'),
+    url('../fonts/icomoon.woff?xftscx') format('woff'),
+    url('../fonts/icomoon.svg?xftscx#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,18 +24,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-instagram:before {
+.icon-feed:before {
   content: "\e900";
 }
-.icon-linkedin:before {
+.icon-github:before {
   content: "\e901";
 }
-.icon-github:before {
+.icon-instagram:before {
   content: "\e902";
 }
-.icon-twitter:before {
+.icon-linkedin:before {
   content: "\e903";
 }
 .icon-steam:before {
   content: "\e904";
 }
+.icon-twitter:before {
+  content: "\e905";
+}
+
