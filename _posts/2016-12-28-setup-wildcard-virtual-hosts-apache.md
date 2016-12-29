@@ -2,10 +2,10 @@
 layout: post
 date: 2016-12-28 21:00
 title: Setup Wildcard Virtual Hosts for Apache
-description: Fed up with setting up virtual host each time you work on a new project? Here I explain how to setup wildcard virtual hosts with Apache.
+description: Fed up with setting up a virtual host each time you work on a new project? Here I explain how to setup wildcard virtual hosts with Apache.
 ---
 
-Fed up with setting up virtual host each time you work on a new project? Here I explain how to setup wildcard virtual hosts with Apache.
+Fed up with setting up a virtual host each time you work on a new project? Here I explain how to setup wildcard virtual hosts with Apache.
 
 *This is a follow-up from my previous tutorial, [Setup Apache, MySQL and PHP using Homebrew on macOS Sierra](/2016/12/setup-apache-mysql-php-homebrew-macos-sierra/), this tutorial isn't intended to be used on production servers, but to make life easier when working with your local development environment.*
 
