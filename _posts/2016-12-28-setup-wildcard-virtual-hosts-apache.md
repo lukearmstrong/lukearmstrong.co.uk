@@ -3,6 +3,7 @@ layout: post
 date: 2016-12-28 21:00
 title: Setup Wildcard Virtual Hosts for Apache
 description: Fed up with setting up a virtual host each time you work on a new project? Here I explain how to setup wildcard virtual hosts with Apache.
+opengraph_image: 2016-12-28-setup-wildcard-virtual-hosts-apache.png
 ---
 
 Fed up with setting up a virtual host each time you work on a new project? Here I explain how to setup wildcard virtual hosts with Apache.

@@ -3,6 +3,7 @@ layout: post
 date: 2016-12-28 20:40
 title: Setup Apache, MySQL and PHP using Homebrew on macOS Sierra
 description: Step by step instructions to setup a local development environment running Apache, MySQL and PHP using Homebrew on macOS Sierra.
+opengraph_image: 2016-12-28-setup-apache-mysql-php-homebrew-macos-sierra.png
 ---
 
 Hopefully by following the step by step instructions below, you'll end up a local development environment with the ability to setup projects with different versions of PHP simultaneously.
