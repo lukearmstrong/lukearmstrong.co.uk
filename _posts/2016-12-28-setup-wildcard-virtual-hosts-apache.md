@@ -54,12 +54,12 @@ Because we have changed Apache's settings, we need to restart it.
     $ sudo apachectl restart
 
 
-# So how does this work?
+## So how does this work?
 
 It will take the domain name of the request, `wildcardtest1.site` and start serving files stored in `/usr/local/var/www/vhosts/_wildcard/wildcardtest1.site/`. So you could just start adding your project folders to `/usr/local/var/www/vhosts/_wildcard/` for each site you start working on.
 
 
-# But, this won't work for me...
+## But, this won't work for me...
 
 The projects I work on often have different folder structures, for example; Some may have their public web root in a sub-folder called `site/`, `public_html/`, `public/`, `htdocs/`, `httpdocs/`.
 
@@ -68,7 +68,7 @@ Because of this, I couldn't just use the same configuration for all sites.
 Also, if you have any subdomains, even `www.wildcardtest1.site`, then it will be serving files from `/usr/local/var/www/vhosts/_wildcard/www.wildcardtest1.site/` instead of `/usr/local/var/www/vhosts/_wildcard/wildcardtest1.site/`.
 
 
-# We can use symlinks instead
+## We can use symlinks instead
 
 A symbolic link is essentially a shortcut to another location. So what I have decided to do is use symlinks to point to my project's public web root folder. So my wildcard projects still live in `/usr/local/var/www/vhosts/` with all my existing projects, but I point to them from the `/usr/local/var/www/vhosts/_wildcard/` folder.
 
@@ -76,15 +76,15 @@ We can also use symlinks to add multiple domains/sub-domains for the same projec
 
 In my `/usr/local/var/www/vhosts/_wildcard/` folder:
 
-    wildcardtest1.site -> /usr/local/var/www/vhosts/wildcardtest1.site/public/
-    wildcardtest2.site -> /usr/local/var/www/vhosts/wildcardtest2.site/htdocs/
-    wildcardtest3.site -> /usr/local/var/www/vhosts/wildcardtest3.site/
+    wildcardtest1.site     -> /usr/local/var/www/vhosts/wildcardtest1.site/public/
+    wildcardtest2.site     -> /usr/local/var/www/vhosts/wildcardtest2.site/htdocs/
+    wildcardtest3.site     -> /usr/local/var/www/vhosts/wildcardtest3.site/
     www.wildcardtest1.site -> /usr/local/var/www/vhosts/wildcardtest1.site/public/
     www.wildcardtest2.site -> /usr/local/var/www/vhosts/wildcardtest2.site/htdocs/
     www.wildcardtest3.site -> /usr/local/var/www/vhosts/wildcardtest3.site/
 
 
-# Create a new symlink
+## Create a new symlink
 
 Assuming you have copied your project folder to `/usr/local/var/www/vhosts/my-project/` and your public web root is in a sub-folder called `public/`
 
@@ -97,13 +97,13 @@ To create a symlink, open a terminal.
 Here we have created two symlinks for `my-project.site` and `www.my-project.site`, and they will point to `/usr/local/var/www/vhosts/my-project/public/`.
 
 
-# Don't forget to update your /etc/hosts file
+## Don't forget to update your /etc/hosts file
 
     $ sudo vi /etc/hosts
 
 Add this line to the bottom of the file.
 
-    127.0.0.1    my-project.site    www.my-project.site
+    127.0.0.1  my-project.site  www.my-project.site
 
 So now when you go to [http://my-project.site/](http://my-project.site/) in your browser you should see your site.
 

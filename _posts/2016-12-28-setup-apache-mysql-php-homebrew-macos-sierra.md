@@ -208,7 +208,7 @@ To get our new virtual host to work in the browser, we need to edit our `/etc/ho
 
 Add this line to the bottom of the file.
 
-	127.0.0.1    php56.apache.localhost
+	127.0.0.1  php56.apache.localhost
 
 Now open your web browser, and go to [http://php56.apache.localhost](http://php56.apache.localhost), you should see the output from `phpinfo()` showing PHP 5.6.29 is installed.
 
@@ -283,7 +283,7 @@ Again, we need to create an entry in our `/etc/hosts` file.
 
 Add this line to the end of the file.
 
-    127.0.0.1    php70.apache.localhost
+    127.0.0.1  php70.apache.localhost
 
 Now open your web browser, and go to [http://php70.apache.localhost](http://php70.apache.localhost), you should see the output from `phpinfo()` showing PHP 7.0.14 is installed.
 

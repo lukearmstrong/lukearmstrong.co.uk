@@ -18,9 +18,9 @@
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta name="twitter:site" content="@{{ site.twitter_username }}" />
 			<meta name="twitter:creator" content="@{{ site.twitter_username }}" />
-			<meta name="twitter:title" content="" />
-			<meta name="twitter:description" content="" />
-			<meta name="twitter:image" content="" />
+			<meta name="twitter:title" content="{{ page.title }}" />
+			<meta name="twitter:description" content="{{ page.description }}" />
+			<meta name="twitter:image" content="{{ page.image }}" />
 		{% endif %}
 
 		{% if page.error == 404 %}
@@ -30,6 +30,16 @@
 	<body>
 
 		{{ content }}
+
+		<div class="row">
+			<ul class="links">
+				<li><a href="https://www.instagram.com/lukearmst/" title="Instagram"><i class="icon-instagram"></i></a></li>
+				<li><a href="https://github.com/lukearmstrong" title="GitHub"><i class="icon-github"></i></a></li>
+				<li><a href="https://uk.linkedin.com/in/luke-armstrong-557a0159" title="LinkedIn"><i class="icon-linkedin"></i></a></li>
+				<li><a href="https://steamcommunity.com/id/lukearmstrong" title="Steam"><i class="icon-steam"></i></a></li>
+				<li><a href="https://twitter.com/6c61" title="Twitter"><i class="icon-twitter"></i></a></li>
+			</ul>
+		</div>
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

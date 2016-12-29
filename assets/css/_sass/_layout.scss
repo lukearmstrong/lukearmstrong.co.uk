@@ -1,25 +1,8 @@
-html, body {
-	height: 100%;
-}
-
 body {
-	background: #000;
-	color: #090;
-	font-family: "Courier New", Courier, monospace;
+	color: #333;
+	font-family: Verdana, Arial, sans-serif;
 	font-size: 14px;
-}
-
-.container {
-	max-width: 480px;
-	margin: 0 auto;
-	position: relative;
-	top: 50%;
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
-	padding-left: 20px;
-	padding-right: 20px;
+	line-height: 1.5;
 }
 
 .row {
@@ -34,15 +17,22 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-weight: normal;
-	font-size: 14px;
-	color: #0f0;
-	margin: 0 0 30px 0;
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+	padding-top: 10px;
+	line-height: 1.3;
+}
+
+h1 {
+	font-size: 18px;
 }
 
 .post-link {
-	border-bottom: 1px solid #090;
-	margin-bottom: 30px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
 }
 .post-link h2 {
 	margin-bottom: 5px;
@@ -60,20 +50,16 @@ em {
 }
 
 a {
-	color: #090;
-	text-decoration: underline;
+	color: #4078c0;
+	text-decoration: none;
 
 	&:hover {
-		color: #0f0;
+		text-decoration: underline;
 	}
 }
 
-p, li, dt, dd {
-	line-height: 1.5;
-}
-
 p, ul, dl {
-	margin: 0 0 30px 0;
+	margin: 0 0 20px 0;
 }
 
 div.highlighter-rouge {
@@ -81,58 +67,75 @@ div.highlighter-rouge {
 	margin: 0 -10px 30px;
 	padding: 10px;
 	overflow-x: scroll;
-	line-height: 1.5;
 }
 
 code.highlighter-rouge {
-	background: #272822;
+	background: #eee;
+	color: #333;
+	padding: 2px 4px;
 }
 
-li ul {
+li {
 	list-style: square;
-	margin-left: 40px;
+	margin-left: 30px;
 }
 
+code,
 pre {
-	// font-family: monospace;
+	font-family: "Courier New", Courier, monospace;
 	display: inline;
+	color: #fff;
+	
 }
 
-// .blink {
-// 	float: left;
-// 	background: #090;
-// 	color: #000;
-// 	border-color: #000;
-// 	margin-left: 1px;
-// 	-moz-animation: blink 1s steps(5, start) infinite;
-// 	-webkit-animation: blink 1s steps(5, start) infinite;
-// 	animation: blink 1s steps(5, start) infinite;
-// }
-
-// @keyframes blink {
-// 	to { visibility: hidden; }
-// }
-
-// @-webkit-keyframes blink {
-// 	to { visibility: hidden; }
-// }
+code.highlighter-rouge,
+a {
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
 
 .links {
 	display: block;
 	clear: both;
+	text-align: center;
 }
 
 .links li {
 	display: inline;
+	list-style: none;
+	margin: 0;
 }
 
 .links a {
-	color: #090;
+	color: #000;
 	text-decoration: none;
 	font-size: 20px;
-	margin: 0 2px 0 0;
+	margin: 0 10px 0 0;
 }
 
-.links a:hover {
-	color: #0f0;
+.links a:hover .icon-twitter {
+	color: #1da1f2;
+}
+
+.links a:hover .icon-github {
+	color: #333;
+}
+
+.links a:hover .icon-steam {
+	color: #5385A6;
+}
+
+.links a:hover .icon-linkedin {
+	color: #0077b5;
+}
+
+.links a:hover .icon-instagram {
+	color: #e4405f;
+}
+
+time {
+	color: #999;
 }
