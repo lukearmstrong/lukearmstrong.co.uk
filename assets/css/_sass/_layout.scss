@@ -1,15 +1,83 @@
+$bold-font-weight: 500;
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
 body {
-	color: #333;
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.5;
+	color: #5c5c5c;
+	font-family: "Crimson Text", Georgia, Times, "Times New Roman", serif;
+	font-size: 18px;
+	line-height: 1.4em;
 }
 
 .row {
-	max-width: 760px;
-	margin: 30px auto;
-	padding-left: 20px;
-	padding-right: 20px;
+	margin: 0 auto;
+	max-width: 711px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+@media screen and (min-width: 640px) {
+	.row {
+		padding-left: 20px;
+		padding-right: 20px;
+		width: 83.3333%;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.row {
+		width: 66.6667%;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.row {
+		width: 50%;
+	}
+}
+
+code,
+pre {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	display: inline;
+	color: #fff;
+}
+
+div.highlighter-rouge {
+	background: #272822;
+	margin: 0 -15px 30px;
+	padding: 15px;
+	overflow-x: scroll;
+	line-height: 1.0;
+}
+
+@media screen and (min-width: 640px) {
+	div.highlighter-rouge {
+		margin: 0 -20px 30px;
+		padding: 20px;
+	}
+}
+
+code.highlighter-rouge {
+	background: #eee;
+	color: #333;
+	padding: 2px 4px;
+}
+
+code.highlighter-rouge,
+a {
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 .centered {
@@ -17,16 +85,24 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #000;
-	font-size: 16px;
-	font-weight: bold;
+	color: #333;
+	font-size: 24px;
+	font-weight: $bold-font-weight;
 	margin: 0 0 20px 0;
 	padding-top: 10px;
-	line-height: 1.3;
+	line-height: 1.2;
 }
 
 h1 {
-	font-size: 18px;
+	font-size: 32px;
+	margin: 0 0 30px 0;
+	padding-top: 20px;
+}
+
+@media screen and (min-width: 640px) {
+	h1 {
+		padding-top: 40px;
+	}
 }
 
 .post-link {
@@ -45,8 +121,14 @@ h1 {
 	margin-top: 20px;
 }
 
-dt, strong {
-	color: #0f0;
+dt,
+strong {
+	color: #333;
+}
+
+b,
+strong {
+	font-weight: $bold-font-weight;
 }
 
 em {
@@ -66,39 +148,16 @@ p, ul, dl {
 	margin: 0 0 20px 0;
 }
 
-div.highlighter-rouge {
-	background: #272822;
-	margin: 0 -10px 30px;
-	padding: 10px;
-	overflow-x: scroll;
-}
-
-code.highlighter-rouge {
-	background: #eee;
-	color: #333;
-	padding: 2px 4px;
-}
-
 li {
-	list-style: square;
-	margin-left: 30px;
+	list-style: disc;
+	margin-left: 20px;
 }
 
-code,
-pre {
-	font-family: "Courier New", Courier, monospace;
-	display: inline;
-	color: #fff;
-	
-}
-
-code.highlighter-rouge,
-a {
-	white-space: pre-wrap;       /* css-3 */
-	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-	white-space: -pre-wrap;      /* Opera 4-6 */
-	white-space: -o-pre-wrap;    /* Opera 7 */
-	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+@media screen and (min-width: 640px) {
+	li {
+		list-style: disc;
+		margin-left: 40px;
+	}
 }
 
 .links {
@@ -114,7 +173,7 @@ a {
 }
 
 .links a {
-	color: #000;
+	color: #333;
 	text-decoration: none;
 	font-size: 20px;
 	margin: 0 10px 0 0;
