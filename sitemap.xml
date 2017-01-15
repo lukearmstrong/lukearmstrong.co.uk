@@ -25,4 +25,9 @@
 		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
 	</url>
 
+	<url>
+		<loc>{{ site.url }}/games/roll-a-ball/</loc>
+		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+	</url>
+
 </urlset>

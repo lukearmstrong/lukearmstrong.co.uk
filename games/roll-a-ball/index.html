@@ -1,0 +1,55 @@
+---
+layout: default
+title: Roll a Ball
+description: Developed with Unity
+---
+
+<link rel="stylesheet" href="TemplateData/style.css">
+<link rel="shortcut icon" href="TemplateData/favicon.ico" />
+<script src="TemplateData/UnityProgress.js"></script>
+
+<div class="row centered">
+	<h1>Roll a Ball</h1>
+</div>
+
+<div class="template-wrap">
+	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+	<br>
+	<div class="logo"></div>
+	<div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+	<div class="title">Fullscreen</div>
+</div>
+
+<div class="row centered">
+	<dl>
+		<dt>Controls</dt>
+		<dd>
+			<em>W A S D</em> or <em>&#9664; &#9650; &#9660; &#9654;</em>
+		</dd>
+
+		<dt>Tutorial</dt>
+		<dd><a href="https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial/">https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial/</a></dd>
+
+		<dt>Source</dt>
+		<dd><a href="https://github.com/lukearmstrong/unity-tutorial-roll-a-ball">https://github.com/lukearmstrong/unity-tutorial-roll-a-ball</a></dd>
+	</dl>
+</div>
+
+<footer class="row centered">
+	<p><a href="/">&laquo; Back to Homepage</a></p>
+</footer>
+
+<script type='text/javascript'>
+	var Module = {
+		TOTAL_MEMORY: 268435456,
+		errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+		compatibilitycheck: null,
+		backgroundColor: "#222C36",
+		splashStyle: "Light",
+		dataUrl: "Release/roll-a-ball.data",
+		codeUrl: "Release/roll-a-ball.js",
+		asmUrl: "Release/roll-a-ball.asm.js",
+		memUrl: "Release/roll-a-ball.mem",
+	};
+</script>
+<script src="Release/UnityLoader.js"></script>
