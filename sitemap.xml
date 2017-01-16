@@ -8,26 +8,23 @@
 		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
 	</url>
 
-{% for post in site.posts %}
-	<url>
-		<loc>{{ site.url }}{{ post.url }}</loc>
-		<lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-	</url>
-{% endfor %}
+	{% for post in site.posts %}
+		<url>
+			<loc>{{ site.url }}{{ post.url }}</loc>
+			<lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+		</url>
+	{% endfor %}
 
 	<url>
 		<loc>{{ site.url }}/games/</loc>
 		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
 	</url>
 
-	<url>
-		<loc>{{ site.url }}/games/breakout/</loc>
-		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-	</url>
-
-	<url>
-		<loc>{{ site.url }}/games/roll-a-ball/</loc>
-		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-	</url>
+	{% for game in site.games reversed %}
+		<url>
+			<loc>{{ site.url }}{{ game.url | remove: "index.html" }}</loc>
+			<lastmod>{{ game.date | date_to_xmlschema }}</lastmod>
+		</url>
+	{% endfor %}
 
 </urlset>

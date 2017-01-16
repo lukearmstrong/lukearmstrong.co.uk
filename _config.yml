@@ -20,3 +20,22 @@ description:      "Web Developer"
 url:              "https://lukearmstrong.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: "6c61"
 github_username:  "lukearmstrong"
+
+# Collections
+collections:
+  games:
+    output: true
+    permalink: /games/:path:output_ext
+
+# Default Page Settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "games"
+    values:
+      layout: "game"

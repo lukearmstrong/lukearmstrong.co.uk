@@ -114,7 +114,13 @@ h1 {
 .post-link:last-child {
 	border: 0;
 }
-
+.post-link .post-type {
+	float: right;
+	background: #eee;
+    color: #333;
+    padding: 2px 8px;
+    margin: 11px 0 0 0;
+}
 .post-link h2 {
 	margin-bottom: 5px;
 }

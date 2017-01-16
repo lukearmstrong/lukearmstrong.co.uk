@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2016-12-28 20:40
 title: Setup Apache, MySQL and PHP using Homebrew on macOS Sierra
 description: Step by step instructions to setup a local development environment running multiple versions of PHP simultaneously.
@@ -304,7 +303,7 @@ I would recommend you setup a password for root, and only allow access from loca
 
 It's an interactive prompt, here were my responses.
 
-    
+
     Would you like to setup VALIDATE PASSWORD plugin? n
     New password: root
     Re-enter new password: root

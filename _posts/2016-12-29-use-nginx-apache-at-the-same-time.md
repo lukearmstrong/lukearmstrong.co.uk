@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2016-12-29 23:32
 title: Use Nginx and Apache at the same time
 description: How to run Nginx and Apache with multiple versions of PHP on your development environment at the same time.
@@ -184,7 +183,7 @@ Now we need to get Apache working again using *“real”* domain names without 
 Make a new config file for your virtual host `/usr/local/etc/nginx/servers/_default.conf`
 
     #
-    # Any unhandled requests should go to Apache    
+    # Any unhandled requests should go to Apache
     #
     server {
         listen 80 default_server;
