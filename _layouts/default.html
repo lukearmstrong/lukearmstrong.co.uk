@@ -13,7 +13,7 @@
 
 		{% if page.opengraph_image %}
 			<!-- Open Graph: http://ogp.me -->
-			<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+			<meta property="og:url" content="{{ site.url }}{{ page.url | remove: "index.html" }}" />
 			<meta property="og:type" content="article" />
 			<meta property="og:title" content="{{ page.title }}" />
 			<meta property="og:description" content="{{ page.description }}" />
