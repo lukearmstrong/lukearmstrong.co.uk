@@ -1,0 +1,51 @@
+---
+date: 2017-01-18 23:02
+title: 2D UFO Project
+description: Developed with Unity.
+opengraph_image: games/made-with-unity.png
+---
+
+<link rel="stylesheet" href="TemplateData/style.css">
+<script src="TemplateData/UnityProgress.js"></script>
+
+<div class="row centered">
+	<h1>2D UFO Project</h1>
+</div>
+
+<div class="template-wrap">
+	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+	<br />
+	<div class="logo"></div>
+	<div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+	<div class="title">Fullscreen</div>
+</div>
+
+<div class="row centered">
+	<dl>
+		<dt>Controls</dt>
+		<dd>
+			<em>W A S D</em> or <em>&#9664; &#9650; &#9660; &#9654;</em>
+		</dd>
+
+		<dt>Tutorial</dt>
+		<dd><a href="https://unity3d.com/learn/tutorials/projects/2d-ufo-tutorial/">https://unity3d.com/learn/tutorials/projects/2d-ufo-tutorial/</a></dd>
+
+		<dt>Source</dt>
+		<dd><a href="https://github.com/lukearmstrong/unity-tutorial-2d-ufo-project">https://github.com/lukearmstrong/unity-tutorial-2d-ufo-project</a></dd>
+	</dl>
+</div>
+
+<script type='text/javascript'>
+	var Module = {
+		TOTAL_MEMORY: 268435456,
+		errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+		compatibilitycheck: null,
+		backgroundColor: "#222C36",
+		splashStyle: "Light",
+		dataUrl: "Release/ufo.data",
+		codeUrl: "Release/ufo.js",
+		asmUrl: "Release/ufo.asm.js",
+		memUrl: "Release/ufo.mem",
+	};
+</script>
+<script src="Release/UnityLoader.js"></script>
