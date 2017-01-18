@@ -4,6 +4,12 @@ exclude:   ["README.md"]
 permalink: /:year/:month/:title/
 timezone:  Europe/London
 
+gems:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+
 # Sass
 sass:
     sass_dir: /assets/css/_sass/
