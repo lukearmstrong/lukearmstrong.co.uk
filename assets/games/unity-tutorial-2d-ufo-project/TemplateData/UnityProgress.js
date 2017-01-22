@@ -15,7 +15,7 @@ function UnityProgress (dom) {
 	if (Module["backgroundImage"])
 	{
 		var backgroundImg = document.createElement("img");
-		backgroundImg.src = Module["backgroundImage"]; 
+		backgroundImg.src = Module["backgroundImage"];
 		backgroundImg.style.position = "absolute";
 		backgroundImg.style.width = "100%";
 		backgroundImg.style.height = "auto";
@@ -26,13 +26,13 @@ function UnityProgress (dom) {
 
 	var logoImage = document.createElement("img");
 	var splashStyle = Module["splashStyle"] ? Module["splashStyle"] : "Light";
-	logoImage.src = "TemplateData/Logo." + splashStyle + ".png"; 
+	logoImage.src = "/assets/games/unity-tutorial-2d-ufo-project/TemplateData/Logo." + splashStyle + ".png";
 	logoImage.style.position = "absolute";
 	parent.appendChild(logoImage);
 	this.logoImage = logoImage;
 
 	var progressFrame = document.createElement("img");
-	progressFrame.src = "TemplateData/ProgressFrame." + splashStyle + ".png"; 
+	progressFrame.src = "/assets/games/unity-tutorial-2d-ufo-project/TemplateData/ProgressFrame." + splashStyle + ".png";
 	progressFrame.style.position = "absolute";
 	parent.appendChild(progressFrame);
 	this.progressFrame = progressFrame;
@@ -44,7 +44,7 @@ function UnityProgress (dom) {
 	this.progressBar = progressBar;
 
 	var progressBarImg = document.createElement("img");
-	progressBarImg.src = "TemplateData/ProgressBar." + splashStyle + ".png"; 
+	progressBarImg.src = "/assets/games/unity-tutorial-2d-ufo-project/TemplateData/ProgressBar." + splashStyle + ".png";
 	progressBarImg.style.position = "absolute";
 	progressBar.appendChild(progressBarImg);
 	this.progressBarImg = progressBarImg;
@@ -55,21 +55,21 @@ function UnityProgress (dom) {
 	this.messageArea = messageArea;
 
 
-	this.SetProgress = function (progress) { 
+	this.SetProgress = function (progress) {
 		if (this.progress < progress)
-			this.progress = progress; 
+			this.progress = progress;
 		this.messageArea.style.display = "none";
 		this.progressFrame.style.display = "inline";
-		this.progressBar.style.display = "inline";			
+		this.progressBar.style.display = "inline";
 		this.Update();
 	}
 
-	this.SetMessage = function (message) { 
-		this.message = message; 
+	this.SetMessage = function (message) {
+		this.message = message;
 		this.background.style.display = "inline";
 		this.logoImage.style.display = "inline";
 		this.progressFrame.style.display = "none";
-		this.progressBar.style.display = "none";			
+		this.progressBar.style.display = "none";
 		this.Update();
 	}
 

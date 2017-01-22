@@ -31,7 +31,7 @@ github_username:  "lukearmstrong"
 collections:
   games:
     output: true
-    permalink: /games/:path:output_ext
+    permalink: /games/:title/
 
 # Default Page Settings
 defaults:

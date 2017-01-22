@@ -9,7 +9,7 @@ permlink: /games/index.html
 
 	{% for game in site.games reversed %}
 		<div class="post-link">
-			<h2><a href="{{ game.url | remove: "index.html" }}">{{ game.title }}</a></h2>
+			<h2><a href="{{ game.url }}">{{ game.title }}</a></h2>
 			<time datetime="{{ game.date | date_to_xmlschema }}">{{ game.date | date: "%B %d, %Y" }}</time>
 
 			<p>{{ game.description }}</p>

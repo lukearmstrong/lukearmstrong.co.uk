@@ -8,20 +8,18 @@ layout: default
 	{% assign documents = site.documents | sort: 'date' | reverse %}
 
 	{% for document in documents %}
-		{% if document.title %}
-			<div class="post-link">
-				{% if document.collection == 'games' %}
-					<div class="post-type">Game</div>
-				{% endif %}
+		<div class="post-link">
+			{% if document.collection == 'games' %}
+				<div class="post-type">Game</div>
+			{% endif %}
 
-				<h2><a href="{{ document.url | remove: "index.html" }}">{{ document.title }}</a></h2>
+			<h2><a href="{{ document.url }}">{{ document.title }}</a></h2>
 
-				{% if document.date %}
-					<time datetime="{{ document.date | date_to_xmlschema }}">{{ document.date | date: "%B %d, %Y" }}</time>
-				{% endif %}
+			{% if document.date %}
+				<time datetime="{{ document.date | date_to_xmlschema }}">{{ document.date | date: "%B %d, %Y" }}</time>
+			{% endif %}
 
-				<p>{{ document.description }}</p>
-			</div>
-		{% endif %}
+			<p>{{ document.description }}</p>
+		</div>
 	{% endfor %}
 </div>

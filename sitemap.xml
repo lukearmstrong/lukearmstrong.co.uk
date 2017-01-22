@@ -22,7 +22,7 @@
 
 	{% for game in site.games reversed %}
 		<url>
-			<loc>{{ site.url }}{{ game.url | remove: "index.html" }}</loc>
+			<loc>{{ site.url }}{{ game.url }}</loc>
 			<lastmod>{{ game.date | date_to_xmlschema }}</lastmod>
 		</url>
 	{% endfor %}
