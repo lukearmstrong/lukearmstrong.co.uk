@@ -1,0 +1,51 @@
+---
+date: 2017-02-22 18:40
+title: 2D Roguelike
+description: Developed with Unity 5.5 and built for WebGL.
+opengraph_image: games/made-with-unity.png
+---
+
+<link rel="stylesheet" href="/assets/games/unity-tutorial-2d-roguelike/TemplateData/style.css">
+<script src="/assets/games/unity-tutorial-2d-roguelike/TemplateData/UnityProgress.js"></script>
+
+<div class="row centered">
+	<h1>2D Roguelike</h1>
+</div>
+
+<div class="template-wrap">
+	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="640px" width="640px"></canvas>
+	<br />
+	<div class="logo"></div>
+	<div class="fullscreen"><img src="/assets/games/unity-tutorial-2d-roguelike/TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+	<div class="title">Fullscreen</div>
+</div>
+
+<div class="row centered">
+	<dl>
+		<dt>Controls</dt>
+		<dd>
+			<em>W A S D</em> or <em>&#9664; &#9650; &#9660; &#9654;</em>
+		</dd>
+
+		<dt>Tutorial</dt>
+		<dd><a href="https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial">https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial</a></dd>
+
+		<dt>Source</dt>
+		<dd><a href="https://github.com/lukearmstrong/unity-tutorial-2d-roguelike">https://github.com/lukearmstrong/unity-tutorial-2d-roguelike</a></dd>
+	</dl>
+</div>
+
+<script type='text/javascript'>
+	var Module = {
+		TOTAL_MEMORY: 268435456,
+		errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+		compatibilitycheck: null,
+		backgroundColor: "#222C36",
+		splashStyle: "Light",
+		dataUrl: "/assets/games/unity-tutorial-2d-roguelike/Release/2d-roguelike.data",
+		codeUrl: "/assets/games/unity-tutorial-2d-roguelike/Release/2d-roguelike.js",
+		asmUrl: "/assets/games/unity-tutorial-2d-roguelike/Release/2d-roguelike.asm.js",
+		memUrl: "/assets/games/unity-tutorial-2d-roguelike/Release/2d-roguelike.mem",
+	};
+</script>
+<script src="/assets/games/unity-tutorial-2d-roguelike/Release/UnityLoader.js"></script>
