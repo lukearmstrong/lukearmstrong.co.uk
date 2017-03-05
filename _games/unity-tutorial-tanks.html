@@ -1,0 +1,60 @@
+---
+date: 2017-02-22 18:40
+title: Tanks!
+description: A 2 player (one keyboard) tank battle game. Developed with Unity 5.5 and built for WebGL.
+opengraph_image: games/made-with-unity.png
+---
+
+<link rel="stylesheet" href="/assets/games/unity-tutorial-tanks/TemplateData/style.css">
+<script src="/assets/games/unity-tutorial-tanks/TemplateData/UnityProgress.js"></script>
+
+<div class="row centered">
+	<h1>Tanks!</h1>
+</div>
+
+<div class="template-wrap">
+	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" width="1280px" height="720px"></canvas>
+	<br />
+	<div class="logo"></div>
+	<div class="fullscreen"><img src="/assets/games/unity-tutorial-tanks/TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+	<div class="title">Fullscreen</div>
+</div>
+
+<div class="row centered">
+	<p>{{ page.description }}</p>
+
+	<dl>
+		<dt>Player 1</dt>
+		<dd>
+			<em>W A S D</em> to move,<br />
+			and hold <em>Space</em> to fire.
+		</dd>
+
+		<dt>Player 2</dt>
+		<dd>
+			<em>&#9664; &#9650; &#9660; &#9654;</em> to move,<br />
+			and hold <em>Enter/Return</em> to fire.
+		</dd>
+
+		<dt>Source Code</dt>
+		<dd><a href="https://github.com/lukearmstrong/unity-tutorial-tanks">https://github.com/lukearmstrong/unity-tutorial-tanks</a></dd>
+
+		<dt>Tutorial</dt>
+		<dd><a href="https://unity3d.com/learn/tutorials/projects/tanks-tutorial">https://unity3d.com/learn/tutorials/projects/tanks-tutorial</a></dd>
+	</dl>
+</div>
+
+<script type='text/javascript'>
+	var Module = {
+		TOTAL_MEMORY: 268435456,
+		errorhandler: null, // arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+		compatibilitycheck: null,
+		backgroundColor: "#222C36",
+		splashStyle: "Light",
+		dataUrl: "/assets/games/unity-tutorial-tanks/Release/tanks.data",
+		codeUrl: "/assets/games/unity-tutorial-tanks/Release/tanks.js",
+		asmUrl: "/assets/games/unity-tutorial-tanks/Release/tanks.asm.js",
+		memUrl: "/assets/games/unity-tutorial-tanks/Release/tanks.mem",
+	};
+</script>
+<script src="/assets/games/unity-tutorial-tanks/Release/UnityLoader.js"></script>
