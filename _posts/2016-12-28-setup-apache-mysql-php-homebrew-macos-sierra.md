@@ -52,8 +52,8 @@ Homebrew has a utility that will check if everything is setup correctly, run thi
 *taps* are extra repositories containing formulae to install software, we will need to add these by entering the commands below.
 
     $ brew tap homebrew/apache
-    $ brew tap homebrew/completions
-    $ brew tap homebrew/php
+    $ brew tap homebrew/completions
+    $ brew tap homebrew/php
 
 
 ### Enable auto-completion for brew commands (optional)
