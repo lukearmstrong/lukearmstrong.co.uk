@@ -23,7 +23,7 @@ sass:
 title:            "Luke Armstrong"
 email:            "me@lukearmstrong.co.uk"
 description:      "Web Developer"
-url:              "https://lukearmstrong.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url:              "http://lukearmstrong.co.uk" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: "6c61"
 github_username:  "lukearmstrong"
 

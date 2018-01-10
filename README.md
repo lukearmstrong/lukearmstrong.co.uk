@@ -1,3 +1,3 @@
 ### My Website
 
-[https://lukearmstrong.github.io/](https://lukearmstrong.github.io/)
+[http://lukearmstrong.co.uk/](http://lukearmstrong.co.uk/)
