@@ -43,6 +43,23 @@ body {
 	}
 }
 
+
+.archive-nav {
+	text-align: right;
+	margin-bottom: 10px;
+
+	&__separator {
+		color: #999;
+		padding: 0 5px;
+	}
+
+	&__active {
+		color: #999;
+		font-style: italic;
+	}
+}
+
+
 code,
 pre {
 	font-family: "Courier New", Courier, monospace;

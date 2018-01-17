@@ -7,6 +7,10 @@ permlink: /games/index.html
 <div class="row">
 	<h1>Games</h1>
 
+	<nav class="archive-nav">
+		<a href="/">Tutorials</a> <span class="archive-nav__separator">//</span> <a href="/games/" class="archive-nav__active">Games</a>
+	</nav>
+
 	{% for game in site.games reversed %}
 		<div class="post-link">
 			<h2><a href="{{ game.url }}">{{ game.title }}</a></h2>
