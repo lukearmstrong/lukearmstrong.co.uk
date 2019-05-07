@@ -5,7 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-		<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+
+		{% if page.description %}
+			<meta name="description" content="{{ page.description }}" />
+		{% endif %}
 
 		<link rel="stylesheet" href="/assets/css/style.css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,500" />
@@ -23,13 +26,8 @@
 			<meta property="og:image:width" content="1295" />
 			<meta property="og:image:height" content="650" />
 
-			<!-- Facebook: https://developers.facebook.com/docs/sharing/webmasters -->
-			<meta property="fb:app_id" content="681570525336212" />
-
 			<!-- Twitter: https://dev.twitter.com/cards/overview -->
 			<meta name="twitter:card" content="summary_large_image" />
-			<meta name="twitter:site" content="@{{ site.twitter_username }}" />
-			<meta name="twitter:creator" content="@{{ site.twitter_username }}" />
 			<meta name="twitter:title" content="{{ page.title }}" />
 			<meta name="twitter:description" content="{{ page.description }}" />
 			<meta name="twitter:image" content="{{ site.url }}/assets/images/opengraph/{{ page.opengraph_image }}" />
@@ -58,11 +56,6 @@
 		<div class="row">
 			<ul class="links">
 				<li><a href="/atom.xml" title="Feed"><i class="icon-feed"></i></a></li>
-				<li><a href="https://github.com/lukearmstrong" title="GitHub"><i class="icon-github"></i></a></li>
-				<li><a href="https://www.instagram.com/lukearmst/" title="Instagram"><i class="icon-instagram"></i></a></li>
-				<li><a href="https://uk.linkedin.com/in/luke-armstrong-developer" title="LinkedIn"><i class="icon-linkedin"></i></a></li>
-				<li><a href="https://steamcommunity.com/id/6c61" title="Steam"><i class="icon-steam"></i></a></li>
-				<li><a href="https://twitter.com/6c61" title="Twitter"><i class="icon-twitter"></i></a></li>
 			</ul>
 		</div>
 	</body>
