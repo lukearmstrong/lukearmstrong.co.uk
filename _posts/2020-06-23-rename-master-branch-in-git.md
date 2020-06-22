@@ -63,9 +63,9 @@ If you work in a team, you shouldn't just decide to do this without talking abou
 
 But even if you are confident you have everything covered, you would be a complete dick if you caused someone to lose their work, or unable to merge their pull-request, or unable to deploy changes to the application because they didn't know you had reconfigured services.
 
-Communication is critical. If you don't tell them, the master branch will come back the next time they push anyway, and they will continue to branch from it and merge into it, so this isn't just something you can just decide to do on your own.
+Communication is critical. If you don't tell them, the `master` branch will come back the next time they push anyway, and they will continue to branch from it and merge into it, so this isn't just something you can decide to do on your own.
 
-Before you do anything, checkout master and make sure you are up to date.
+Before you do anything, checkout `master` and make sure you are up to date.
 
 ```
 git checkout master
