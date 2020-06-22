@@ -1,6 +1,6 @@
 # Jekyll
 safe:      true
-exclude:   ["README.md"]
+exclude:   ["CNAME", "gemfile", "gemfile.lock", "README.md"]
 permalink: /:year/:month/:title/
 timezone:  Europe/London
 
