@@ -151,7 +151,7 @@ Earlier I mentioned how I couldn't create a new branch called `main` and get Git
 
 In the end I created a new repository on GitHub, called `lukearmstrong.co.uk` and this is designated it as a _"project"_ repository, which allowed me to build from a `gh-pages` branch, so I created this branch in my existing repository locally and pushed it to the new remote.
 
-Remember to delete the CNAME file in your old repository first. The easiest way to do this is by using the GitHub settings interface for the old remote repository, and removing the text in the "Custom domain" and hitting save. This will then mean you can use the domain in your new repository by just leaving the CNAME file in your local repository.
+Remember to delete the CNAME file in your old repository first. The easiest way to do this is by using the GitHub settings interface for the old repository, and removing the text in the "Custom domain" and hitting save. This will then mean you can use the domain in your new repository by just leaving the CNAME file in your local repository.
 
 ```
 git remote rename origin old
