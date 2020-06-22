@@ -3,6 +3,7 @@ date: 2020-06-23 08:00
 title: Rename master branch in git
 description: Things you might want to consider before doing this, and troubleshooting issues afterwards.
 opengraph_image: 2020-06-23-rename-master-branch-in-git.png
+published: false
 ---
 
 This isn't something that needs to be debated, the words we use matter, so I've decided to stop using the following words...
@@ -52,9 +53,9 @@ There are a couple of things you'll need to consider before doing this.
 
 If you have scripts or other services that rely on a branch called `master` existing, you will need to create your new `main` branch and re-configure these to use it instead.
 
-These services could be continuous integration systems running automated tests, continuous delivery systems deploying your application to servers, or settings like default branch settings on github, or branch policies for pull requests.
+These services could be continuous integration systems running automated tests, continuous delivery systems deploying your application to servers, or settings like default branch settings on GitHub, or branch policies for pull requests.
 
-It might not even be possible to change it, I can't change the branch name for this repository because GitHub Pages builds from the `master` branch for a _user_ repository. If this was a _project_ repository, then I could choose to build from the `gh-pages` branch.
+It might not even be possible to change it, I can't change the branch name for this repository because GitHub Pages builds from the `master` branch for a _"user"_ repository. If this was a _"project"_ repository, then I could choose to build from the `gh-pages` branch.
 
 
 #### 2. People
@@ -109,7 +110,9 @@ That's it.
 
 ### Troubleshooting
 
-I did this for a repository hosted on BitBucket, using the web interface, and received this error the next time I did a fetch.
+#### Errors from git
+
+I renamed the `master` branch to `main` for a repository hosted on BitBucket, using the web interface, and received this error the next time I did a fetch.
 
 ```
 # (refs/remotes/origin/HEAD has become dangling)
@@ -142,4 +145,19 @@ git symbolic-ref refs/remotes/origin/HEAD
 # refs/remotes/origin/main
 ```
 
-That should fix any errors you were getting.
+
+#### GitHub Pages
+
+Earlier I mentioned how I couldn't create a new branch called `main` and get GitHub Pages to build from it as it was stuck on `master`. It appears there are two types of repository, a _"user"_ repository and a _"project"_ repository. I created this years ago and called the repository `lukearmstrong.github.io` which designated it as a _"user"_ repository so GitHub pages would automatically build from `master`, and this setting could not be changed.
+
+In the end I created a new repository on GitHub, called `lukearmstrong.co.uk` and this is designated it as a _"project"_ repository, which allowed me to build from a `gh-pages` branch, so I created this branch in my existing repository locally and pushed it to the new remote.
+
+```
+git remote rename origin old
+git checkout -b gh-pages
+git remote add origin git@github.com:lukearmstrong/lukearmstrong.co.uk.git
+git push origin gh-pages
+git remote remove old
+```
+
+The only branch that exists on my new GitHub repository is `gh-pages` which is fairly self-explanatory as to what it does, and GitHub Pages is able to use this to build my Jekyll blog from.
