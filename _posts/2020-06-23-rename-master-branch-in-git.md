@@ -3,7 +3,6 @@ date: 2020-06-23 08:00
 title: Rename master branch in git
 description: Things you might want to consider before doing this, and troubleshooting issues afterwards.
 opengraph_image: 2020-06-23-rename-master-branch-in-git.png
-published: false
 ---
 
 This isn't something that needs to be debated, the words we use matter, so I've decided to stop using the following words...
@@ -22,7 +21,7 @@ I found myself using them a lot when talking about infrastructure or configurati
 | whitelist | allow list                         |
 | blacklist | deny list, blocklist               |
 
-This is not an exhaustive list, on either side of the table, but you can easily find many more synomyms in a [thesaurus](https://www.thesaurus.com/) for a word you want to stop using.
+This is not an exhaustive list, on either side of the table, but you can easily find many more synonyms in a [thesaurus](https://www.thesaurus.com/) for a word you want to stop using.
 
 
 ## Renaming the master branch in git
@@ -64,7 +63,7 @@ If you work in a team, you shouldn't just decide to do this without talking abou
 
 But even if you are confident you have everything covered, you would be a complete dick if you caused someone to lose their work, or unable to merge their pull-request, or unable to deploy changes to the application because they didn't know you had reconfigured services.
 
-Communication is critical.If you don't tell them, the master branch will come back the next time they push anyway, and they will continue to branch from it and merge into it, so this isn't just something you can just decide to do on your own.
+Communication is critical. If you don't tell them, the master branch will come back the next time they push anyway, and they will continue to branch from it and merge into it, so this isn't just something you can just decide to do on your own.
 
 Before you do anything, checkout master and make sure you are up to date.
 
@@ -124,7 +123,7 @@ Then when trying to use tab-completion, I kept getting this error.
 # warning: ignoring broken ref refs/remotes/origin/HEAD
 ```
 
-After googling the error and finding the answer on Stack Overflow, I learn't that you can see what `origin/HEAD` is pointing to by running this command:
+After googling the error and finding the answer on Stack Overflow, I learned that you can see what `origin/HEAD` is pointing to by running this command:
 
 ```
 git symbolic-ref refs/remotes/origin/HEAD
