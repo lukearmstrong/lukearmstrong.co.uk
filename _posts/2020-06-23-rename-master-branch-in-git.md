@@ -1,7 +1,8 @@
 ---
-date: 2020-06-22 08:00
+date: 2020-06-23 08:00
 title: Rename master branch in git
-description:
+description: Things you might want to consider before doing this, and troubleshooting issues afterwards.
+opengraph_image: 2020-06-23-rename-master-branch-in-git.png
 ---
 
 This isn't something that needs to be debated, the words we use matter, so I've decided to stop using the following words...
