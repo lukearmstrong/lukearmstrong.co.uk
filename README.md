@@ -1,6 +1,6 @@
 # My Blog
 
-🌍[http://lukearmstrong.co.uk/](http://lukearmstrong.co.uk/)
+🌍 [http://lukearmstrong.co.uk/](http://lukearmstrong.co.uk/)
 
 
 ## Development
@@ -15,14 +15,14 @@ Whilst MacOS comes with a version of [Ruby](https://www.ruby-lang.org/en/), I wo
 brew install rbenv
 ```
 
-Once you have configured rbenv for your shell and installed the latest version of Ruby.
+Once you have followed the instructions and configured rbenv for your shell, you can now install the latest version of Ruby.
 
 ```
 rbenv install 2.7.1
 rbenv global 2.7.1
 ```
 
-You now need to install bundler, this is the recommended way to handle Ruby Gems (dependencies) for a project.
+You now need to install [bundler](https://bundler.io/), this is the recommended way to handle [Ruby Gems](https://rubygems.org/) (dependencies) for a project.
 
 ```
 gem install bundler
