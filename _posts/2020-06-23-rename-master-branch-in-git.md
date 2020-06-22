@@ -41,7 +41,7 @@ git checkout -b main
 
 That's it.
 
-Whilst `master` is the default name for your branch if you made a commit without creating a branch, it will never exist if you create a branch and then commit.
+Whilst `master` is the default name for your branch if you made a commit without creating a branch, it will never exist if you create a `main` branch and then commit.
 
 
 ### On an existing repository
