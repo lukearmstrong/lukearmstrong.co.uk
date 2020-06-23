@@ -5,9 +5,9 @@ description: How to generate a self-signed certificate for developing locally.
 opengraph_image: 2020-06-24-self-signed-ssl-certificate.jpg
 ---
 
-When attempting to set up a self-signed SSL certificate for local development, you expect to get a warning from your browser and you can click something to ignore it and your site will load.
+When setting up a self-signed SSL certificate for local development, you expect to get a warning from your browser, then you click something to ignore it and your site will load.
 
-But this time I couldn't skip past the warning, it blocked the site over SSL (https://) entirely.
+But this time I couldn't skip past the warning, it blocked the site over TLS entirely.
 
 ```
 NET::ERR_CERT_INVALID
@@ -16,6 +16,7 @@ NET::ERR_CERT_INVALID
 > localhost normally uses encryption to protect your information. When Google Chrome tried to connect to localhost this time, the website sent back unusual and incorrect credentials. This may happen when an attacker is trying to pretend to be localhost, or a Wi-Fi sign-in screen has interrupted the connection. Your information is still secure because Google Chrome stopped the connection before any data was exchanged.
 >
 > You cannot visit localhost at the moment because the website sent scrambled credentials that Google Chrome cannot process. Network errors and attacks are usually temporary, so this page will probably work later.
+
 
 After some research it turned out that Apple had recently changed the requirements around TLS certificates which prevented browsers from letting you ignore the warning. (MacOS Catalina 10.15 / iOS 13)
 
