@@ -1,13 +1,13 @@
 ---
 date: 2020-06-24 00:00
-title: Self-Signed TLS/SSL Certificate
+title: Self-Signed SSL Certificate
 description: How to generate a self-signed certificate for developing locally.
 opengraph_image: 2020-06-24-self-signed-ssl-certificate.jpg
 ---
 
 When attempting to set up a self-signed SSL certificate for local development, you expect to get a warning from your browser and you can click something to ignore it and your site will load.
 
-But this time I couldn't skip past the warning, it blocked the site over TLS/SSL (https://) entirely.
+But this time I couldn't skip past the warning, it blocked the site over SSL (https://) entirely.
 
 ```
 NET::ERR_CERT_INVALID
@@ -28,9 +28,9 @@ After some research it turned out that Apple had recently changed the requiremen
 _Source:_ [https://support.apple.com/en-us/HT210176](https://support.apple.com/en-us/HT210176)
 
 
-## Generate Self-signed TLS (SSL) Certificate
+## Generate a self-signed SSL certificate
 
-So to meet these requirements we will need to create an config file for OpenSSL.
+So to meet these requirements we will need to create a config file for OpenSSL.
 
 It's best to save this file in your project, as it will be project specific depending on the domain name you want to use locally. Create a new text file called `openssl.cnf`
 
