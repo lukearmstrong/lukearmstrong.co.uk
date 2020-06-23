@@ -147,9 +147,9 @@ git symbolic-ref refs/remotes/origin/HEAD
 
 #### GitHub Pages
 
-Earlier I mentioned how I couldn't create a new branch called `main` and get GitHub Pages to build from it as it was stuck on `master`. It appears there are two types of repository, a _"user"_ repository and a _"project"_ repository. I created this years ago and called the repository `lukearmstrong.github.io` which designated it as a _"user"_ repository so GitHub pages would automatically build from `master`, and this setting could not be changed.
+Earlier I mentioned how I couldn't create a new branch called `main` and get GitHub Pages to build from it as it was stuck on `master`. It appears there are two types of repository, a _"user"_ repository and a _"project"_ repository. I created this years ago and called the repository `lukearmstrong.github.io` which designated it as a special _"user"_ repository so GitHub pages would automatically build from `master`, and this setting could not be changed.
 
-In the end I created a new repository on GitHub, called `lukearmstrong.co.uk` and this is designated it as a _"project"_ repository, which allowed me to build from a `gh-pages` branch, so I created this branch in my existing repository locally and pushed it to the new remote.
+In the end I created a new repository on GitHub, called `lukearmstrong.co.uk` and this designated it as a _"project"_ repository, which allowed me to build from a `gh-pages` branch, so I created this branch in my existing repository locally and pushed it to the new remote.
 
 Remember to delete the CNAME file in your old repository first. The easiest way to do this is by using the GitHub settings interface for the old repository, and removing the text in the "Custom domain" field and hitting save. This will then allow you to use the domain for your new repository by just leaving the CNAME file in your local repository.
 
