@@ -28,7 +28,7 @@ This is not an exhaustive list, on either side of the table, but you can easily 
 
 We talked about this where I work, and we've settled on using `main` as our default branch name. It's short and self-explanatory, and as a bonus it starts with `ma` so when using tab-completion on the command line you won't be frustrated when typing from muscle-memory.
 
-You can pick whatever you like though, `production` or `live` or `develop` may suit you better depending on your git workflow and how you like to handle development and releases.
+You can pick whatever you like though, `develop`, `production`, `release` or `trunk` may suit you better depending on your git workflow and how you like to handle development and releases.
 
 
 ### On a new repository
