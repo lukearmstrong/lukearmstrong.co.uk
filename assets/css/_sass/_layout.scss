@@ -196,7 +196,6 @@ table {
 	margin: 0 auto 20px;
 }
 
-/* Default Table Style */
 table {
 	width: 100%;
 	table-layout: fixed;
@@ -215,6 +214,23 @@ table td {
 	border: 1px solid lightgrey;
 }
 
+blockquote {
+	background: #F5F5F5;
+	border-left: 4px solid #333;
+	margin: 0 -15px 30px;
+	padding: 15px;
+}
+
+blockquote p:last-child {
+	margin: 0;
+}
+
+@media screen and (min-width: 640px) {
+	blockquote {
+		margin: 0 -20px 30px;
+		padding: 20px;
+	}
+}
 
 .links {
 	display: block;
