@@ -158,7 +158,7 @@ git remote rename origin old
 git checkout -b gh-pages
 git branch -d master
 git remote add origin git@github.com:lukearmstrong/lukearmstrong.co.uk.git
-git push origin gh-pages
+git push origin gh-pages -u
 git remote remove old
 ```
 
