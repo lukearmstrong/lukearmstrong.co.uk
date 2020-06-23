@@ -85,9 +85,9 @@ git push origin main -u
 
 `master` and `main` are now pointing to the same commit. As your new branch is now available remotely, you can re-configure any services or scripts or settings to use the new `main` branch.
 
-At the very least you'll need to use the (GitHub / BitBucket) web interface to set your new default branch to be `main`.
+At the very least you'll need to use the GitHub web interface to set your new default branch to be `main`.
 
-Once you have re-configured all services, to avoid confusion, I would recommend you delete the `master` branch now. First, delete the `master` branch locally.
+Once you have re-configured all services, I would recommend you delete the `master` branch to avoid confusion. First, delete the `master` branch locally.
 
 ```
 git branch -d master
@@ -99,7 +99,7 @@ Then you will need to delete the `master` branch remotely. Here is the command t
 git push origin --delete master
 ```
 
-You will usually find that you get a permissions error, and you have to do this using the (GitHub / BitBucket) web interface to delete the branch instead.
+You will usually find that you get a permissions error, and you have to do this using the GitHub web interface to delete the branch instead.
 
 That's it.
 
