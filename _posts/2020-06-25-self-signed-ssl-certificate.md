@@ -26,7 +26,16 @@ After some research it turned out that Apple had recently changed the requiremen
 - Must contain an ExtendedKeyUsage (EKU) extension containing the id-kp-serverAuth OID.
 - Must have a validity period of 825 days or fewer (as expressed in the NotBefore and NotAfter fields of the certificate).
 
-_Source:_ [https://support.apple.com/en-us/HT210176](https://support.apple.com/en-us/HT210176)
+_Source:_ [Requirements for trusted certificates in iOS 13 and macOS 10.15](https://support.apple.com/en-us/HT210176)
+
+
+### Update:
+
+- TLS server certificates issued on or after September 1, 2020 00:00 GMT/UTC must not have a validity period greater than 398 days.
+- 398 days is measured with a day being equal to 86,400 seconds. Any time greater than this indicates an additional day of validity.
+- We recommend that certificates be issued with a maximum validity of 397 days.
+
+_Source:_ [About upcoming limits on trusted certificates](https://support.apple.com/en-us/HT211025)
 
 
 ## Generate a self-signed SSL certificate
@@ -85,7 +94,7 @@ Now you can run this command to generate the SSL certificate and private key.
 ```
 openssl req -config openssl.cnf \
 -new -sha256 -newkey rsa:2048 -nodes -keyout private.key \
--x509 -days 825 -out certificate.crt
+-x509 -days 397 -out certificate.crt
 ```
 
 When you use this certificate in your nginx config for your local development server, you should get this error in Chrome.
